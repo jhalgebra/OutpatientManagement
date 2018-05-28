@@ -284,7 +284,65 @@ GO
 
 CREATE PROC GetPatients
 AS
-	SELECT * FROM Patient AS p
+	SELECT
+		p.BasicRegistration, --was the registration full or basic
+		--Basic Details (bd)
+		bd.Name,
+		bd.OIB,
+		s.Name, --Sex
+		bd.DateOfBirth,
+		--Contact Details (cd)
+		cd.PresentAddress,
+		cd.PermanentAddress,
+		cPatient.TelephoneHome,
+		cPatient.TelephoneWork,
+		cPatient.Mobile,
+		cPatient.Pager,
+		cPatient.Fax,
+		cPatient.Email,
+		--Contact of Next of Kin (cnk)
+		cnk.Name,
+		cnk.ContactAddress,
+		cNextOfKin.TelephoneHome,
+		cNextOfKin.TelephoneWork,
+		cNextOfKin.Mobile,
+		cNextOfKin.Pager,
+		cNextOfKin.Fax,
+		cNextOfKin.Email,
+		--Personal Details (pd)
+		pd.MaritalStatus,
+		pd.NumberOfDependents,
+		pd.Height,
+		pd.Weight,
+		pd.BloodTypeRH,
+		--Lifestyle (l)
+		l.Vegetarian,
+		l.Smoker,
+		l.ConsumesAlcoholicBeverage,
+		l.UsesStimulants,
+		l.StimulantsUsed,
+		l.CoffeeConsumptionPerDay,
+		l.TeaConsumptionPerDay,
+		l.SoftDrinkConsumptionPerDay,
+		l.RegularMeals,
+		peo.Name, --predominant eating option name
+		--Basic Complaints (bc)
+		bc.StatementOfComplaint,
+		bc.HistoryOfPreviousTreatment,
+		bc.PhysicianOrHospitalTreated,
+		--Medical Complaints (mc)
+		mc.Diabetic,
+		mc.Hypertensive,
+		mc.CardiacCondition,
+		mc.RespiratoryCondition,
+		mc.DigestiveCondition,
+		mc.OrthopedicCondition,
+		mc.MuscularCondition,
+		mc.NeurologicalCondition,
+		mc.KnownAllergies,
+		mc.KnownAdverseReactionToSpecificDrugs,
+		mc.MajorSurgeries
+	FROM Patient AS p
 	INNER JOIN BasicDetails AS bd ON bd.ID = p.BasicDetailsID
 	INNER JOIN ContactDetails AS cd ON cd.ID = p.ContactDetailsID
 	INNER JOIN ContactOfNextOfKin AS cnk ON cnk.ID = p.ContactOfNextOfKinID
@@ -293,6 +351,10 @@ AS
 	INNER JOIN Lifestyle AS l ON l.ID = p.LifestyleID
 	INNER JOIN BasicComplaints AS bc ON bc.ID = p.BasicComplaintsID
 	INNER JOIN MedicalComplaints AS mc ON mc.ID = p.MedicalComplaintsID
+	INNER JOIN Sex AS s ON s.ID = bd.SexID
+	INNER JOIN Contact AS cPatient ON cPatient.ID = cd.ContactID
+	INNER JOIN Contact AS cNextOfKin ON cNextOfKin.ID = cd.ContactID
+	INNER JOIN PredominantEatingOption AS peo ON peo.ID = l.PredominantEatingOptionID
 GO
 --ENDOF: GetPatients-------------------------------------------------------------------------------
 
