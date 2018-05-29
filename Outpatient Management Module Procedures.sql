@@ -367,12 +367,11 @@ GO
 CREATE PROC InsertBill
 	@PaymentTypeID INT,
 	@PatientID INT,
-	@DoctorID INT,
 	@Amount MONEY,
 	@InsertedID INT OUTPUT
 AS
-	INSERT INTO BILL(PaymentTypeID, PatientID, DoctorID, Amount)
-	VALUES(@PaymentTypeID, @PatientID, @DoctorID, @Amount)
+	INSERT INTO BILL(PaymentTypeID, PatientID, Amount)
+	VALUES(@PaymentTypeID, @PatientID, @Amount)
 
 	SET @InsertedID = SCOPE_IDENTITY()
 GO
@@ -390,13 +389,11 @@ CREATE PROC GetBills
 AS
 	SELECT
 		b.ID,
+		b.PatientID,
 		b.Amount,
 		b.DateIssued,
-		pt.Name, --payment type
-		bd.Name --doctor's name
+		pt.Name --payment type
 	FROM Bill AS b
-	INNER JOIN Doctor AS d ON d.ID = b.DoctorID
-	INNER JOIN BasicDetails AS bd ON bd.ID = d.BasicDetailsID
 	INNER JOIN PaymentType AS pt ON pt.ID = b.PaymentTypeID
 	WHERE b.PatientID = @IDPatient
 GO
@@ -433,6 +430,8 @@ CREATE PROC GetAppointments
 AS
 	SELECT
 		a.ID,
+		a.PatientID,
+		a.DoctorID,
 		a.Delegate, --who set up the appointment
 		a.DateAppointed,
 		a.Details,
@@ -475,6 +474,8 @@ CREATE PROC GetTests
 AS
 	SELECT
 		t.ID,
+		t.PatientID,
+		t.DoctorID,
 		t.Name,
 		bd.Name, --doctor's name
 		t.TestDateTime,
@@ -516,7 +517,9 @@ CREATE PROC GetPatientMedicine
 AS
 	SELECT
 		pm.ID,
-		m.Name,
+		pm.PatientID,
+		pm.DoctorID,
+		m.Name, --name of the medicine
 		pm.Quantity,
 		pm.DateIssued,
 		bd.Name --doctor's name

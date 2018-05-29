@@ -5,7 +5,7 @@ DECLARE @insertedID INT, @patientID INT, @doctorID INT
 EXEC InsertPatientWithBasicDetails 'Zvonimir', 2, '19670419', 'Complaining', '3841312', '3841513', 'Luka', @patientID OUTPUT
 EXEC InsertDoctor '12345678909', 'Slavko', 1, '19620613', @doctorID OUTPUT
 
-EXEC InsertBill 1, @patientID, @doctorID, 123, @insertedID OUTPUT
+EXEC InsertBill 1, @patientID, 123, @insertedID OUTPUT
 EXEC GetBills @patientID
 
 EXEC RemoveBill @insertedID
