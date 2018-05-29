@@ -81,7 +81,7 @@ AS --InsertPatientWithBasicDetails
 
 	--Patient
 	INSERT INTO Patient(BasicRegistration, BasicDetailsID, BasicComplaintsID, ContactDetailsID, ContactOfNextOfKinID)
-	VALUES (1, @BasicDetailsID, @BasicComplaintsID, @ContactDetailsID, @ContactOfNextOfKinID)
+	VALUES             (1,                @BasicDetailsID, @BasicComplaintsID, @ContactDetailsID, @ContactOfNextOfKinID)
 
 	SET @InsertedID = SCOPE_IDENTITY()
 GO 
@@ -182,6 +182,8 @@ AS --InsertPatientWithFullDetails
 	INSERT INTO ContactOfNextOfKin(Name, ContactAddress, ContactID)
 	VALUES(@NextOfKinName, @NextOfKinContactAddress, @NextOfKinContactID)
 
+	SET @ContactOfNextOfKinID = SCOPE_IDENTITY()
+
 	--Personal Details
 	INSERT INTO PersonalDetails(MaritalStatus, NumberOfDependents, Height, Weight, BloodTypeRH)
 	VALUES(@MaritalStatus, @NumberOfDependents, @Height, @Weight, @BloodTypeRH)
@@ -239,69 +241,69 @@ AS
 	DELETE FROM Test WHERE PatientID = @IDPatient
 	DELETE FROM PatientMedicine WHERE PatientID = @IDPatient
 
-	DELETE FROM Contact WHERE ID IN
-	(
-		SELECT ContactID FROM ContactDetails WHERE ID IN
-		(
-			SELECT ContactDetailsID FROM Patient WHERE ID = @IDPatient
-		)
+	DECLARE @BasicDetailsID INT, @ContactDetailsID INT, @ContactOfNextOfKinID INT, @PersonalDetailsID INT,
+			@ProfessionDetailsID INT, @LifestyleID INT, @BasicComplaintsID INT, @MedicalComplaintsID INT
 
-		UNION ALL
+	DECLARE @PatientContactID INT, @NextOfKinContactID INT
 
-		SELECT ContactID FROM ContactOfNextOfKin WHERE ID IN
-		(
-			SELECT ContactOfNextOfKinID FROM Patient WHERE ID = @IDPatient
-		)
-	)
+	SELECT
+		@BasicDetailsID = BasicDetailsID,
+		@ContactDetailsID = ContactDetailsID,
+		@ContactOfNextOfKinID = ContactOfNextOfKinID,
+		@PersonalDetailsID = PersonalDetailsID,
+		@ProfessionDetailsID = ProfessionDetailsID,
+		@LifestyleID = LifestyleID,
+		@BasicComplaintsID = BasicComplaintsID,
+		@MedicalComplaintsID = MedicalComplaintsID
+	FROM Patient
+	WHERE ID = @IDPatient
 
-	DELETE FROM BasicDetails WHERE ID IN
-	( SELECT BasicDetailsID FROM Patient WHERE ID = @IDPatient )
-
-	DELETE FROM ContactDetails WHERE ID IN
-	( SELECT ContactDetailsID FROM Patient WHERE ID = @IDPatient )
-
-	DELETE FROM ContactOfNextOfKin WHERE ID IN
-	( SELECT ContactOfNextOfKinID FROM Patient WHERE ID = @IDPatient )
-
-	DELETE FROM PersonalDetails WHERE ID IN
-	( SELECT PersonalDetailsID FROM Patient WHERE ID = @IDPatient )
-
-	DELETE FROM ProfessionDetails WHERE ID IN
-	( SELECT ProfessionDetailsID FROM Patient WHERE ID = @IDPatient )
-
-	DELETE FROM Lifestyle WHERE ID IN
-	( SELECT LifestyleID FROM Patient WHERE ID = @IDPatient )
-
-	DELETE FROM BasicComplaints WHERE ID IN
-	( SELECT BasicComplaintsID FROM Patient WHERE ID = @IDPatient )
-
-	DELETE FROM MedicalComplaints WHERE ID IN
-	( SELECT MedicalComplaintsID FROM Patient WHERE ID = @IDPatient )
+	SELECT @PatientContactID = ContactID FROM ContactDetails WHERE ID = @ContactDetailsID
+	SELECT @NextOfKinContactID = ContactID FROM ContactOfNextOfKin WHERE ID = @ContactOfNextOfKinID
 
 	DELETE FROM Patient WHERE ID = @IDPatient
+
+	DELETE FROM BasicDetails WHERE ID = @BasicDetailsID
+
+	DELETE FROM ContactDetails WHERE ID = @ContactDetailsID
+
+	DELETE FROM ContactOfNextOfKin WHERE ID = @ContactOfNextOfKinID
+
+	DELETE FROM PersonalDetails WHERE ID = @PersonalDetailsID
+
+	DELETE FROM ProfessionDetails WHERE ID = @ProfessionDetailsID
+
+	DELETE FROM Lifestyle WHERE ID = @LifestyleID
+
+	DELETE FROM BasicComplaints WHERE ID = @BasicComplaintsID
+
+	DELETE FROM MedicalComplaints WHERE ID = @MedicalComplaintsID
+
+	DELETE FROM Contact WHERE ID IN (@PatientContactID, @NextOfKinContactID)
 GO
 --ENDOF: RemovePatient-----------------------------------------------------------------------------
 
 CREATE PROC GetPatients
 AS
 	SELECT
+		p.ID,
 		p.BasicRegistration, --was the registration full or basic
 		--Basic Details (bd)
 		bd.Name,
 		bd.OIB,
-		s.Name, --Sex
+		s.Name AS 'Sex', --Sex
 		bd.DateOfBirth,
 		--Contact Details (cd)
 		cd.PresentAddress,
 		cd.PermanentAddress,
-		cPatient.TelephoneHome,
-		cPatient.TelephoneWork,
-		cPatient.Mobile,
-		cPatient.Pager,
-		cPatient.Fax,
-		cPatient.Email,
+		cPatient.TelephoneHome AS 'Patient''s home telephone',
+		cPatient.TelephoneWork AS 'Patient''s work telephone',
+		cPatient.Mobile AS 'Patient''s mobile',
+		cPatient.Pager AS 'Patient''s pager',
+		cPatient.Fax AS 'Patient''s fax',
+		cPatient.Email AS 'Patient''s email',
 		--Contact of Next of Kin (cnk)
-		cnk.Name,
+		cnk.Name AS 'Name of Next of Kin',
 		cnk.ContactAddress,
 		cNextOfKin.TelephoneHome,
 		cNextOfKin.TelephoneWork,
@@ -310,7 +312,7 @@ AS
 		cNextOfKin.Fax,
 		cNextOfKin.Email,
 		--Personal Details (pd)
-		pd.MaritalStatus,
+		pd.MaritalStatus AS 'Married',
 		pd.NumberOfDependents,
 		pd.Height,
 		pd.Weight,
@@ -343,18 +345,18 @@ AS
 		mc.KnownAdverseReactionToSpecificDrugs,
 		mc.MajorSurgeries
 	FROM Patient AS p
-	INNER JOIN BasicDetails AS bd ON bd.ID = p.BasicDetailsID
-	INNER JOIN ContactDetails AS cd ON cd.ID = p.ContactDetailsID
-	INNER JOIN ContactOfNextOfKin AS cnk ON cnk.ID = p.ContactOfNextOfKinID
-	INNER JOIN PersonalDetails AS pd ON pd.ID = p.PersonalDetailsID
-	INNER JOIN ProfessionDetails AS profD ON profD.ID = p.ProfessionDetailsID
-	INNER JOIN Lifestyle AS l ON l.ID = p.LifestyleID
-	INNER JOIN BasicComplaints AS bc ON bc.ID = p.BasicComplaintsID
-	INNER JOIN MedicalComplaints AS mc ON mc.ID = p.MedicalComplaintsID
-	INNER JOIN Sex AS s ON s.ID = bd.SexID
-	INNER JOIN Contact AS cPatient ON cPatient.ID = cd.ContactID
-	INNER JOIN Contact AS cNextOfKin ON cNextOfKin.ID = cd.ContactID
-	INNER JOIN PredominantEatingOption AS peo ON peo.ID = l.PredominantEatingOptionID
+	LEFT JOIN BasicDetails AS bd ON bd.ID = p.BasicDetailsID
+	FULL OUTER JOIN ContactDetails AS cd ON cd.ID = p.ContactDetailsID
+	FULL OUTER JOIN ContactOfNextOfKin AS cnk ON cnk.ID = p.ContactOfNextOfKinID
+	FULL OUTER JOIN PersonalDetails AS pd ON pd.ID = p.PersonalDetailsID
+	FULL OUTER JOIN ProfessionDetails AS profD ON profD.ID = p.ProfessionDetailsID
+	FULL OUTER JOIN Lifestyle AS l ON l.ID = p.LifestyleID
+	FULL OUTER JOIN BasicComplaints AS bc ON bc.ID = p.BasicComplaintsID
+	FULL OUTER JOIN MedicalComplaints AS mc ON mc.ID = p.MedicalComplaintsID
+	LEFT JOIN Contact AS cPatient ON cPatient.ID = cd.ContactID
+	LEFT JOIN Contact AS cNextOfKin ON cNextOfKin.ID = cnk.ContactID
+	LEFT JOIN Sex AS s ON s.ID = bd.SexID
+	LEFT JOIN PredominantEatingOption AS peo ON peo.ID = l.PredominantEatingOptionID
 GO
 --ENDOF: GetPatients-------------------------------------------------------------------------------
 
@@ -387,6 +389,7 @@ CREATE PROC GetBills
 	@IDPatient INT
 AS
 	SELECT
+		b.ID,
 		b.Amount,
 		b.DateIssued,
 		pt.Name, --payment type
@@ -429,6 +432,7 @@ CREATE PROC GetAppointments
 	@IDPatient INT
 AS
 	SELECT
+		a.ID,
 		a.Delegate, --who set up the appointment
 		a.DateAppointed,
 		a.Details,
@@ -470,6 +474,7 @@ CREATE PROC GetTests
 	@IDPatient INT
 AS
 	SELECT
+		t.ID,
 		t.Name,
 		bd.Name, --doctor's name
 		t.TestDateTime,
@@ -510,6 +515,7 @@ CREATE PROC GetPatientMedicine
 	@IDPatient INT
 AS
 	SELECT
+		pm.ID,
 		m.Name,
 		pm.Quantity,
 		pm.DateIssued,
@@ -550,16 +556,24 @@ GO
 CREATE PROC RemoveDoctor
 	@IDDoctor INT
 AS
-	DELETE FROM BasicDetails WHERE ID IN
-	( SELECT BasicDetailsID FROM Doctor WHERE ID = @IDDoctor )
+	DECLARE @BasicDetailsID INT = (SELECT BasicDetailsID FROM Doctor WHERE ID = @IDDoctor)
 
 	DELETE FROM Doctor WHERE ID = @IDDoctor
+
+	DELETE FROM BasicDetails WHERE ID = @BasicDetailsID
 GO
 --ENDOF: RemoveDoctor------------------------------------------------------------------------------
 
 CREATE PROC GetDoctors
 AS
-	SELECT * FROM Doctor AS d
+	SELECT
+		d.ID,
+		bd.Name,
+		bd.OIB,
+		bd.DateOfBirth,
+		s.Name AS 'Sex'
+	FROM Doctor AS d
 	INNER JOIN BasicDetails AS bd ON bd.ID = d.BasicDetailsID
+	INNER JOIN Sex AS s ON s.ID = bd.SexID
 GO
 --ENDOF: GetDoctors--------------------------------------------------------------------------------

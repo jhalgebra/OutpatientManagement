@@ -76,7 +76,7 @@ CREATE TABLE BasicDetails
 	SexID INT NOT NULL, --Mini Registration Form
 	DateOfBirth DATETIME NOT NULL, --Mini Registration Form
 
-	FOREIGN KEY(SexID) REFERENCES Sex(ID)
+	CONSTRAINT FK_BasicDetails_Sex FOREIGN KEY(SexID) REFERENCES Sex(ID)
 )
 
 CREATE TABLE ContactDetails
@@ -86,7 +86,7 @@ CREATE TABLE ContactDetails
 	PermanentAddress NVARCHAR(200) NULL,
 	ContactID INT NOT NULL, --Mini Registration Form
 
-	FOREIGN KEY(ContactID) REFERENCES Contact(ID)
+	CONSTRAINT FK_ContactDetails_Contact FOREIGN KEY(ContactID) REFERENCES Contact(ID)
 )
 
 CREATE TABLE ContactOfNextOfKin
@@ -96,7 +96,7 @@ CREATE TABLE ContactOfNextOfKin
 	ContactAddress NVARCHAR(200) NULL,
 	ContactID INT NULL,
 
-	FOREIGN KEY(ContactID) REFERENCES Contact(ID)
+	CONSTRAINT FK_ContactOfNextOfKin_Contact FOREIGN KEY(ContactID) REFERENCES Contact(ID)
 )
 
 CREATE TABLE PersonalDetails
@@ -130,7 +130,7 @@ CREATE TABLE Lifestyle
 	RegularMeals BIT NULL,
 	PredominantEatingOptionID INT NULL,
 
-	FOREIGN KEY(PredominantEatingOptionID) REFERENCES PredominantEatingOption(ID)
+	CONSTRAINT FK_Lifestyle_PredominantEatingOption FOREIGN KEY(PredominantEatingOptionID) REFERENCES PredominantEatingOption(ID)
 )
 
 CREATE TABLE BasicComplaints
@@ -164,7 +164,7 @@ CREATE TABLE Doctor
 	ID INT PRIMARY KEY IDENTITY NOT NULL,
 	BasicDetailsID INT NOT NULL,
 
-	FOREIGN KEY(BasicDetailsID) REFERENCES BasicDetails(ID)
+	CONSTRAINT FK_Doctor_BasicDetails FOREIGN KEY(BasicDetailsID) REFERENCES BasicDetails(ID)
 )
 
 CREATE TABLE Patient
@@ -181,14 +181,14 @@ CREATE TABLE Patient
 	BasicComplaintsID INT NOT NULL,
 	MedicalComplaintsID INT NULL,
 
-	FOREIGN KEY(BasicDetailsID) REFERENCES BasicDetails(ID),
-	FOREIGN KEY(ContactDetailsID) REFERENCES ContactDetails(ID),
-	FOREIGN KEY(ContactOfNextOfKinID) REFERENCES ContactOfNextOfKin(ID),
-	FOREIGN KEY(PersonalDetailsID) REFERENCES PersonalDetails(ID),
-	FOREIGN KEY(ProfessionDetailsID) REFERENCES ProfessionDetails(ID),
-	FOREIGN KEY(LifestyleID) REFERENCES Lifestyle(ID),
-	FOREIGN KEY(BasicComplaintsID) REFERENCES BasicComplaints(ID),
-	FOREIGN KEY(MedicalComplaintsID) REFERENCES MedicalComplaints(ID),
+	CONSTRAINT FK_Patient_BasicDetails FOREIGN KEY(BasicDetailsID) REFERENCES BasicDetails(ID),
+	CONSTRAINT FK_Patient_ContactDetails FOREIGN KEY(ContactDetailsID) REFERENCES ContactDetails(ID),
+	CONSTRAINT FK_Patient_ContactOfNextOfKin FOREIGN KEY(ContactOfNextOfKinID) REFERENCES ContactOfNextOfKin(ID),
+	CONSTRAINT FK_Patient_PersonalDetails FOREIGN KEY(PersonalDetailsID) REFERENCES PersonalDetails(ID),
+	CONSTRAINT FK_Patient_ProfessionDetails FOREIGN KEY(ProfessionDetailsID) REFERENCES ProfessionDetails(ID),
+	CONSTRAINT FK_Patient_Lifestyle FOREIGN KEY(LifestyleID) REFERENCES Lifestyle(ID),
+	CONSTRAINT FK_Patient_BasicComplaints FOREIGN KEY(BasicComplaintsID) REFERENCES BasicComplaints(ID),
+	CONSTRAINT FK_Patient_MedicalComplaints FOREIGN KEY(MedicalComplaintsID) REFERENCES MedicalComplaints(ID),
 )
 
 CREATE TABLE Bill
@@ -200,9 +200,9 @@ CREATE TABLE Bill
 	DoctorID INT NOT NULL,
 	Amount MONEY NOT NULL,
 
-	FOREIGN KEY(PaymentTypeID) REFERENCES PaymentType(ID),
-	FOREIGN KEY(PatientID) REFERENCES Patient(ID),
-	FOREIGN KEY(DoctorID) REFERENCES Doctor(ID)
+	CONSTRAINT FK_Bill_PaymentType FOREIGN KEY(PaymentTypeID) REFERENCES PaymentType(ID),
+	CONSTRAINT FK_Bill_Patient FOREIGN KEY(PatientID) REFERENCES Patient(ID),
+	CONSTRAINT FK_Bill_Doctor FOREIGN KEY(DoctorID) REFERENCES Doctor(ID)
 )
 
 CREATE TABLE Appointment
@@ -216,8 +216,8 @@ CREATE TABLE Appointment
 	DateAppointed DATETIME NOT NULL,
 	Details NVARCHAR(1000) NULL,
 
-	FOREIGN KEY(PatientID) REFERENCES Patient(ID),
-	FOREIGN KEY(DoctorID) REFERENCES Doctor(ID)
+	CONSTRAINT FK_Appointment_Patient FOREIGN KEY(PatientID) REFERENCES Patient(ID),
+	CONSTRAINT FK_Appointment_Doctor FOREIGN KEY(DoctorID) REFERENCES Doctor(ID)
 )
 
 CREATE TABLE Test
@@ -229,8 +229,8 @@ CREATE TABLE Test
 	Details NVARCHAR(1000) NULL,
 	TestDateTime DATETIME NOT NULL,
 
-	FOREIGN KEY(PatientID) REFERENCES Patient(ID),
-	FOREIGN KEY(DoctorID) REFERENCES Doctor(ID)
+	CONSTRAINT FK_Test_Patient FOREIGN KEY(PatientID) REFERENCES Patient(ID),
+	CONSTRAINT FK_Test_Doctor FOREIGN KEY(DoctorID) REFERENCES Doctor(ID)
 )
 --ENDOF: Entities----------------------------------------------------------------------------------
 
@@ -244,8 +244,8 @@ CREATE TABLE PatientMedicine
 	PatientID INT NOT NULL,
 	DoctorID INT NOT NULL,
 
-	FOREIGN KEY(MedicineID) REFERENCES Medicine(ID),
-	FOREIGN KEY(PatientID) REFERENCES Patient(ID),
-	FOREIGN KEY(DoctorID) REFERENCES Doctor(ID)
+	CONSTRAINT FK_PatientMedicine_Medicine FOREIGN KEY(MedicineID) REFERENCES Medicine(ID),
+	CONSTRAINT FK_PatientMedicine_Patient FOREIGN KEY(PatientID) REFERENCES Patient(ID),
+	CONSTRAINT FK_PatientMedicine_Doctor FOREIGN KEY(DoctorID) REFERENCES Doctor(ID)
 )
 --ENDOF: Patient.List<Medicine>--------------------------------------------------------------------
