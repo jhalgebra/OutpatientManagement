@@ -389,7 +389,6 @@ CREATE PROC GetBills
 AS
 	SELECT
 		b.ID,
-		b.PatientID,
 		b.Amount,
 		b.DateIssued,
 		pt.Name --payment type
@@ -430,7 +429,6 @@ CREATE PROC GetAppointments
 AS
 	SELECT
 		a.ID,
-		a.PatientID,
 		a.DoctorID,
 		a.Delegate, --who set up the appointment
 		a.DateAppointed,
@@ -474,7 +472,6 @@ CREATE PROC GetTests
 AS
 	SELECT
 		t.ID,
-		t.PatientID,
 		t.DoctorID,
 		t.Name,
 		bd.Name, --doctor's name
@@ -517,7 +514,6 @@ CREATE PROC GetPatientMedicine
 AS
 	SELECT
 		pm.ID,
-		pm.PatientID,
 		pm.DoctorID,
 		m.Name, --name of the medicine
 		pm.Quantity,
