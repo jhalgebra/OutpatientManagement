@@ -5,7 +5,6 @@ public class Doctor {
     private BasicDetails basicDetails;
 
     public Doctor(int id, BasicDetails basicDetails) {
-
         this.id = id;
         this.basicDetails = basicDetails;
     }
@@ -16,5 +15,9 @@ public class Doctor {
 
     public BasicDetails getBasicDetails() {
         return basicDetails;
+    }
+
+    public void setBasicDetails(BasicDetails basicDetails) {
+        this.basicDetails = basicDetails;
     }
 }

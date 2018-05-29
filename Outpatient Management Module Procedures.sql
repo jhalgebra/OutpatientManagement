@@ -287,6 +287,7 @@ CREATE PROC GetPatients
 AS
 	SELECT
 		p.ID,
+		p.RegistrationDate,
 		p.BasicRegistration, --was the registration full or basic
 		--Basic Details (bd)
 		bd.Name,
@@ -317,6 +318,9 @@ AS
 		pd.Height,
 		pd.Weight,
 		pd.BloodTypeRH,
+		--Profession Details (profD)
+		profD.Occupation,
+		profD.GrossAnnualIncome,
 		--Lifestyle (l)
 		l.Vegetarian,
 		l.Smoker,
