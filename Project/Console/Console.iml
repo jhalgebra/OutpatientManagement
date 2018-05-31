@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="BLL" />
+    <orderEntry type="module" module-name="DL" />
   </component>
 </module>

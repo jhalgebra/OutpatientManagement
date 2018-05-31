@@ -7,16 +7,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/XML.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="module" module-name="DAL" />
+    <orderEntry type="module" module-name="Console" />
+    <orderEntry type="module" module-name="GUI" />
+    <orderEntry type="module" module-name="DL" />
+    <orderEntry type="module" module-name="BLL" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>

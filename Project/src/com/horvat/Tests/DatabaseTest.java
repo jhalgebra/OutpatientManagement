@@ -1,8 +1,12 @@
 package com.horvat.Tests;
 
-import com.horvat.dal.data.IRepository;
-import com.horvat.dal.data.RepositoryFactory;
-import com.horvat.dal.entities.*;
+import com.horvat.dal.IRepository;
+import com.horvat.dal.RepositoryFactory;
+import com.horvat.dl.entities.Appointment;
+import com.horvat.dl.entities.Bill;
+import com.horvat.dl.entities.Patient;
+import com.horvat.dl.entities.Test;
+import com.horvat.dl.entities.*;
 import com.lib.dal.entities.IDatabaseObject;
 
 import java.math.BigDecimal;
@@ -10,28 +14,20 @@ import java.time.ZonedDateTime;
 import java.util.*;
 
 public class DatabaseTest {
-    private static IRepository repo;
-
-    static {
-        try {
-            repo = RepositoryFactory.getRepository();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    private static final IRepository repo = RepositoryFactory.getRepository();
 
     public static void run() {
         if(repo == null)
             return;
 
         testGetters(1, true);
-        List<IDatabaseObject> addedObjects = testInserts();
+        List<Object> addedObjects = testInserts();
         testGetters(2, false);
         testDeletes(addedObjects);
         testGetters(2, false);
     }
 
-    private static void testDeletes(List<IDatabaseObject> addedObjects) {
+    private static void testDeletes(List<Object> addedObjects) {
         boolean patientRemoved = repo.removePatient(((Patient)addedObjects.get(0)).getId());
         boolean testRemoved = repo.removeTest(((Test)addedObjects.get(1)).getId());
         boolean medicineRemoved = repo.removePrescribedMedicine(((PrescribedMedicine)addedObjects.get(2)).getId());
@@ -47,7 +43,7 @@ public class DatabaseTest {
         System.out.println("Full patient removed: " + (fullPatientRemoved));
     }
 
-    private static List<IDatabaseObject> testInserts(){
+    private static List<Object> testInserts(){
         Patient newPatient = repo.insertPatientWithBasicDetails("Luka", 1, Date.from(ZonedDateTime.now().minusMonths(300).toInstant()), "Complaining", "3841123", "3841444", "Mirko");
         System.out.println("Added new patient: " + newPatient);
 
@@ -68,7 +64,7 @@ public class DatabaseTest {
 
         System.out.println();
 
-        List<IDatabaseObject> addedObjects = new ArrayList<>();
+        List<Object> addedObjects = new ArrayList<>();
 
         addedObjects.add(newPatient);
         addedObjects.add(newTest);

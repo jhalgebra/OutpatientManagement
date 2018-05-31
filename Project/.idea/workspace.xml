@@ -2,7 +2,66 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ce0fafa-4b58-4884-a3c6-0c3d842ab709" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/helpers/IApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/helpers/Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/LoginViewModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/base/BaseViewModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/app/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/app/Helpers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/LoginDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/Dialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/DialogNavigator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DAL/src/com/horvat/dal/Converters.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DAL/src/com/horvat/dal/FileManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DAL/src/com/horvat/dal/RepositoryFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DL/DL.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUI/src/com/horvat/gui/app/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BLL/BLL.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BLL/BLL.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Console/Console.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Console/Console.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/DAL.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/DAL.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/data/DatabaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/src/com/horvat/dal/DatabaseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/data/IRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/src/com/horvat/dal/IRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/data/RepositoryFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Appointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/BasicComplaints.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/BasicComplaints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/BasicDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/BasicDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Bill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Contact.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/ContactDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/ContactDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/ContactOfNextOfKin.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/ContactOfNextOfKin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Doctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/ImportantMedicalComplaints.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/ImportantMedicalComplaints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Lifestyle.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Lifestyle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Patient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/PersonalDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/PersonalDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/PrescribedMedicine.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/PrescribedMedicine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/ProfessionDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/ProfessionDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/GUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/GUI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OutpatientManagement.iml" beforeDir="false" afterPath="$PROJECT_DIR$/OutpatientManagement.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/data/DatabaseRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/data/IRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/data/RepositoryFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/entities/Appointment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/entities/BasicComplaints.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/entities/BasicDetails.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/entities/Bill.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/entities/Contact.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/entities/ContactDetails.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/entities/ContactOfNextOfKin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/entities/Doctor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/entities/ImportantMedicalComplaints.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/entities/Lifestyle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/entities/Patient.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/entities/PersonalDetails.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/entities/PrescribedMedicine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/entities/ProfessionDetails.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/entities/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OutpatientManagement/com/horvat/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OutpatientManagement/com/horvat/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/OutpatientManagement/com/horvat/Tests/DatabaseTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/OutpatientManagement/com/horvat/Tests/DatabaseTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/horvat/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/horvat/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/horvat/Tests/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/horvat/Tests/DatabaseTest.java" afterDir="false" />
     </list>
@@ -15,21 +74,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/horvat/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-              <folding>
-                <element signature="e#123#124#0" expanded="true" />
-                <element signature="e#161#162#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -85,7 +130,6 @@
         <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Sex.java" />
         <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Medicine.java" />
         <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/MedicalComplaints.java" />
-        <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/data/RepositoryFactory.java" />
         <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/data/IDatabaseObject.java" />
         <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Doctor.java" />
         <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/BasicComplaints.java" />
@@ -104,8 +148,32 @@
         <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Patient.java" />
         <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Appointment.java" />
         <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/data/DatabaseRepository.java" />
+        <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/data/FileManager.java" />
+        <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/helpers/IApplication.java" />
+        <option value="$PROJECT_DIR$/GUI/src/com/horvat/gui/app/Application.java" />
+        <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/base/BaseViewModel.java" />
+        <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/data/RepositoryFactory.java" />
+        <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/IRepository.java" />
+        <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/LoginViewModel.java" />
+        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/DialogNavigator.java" />
+        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/app/Application.java" />
+        <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/helpers/Utils.java" />
+        <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/converters/base/IConverter.java" />
+        <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/converters/AppointmentConverter.java" />
+        <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/converters/base/BaseConverter.java" />
+        <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/Converters.java" />
+        <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/DatabaseRepository.java" />
         <option value="$PROJECT_DIR$/src/com/horvat/Tests/DatabaseTest.java" />
+        <option value="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/PrescribedMedicine.java" />
+        <option value="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Test.java" />
+        <option value="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Doctor.java" />
+        <option value="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Patient.java" />
+        <option value="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Appointment.java" />
+        <option value="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Bill.java" />
         <option value="$PROJECT_DIR$/src/com/horvat/Main.java" />
+        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/app/Helpers.java" />
+        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/Dialog.java" />
+        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/LoginDialog.java" />
       </list>
     </option>
   </component>
@@ -135,40 +203,6 @@
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="DAL" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="DAL" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="DAL" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="dal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="DAL" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="dal" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="DAL" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="dal" type="462c0819:PsiDirectoryNode" />
-              <item name="entities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -187,8 +221,8 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Disketta" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
@@ -282,7 +316,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -290,11 +323,12 @@
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23939064" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.23939064" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Designer" order="2" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3297062" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -309,7 +343,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -317,81 +350,63 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="12" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/horvat/Tests/DatabaseTest.java">
+    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/DatabaseRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="880">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="220">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="12" />
           <folding>
-            <element signature="initializer##0;class#DatabaseTest#0" />
-            <element signature="method#testDeletes#0;class#DatabaseTest#0" />
-            <element signature="method#testInserts#0;class#DatabaseTest#0" />
-            <element signature="method#testGetters#0;class#DatabaseTest#0" />
-            <element signature="method#print#0;class#DatabaseTest#0" />
+            <element signature="e#404#423#0" />
+            <element signature="e#1282#1442#0" />
+            <element signature="e#1448#1464#0" />
+            <element signature="e#1470#3402#0" />
+            <element signature="e#3408#9573#0" />
+            <element signature="e#9579#9863#0" />
+            <element signature="e#9869#10568#0" />
+            <element signature="e#10591#10604#0" />
+            <element signature="e#10610#11820#0" />
+            <element signature="e#11826#12098#0" />
+            <element signature="e#12104#12465#0" />
+            <element signature="e#12488#12508#0" />
+            <element signature="e#12514#13785#0" />
+            <element signature="e#13791#14145#0" />
+            <element signature="e#14151#14540#0" />
+            <element signature="e#14563#14576#0" />
+            <element signature="e#14582#15810#0" />
+            <element signature="e#15816#16142#0" />
+            <element signature="e#16148#16509#0" />
+            <element signature="e#16532#16559#0" />
+            <element signature="e#16565#18220#0" />
+            <element signature="e#18226#18605#0" />
+            <element signature="e#18611#19000#0" />
+            <element signature="e#19023#19324#0" />
+            <element signature="e#19330#19346#0" />
+            <element signature="e#19352#19502#0" />
+            <element signature="e#19508#19682#0" />
+            <element signature="e#19830#19974#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/data/DatabaseRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Patient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2728">
-          <caret line="181" column="33" lean-forward="true" selection-start-line="181" selection-start-column="33" selection-end-line="181" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/data/DatabaseRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1056">
-          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Patient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3256">
-          <caret line="205" column="22" selection-start-line="205" selection-start-column="22" selection-end-line="205" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/data/DatabaseRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="17" column="58" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/data/DatabaseRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" column="58" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/data/DatabaseRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="12" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/data/IRepository.java">
+    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/IRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+          <folding>
+            <element signature="e#224#240#0" />
+            <element signature="e#972#985#0" />
+            <element signature="e#1204#1224#0" />
+            <element signature="e#1533#1546#0" />
+            <element signature="e#1808#1835#0" />
+            <element signature="e#2210#2226#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Patient.java">
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Patient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="946">
           <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
@@ -411,115 +426,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/ImportantMedicalComplaints.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="669">
-          <caret line="118" column="18" selection-start-line="118" selection-start-column="18" selection-end-line="118" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Lifestyle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="669">
-          <caret line="108" column="18" selection-start-line="108" selection-start-column="18" selection-end-line="108" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/BasicComplaints.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/BasicDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Contact.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="68" column="18" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/ContactDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/ContactOfNextOfKin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Doctor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="49" column="5" lean-forward="true" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/PrescribedMedicine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="79" column="18" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="75" column="18" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/DAL.jar!/com/microsoft/sqlserver/jdbc/SQLServerException.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1053">
           <caret line="155" selection-start-line="155" selection-end-line="155" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Bill.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/data/RepositoryFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/PersonalDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/ProfessionDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Appointment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
@@ -537,20 +447,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/data/IRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/entities/Patient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="32" lean-forward="true" selection-start-column="32" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/DAL.jar!/com/lib/dal/access/DBExecutor.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -558,19 +454,258 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/data/DatabaseRepository.java">
+    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/helpers/IApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
+        <state relative-caret-position="66">
+          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/src/com/horvat/gui/app/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="7" selection-end-column="59" />
+          <folding>
+            <element signature="e#199#200#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/base/BaseViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/helpers/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/LoginViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/DialogNavigator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+            <element signature="e#384#385#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/Collection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-19">
+          <caret line="168" column="21" selection-start-line="168" selection-start-column="21" selection-end-line="168" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/BasicComplaints.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/BasicDetails.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/ContactDetails.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Contact.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/ContactOfNextOfKin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/ImportantMedicalComplaints.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="method#ImportantMedicalComplaints#0;class#ImportantMedicalComplaints#0" />
+            <element signature="method#setRespiratoryCondition#0;class#ImportantMedicalComplaints#0" />
+            <element signature="method#setNeurologicalCondition#0;class#ImportantMedicalComplaints#0" />
+            <element signature="method#setKnownAdverseReactionToSpecificDrugs#0;class#ImportantMedicalComplaints#0" />
+            <element signature="method#toString#0;class#ImportantMedicalComplaints#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Lifestyle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="method#Lifestyle#0;class#Lifestyle#0" />
+            <element signature="method#setConsumesAlcoholicBeverage#0;class#Lifestyle#0" />
+            <element signature="method#setCoffeeConsumptionPerDay#0;class#Lifestyle#0" />
+            <element signature="method#setTeaConsumptionPerDay#0;class#Lifestyle#0" />
+            <element signature="method#setSoftDrinkConsumptionPerDay#0;class#Lifestyle#0" />
+            <element signature="method#setPredominantEatingOption#0;class#Lifestyle#0" />
+            <element signature="method#toString#0;class#Lifestyle#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/PersonalDetails.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
+          <folding>
+            <element signature="method#PersonalDetails#0;class#PersonalDetails#0" />
+            <element signature="method#toString#0;class#PersonalDetails#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/ProfessionDetails.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding>
+            <element signature="method#ProfessionDetails#0;class#ProfessionDetails#0" />
+            <element signature="method#toString#0;class#ProfessionDetails#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/converters/base/IConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/FileManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/RepositoryFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/IRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/converters/AppointmentConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/converters/base/BaseConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/Converters.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="151" />
+          <folding>
+            <element signature="n#!!doc;n#enumConverter#0;n#Converters#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/DatabaseRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+          <folding>
+            <element signature="e#1276#1436#0" />
+            <element signature="e#1442#1458#0" />
+            <element signature="e#1464#3396#0" />
+            <element signature="e#3402#9567#0" />
+            <element signature="e#9573#9857#0" />
+            <element signature="e#9863#10562#0" />
+            <element signature="e#10585#10598#0" />
+            <element signature="e#10604#11814#0" />
+            <element signature="e#11820#12092#0" />
+            <element signature="e#12098#12459#0" />
+            <element signature="e#12482#12502#0" />
+            <element signature="e#12508#13779#0" />
+            <element signature="e#13785#14139#0" />
+            <element signature="e#14145#14534#0" />
+            <element signature="e#14557#14570#0" />
+            <element signature="e#14576#15804#0" />
+            <element signature="e#15810#16136#0" />
+            <element signature="e#16142#16503#0" />
+            <element signature="e#16526#16553#0" />
+            <element signature="e#16559#18214#0" />
+            <element signature="e#18220#18599#0" />
+            <element signature="e#18605#18994#0" />
+            <element signature="e#19017#19318#0" />
+            <element signature="e#19324#19340#0" />
+            <element signature="e#19346#19496#0" />
+            <element signature="e#19502#19676#0" />
+            <element signature="method#getSexes#0;class#DatabaseRepository#0" />
+            <element signature="e#19824#19968#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/horvat/Tests/DatabaseTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+        <state relative-caret-position="176">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
           <folding>
-            <element signature="initializer##0;class#DatabaseTest#0" />
+            <element signature="method#run#0;class#DatabaseTest#0" />
             <element signature="method#testDeletes#0;class#DatabaseTest#0" />
             <element signature="method#testInserts#0;class#DatabaseTest#0" />
             <element signature="method#testGetters#0;class#DatabaseTest#0" />
@@ -579,13 +714,135 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/horvat/Main.java">
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Doctor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+          <folding>
+            <element signature="method#Doctor#0;class#Doctor#0" />
+            <element signature="method#Doctor#1;class#Doctor#0" />
+            <element signature="method#toString#0;class#Doctor#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Patient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+          <folding>
+            <element signature="e#740#760#0" />
+            <element signature="e#766#1911#0" />
+            <element signature="e#2728#2868#0" />
+            <element signature="e#3368#3502#0" />
+            <element signature="e#3817#3946#0" />
+            <element signature="e#4454#4628#0" />
+            <element signature="e#4666#4776#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/PrescribedMedicine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="65" column="29" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+          <folding>
+            <element signature="method#PrescribedMedicine#0;class#PrescribedMedicine#0" />
+            <element signature="method#PrescribedMedicine#1;class#PrescribedMedicine#0" />
+            <element signature="method#toString#0;class#PrescribedMedicine#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="770">
+          <caret line="61" column="29" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
+          <folding>
+            <element signature="method#Test#0;class#Test#0" />
+            <element signature="method#Test#1;class#Test#0" />
+            <element signature="method#toString#0;class#Test#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Bill.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+          <folding>
+            <element signature="method#Bill#0;class#Bill#0" />
+            <element signature="method#Bill#1;class#Bill#0" />
+            <element signature="method#toString#0;class#Bill#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Appointment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="61" column="29" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
+          <folding>
+            <element signature="method#Appointment#0;class#Appointment#0" />
+            <element signature="method#Appointment#1;class#Appointment#0" />
+            <element signature="method#toString#0;class#Appointment#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/LoginDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="33" lean-forward="true" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/Dialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="27" column="71" selection-start-line="27" selection-start-column="71" selection-end-line="27" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/app/Helpers.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
           <folding>
-            <element signature="e#123#124#0" expanded="true" />
-            <element signature="e#161#162#0" expanded="true" />
+            <element signature="method#read#0;class#Helpers#0" />
+            <element signature="e#1172#1194#0" />
+            <element signature="method#labelledChooseOption#0;class#Helpers#0" />
+            <element signature="method#labelledChooseOption#1;class#Helpers#0" />
+            <element signature="method#chooseOption#1;class#Helpers#0" />
+            <element signature="method#labelledChooseOption#2;class#Helpers#0" />
+            <element signature="method#getUnderlined#0;class#Helpers#0" />
+            <element signature="method#constructInputOptions#0;class#Helpers#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/horvat/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/app/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -642,7 +899,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>OutpatientManagement</last-edited>
+          <last-edited>DL</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
