@@ -25,6 +25,10 @@ EXEC InsertPatientWithFullDetails '99975492304', 'Mirjana', 2, '19950312', 'Ilic
 EXEC InsertPatientWithFullDetails '13275492304', 'Vatroslav', 1, '19850312', 'Ilica 212', 'Ilica 212', '3841123', '3841987', '0912138423', '123', '3841555', 'mirko@mail.hr', 'Slavko', 'Braæe Domany 6', '3841915', '3840213', '0981239423', '543', '3840111', 'slavko@hotmail.com', 1, 3, 183.2, 70, 'A+', 'Useless', 23142, 0, 0, 1, 1, 'Marijuana', 3, 0, 0, 1, 2, 'Complaining about this ''n that', 'No history :)', 'Iza ugla', 0, 1, 'Nice', 'Nice', 'OK', 'OK', 'OK', 'Bad', 'None', 'Alergic to coconut oil', 'Tonsils removed', @insertedInt OUTPUT, @insertedDate OUTPUT, @insertedString OUTPUT
 EXEC InsertPatientWithFullDetails '65475492304', 'Anita', 2, '19780312', 'Ilica 212', 'Ilica 212', '3841123', '3841987', '0912138423', '123', '3841555', 'mirko@mail.hr', 'Slavko', 'Braæe Domany 6', '3841915', '3840213', '0981239423', '543', '3840111', 'slavko@hotmail.com', 1, 3, 183.2, 70, 'A+', 'Useless', 23142, 0, 0, 1, 1, 'Marijuana', 3, 0, 0, 1, 2, 'Complaining about this ''n that', 'No history :)', 'Iza ugla', 0, 1, 'Nice', 'Nice', 'OK', 'OK', 'OK', 'Bad', 'None', 'Alergic to coconut oil', 'Tonsils removed', @insertedInt OUTPUT, @insertedDate OUTPUT, @insertedString OUTPUT
 
+EXEC InsertPatientWithBasicDetails 'Ana', 2, '19971212', 'Complaining', '3841293', '3840212', 'Leon', @insertedInt OUTPUT, @insertedDate OUTPUT, @insertedString OUTPUT
+EXEC InsertPatientWithBasicDetails 'Marta', 2, '19970925', 'Complaining', '3841293', '3840212', 'Leon', @insertedInt OUTPUT, @insertedDate OUTPUT, @insertedString OUTPUT
+EXEC InsertPatientWithBasicDetails 'Ivan', 1, '19970103', 'Complaining', '3841293', '3840212', 'Leon', @insertedInt OUTPUT, @insertedDate OUTPUT, @insertedString OUTPUT
+
 -----------
 -- Bills --
 -----------

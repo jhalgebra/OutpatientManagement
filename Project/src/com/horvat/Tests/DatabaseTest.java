@@ -32,17 +32,19 @@ public class DatabaseTest {
     }
 
     private static void testDeletes(List<IDatabaseObject> addedObjects) {
-        Boolean patientRemoved = repo.removePatient(((Patient)addedObjects.get(0)).getId());
-        Boolean testRemoved = repo.removeTest(((Test)addedObjects.get(1)).getId());
-        Boolean medicineRemoved = repo.removePrescribedMedicine(((PrescribedMedicine)addedObjects.get(2)).getId());
-        Boolean billRemoved = repo.removeBill(((Bill)addedObjects.get(3)).getId());
-        Boolean appointmentRemoved = repo.removeAppointment(((Appointment)addedObjects.get(4)).getId());
+        boolean patientRemoved = repo.removePatient(((Patient)addedObjects.get(0)).getId());
+        boolean testRemoved = repo.removeTest(((Test)addedObjects.get(1)).getId());
+        boolean medicineRemoved = repo.removePrescribedMedicine(((PrescribedMedicine)addedObjects.get(2)).getId());
+        boolean billRemoved = repo.removeBill(((Bill)addedObjects.get(3)).getId());
+        boolean appointmentRemoved = repo.removeAppointment(((Appointment)addedObjects.get(4)).getId());
+        boolean fullPatientRemoved = repo.removePatient(((Patient)addedObjects.get(5)).getId());
 
         System.out.println("Patient removed: " + (patientRemoved));
         System.out.println("Test removed: " + (testRemoved));
         System.out.println("Medicine removed: " + (medicineRemoved));
         System.out.println("Bill removed: " + (billRemoved));
         System.out.println("Appointment removed: " + (appointmentRemoved));
+        System.out.println("Full patient removed: " + (fullPatientRemoved));
     }
 
     private static List<IDatabaseObject> testInserts(){
@@ -61,6 +63,9 @@ public class DatabaseTest {
         Appointment appointment = repo.insertAppointment(4, 2, "Nurse", Date.from(ZonedDateTime.now().plusMonths(130).toInstant()), "None");
         System.out.println("Added new appointment: " + appointment);
 
+        Patient newFullPatient = repo.insertPatientWithFullDetails(new BasicDetails("Jerko", "1239123", "Male", Date.from(ZonedDateTime.now().minusYears(20).toInstant())), new ContactDetails("Maksimirska 13", "Braće Domany 6", new Contact("3841234", "3840345", "0912584293", "454", "3840293", "neki@email.com")), new ContactOfNextOfKin("Miroslav", "Neka adresa", new Contact("3841845", "3840213", "0992340231", "923", "3840222", "kontakt@firma.com")), new PersonalDetails(true, 2, 184.3, 88.2, "AB+"), new ProfessionDetails("Lawyer", BigDecimal.valueOf(88888)), new Lifestyle(true, true, true, false, "None", 3.0, 0.0, 2.0, true, "Home Food"), new BasicComplaints("Stuff hurts man", "None", "Some Hospital"), new ImportantMedicalComplaints(true, true, "Good", "Bad", "Good", "OK", "Good", "Bad", "None", "None", "None"));
+        System.out.println("Added new full patient: " + newFullPatient);
+
         System.out.println();
 
         List<IDatabaseObject> addedObjects = new ArrayList<>();
@@ -70,11 +75,12 @@ public class DatabaseTest {
         addedObjects.add(medicine);
         addedObjects.add(newBill);
         addedObjects.add(appointment);
+        addedObjects.add((newFullPatient));
 
         return addedObjects;
     }
 
-    private static void testGetters(Integer patientID, Boolean printEnums){
+    private static void testGetters(int patientID, boolean printEnums){
         if(printEnums) {
             print(repo.getMedicines());
             print(repo.getPaymentTypes());
