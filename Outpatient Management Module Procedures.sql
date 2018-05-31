@@ -43,8 +43,10 @@ CREATE PROC InsertPatientWithBasicDetails
 	--Contact of Next of Kin
 	@NameOfNextOfKin NVARCHAR(100),
 	--Patient
-	@InsertedID INT OUTPUT
-AS --InsertPatientWithBasicDetails
+	@InsertedID INT OUTPUT,
+	@InsertedRegistrationDate DATETIME OUTPUT,
+	@InsertedSex NVARCHAR(100) OUTPUT
+AS --InsertPatientWithBasicDetails	
 	DECLARE @BasicDetailsID INT, @BasicComplaintsID INT,
 			@ContactDetailsID INT, @ContactOfNextOfKinID INT
 
@@ -79,11 +81,20 @@ AS --InsertPatientWithBasicDetails
 
 	SET @ContactOfNextOfKinID = SCOPE_IDENTITY()
 
+	DECLARE @insertedData TABLE
+	(
+		ID INT,
+		RegistrationDate DATETIME
+	)
+
 	--Patient
 	INSERT INTO Patient(BasicRegistration, BasicDetailsID, BasicComplaintsID, ContactDetailsID, ContactOfNextOfKinID)
+	OUTPUT inserted.ID, inserted.RegistrationDate INTO @insertedData(ID, RegistrationDate)
 	VALUES             (1,                @BasicDetailsID, @BasicComplaintsID, @ContactDetailsID, @ContactOfNextOfKinID)
 
-	SET @InsertedID = SCOPE_IDENTITY()
+	SET @InsertedID = (SELECT ID FROM @insertedData)
+	SET @InsertedRegistrationDate = (SELECT RegistrationDate FROM @insertedData)
+	SET @InsertedSex = (SELECT Name FROM Sex WHERE ID = @SexID)
 GO 
 --ENDOF: InsertPatientWithBasicDetails-------------------------------------------------------------
 
@@ -148,7 +159,9 @@ CREATE PROC InsertPatientWithFullDetails
 	@KnownAdverseReactionToSpecificDrugs NVARCHAR(3000),
 	@MajorSurgeries NVARCHAR(4000),
 	--Patient
-	@InsertedID INT OUTPUT
+	@InsertedID INT OUTPUT,
+	@InsertedRegistrationDate DATETIME OUTPUT,
+	@InsertedSex NVARCHAR(100) OUTPUT
 AS --InsertPatientWithFullDetails
 	DECLARE @BasicDetailsID INT, @ContactDetailsID INT, @ContactOfNextOfKinID INT, @PersonalDetailsID INT,
 			@ProfessionDetailsID INT, @LifestyleID INT, @BasicComplaintsID INT, @MedicalComplaintsID INT
@@ -218,18 +231,22 @@ AS --InsertPatientWithFullDetails
 
 	SET @MedicalComplaintsID = SCOPE_IDENTITY()
 
-	/*
-		DECLARE @BasicDetailsID INT, @ContactDetailsID INT, @ContactOfNextOfKinID INT, @PersonalDetailsID INT,
-			@ProfessionDetailsID INT, @LifestyleID INT, @BasicComplaintsID INT, @MedicalComplaintsID INT
-	*/
+	DECLARE @insertedData TABLE
+	(
+		ID INT,
+		RegistrationDate DATETIME
+	)
 
 	--Patient
 	INSERT INTO Patient(BasicRegistration, BasicDetailsID, ContactDetailsID, ContactOfNextOfKinID, PersonalDetailsID,
 	ProfessionDetailsID, LifestyleID, BasicComplaintsID, MedicalComplaintsID)
+	OUTPUT inserted.ID, inserted.RegistrationDate INTO @insertedData(ID, RegistrationDate)
 	VALUES(0, @BasicDetailsID, @ContactDetailsID, @ContactOfNextOfKinID, @PersonalDetailsID, @ProfessionDetailsID,
 	@LifestyleID, @BasicComplaintsID, @MedicalComplaintsID)
 
-	SET @InsertedID = SCOPE_IDENTITY()
+	SET @InsertedID = (SELECT ID FROM @insertedData)
+	SET @InsertedRegistrationDate = (SELECT RegistrationDate FROM @insertedData)
+	SET @InsertedSex = (SELECT Name FROM Sex WHERE ID = @SexID)
 GO
 --ENDOF: InsertPatientWithFullDetails--------------------------------------------------------------
 
@@ -286,43 +303,43 @@ GO
 CREATE PROC GetPatients
 AS
 	SELECT
-		p.ID,
+		p.ID,--[0]
 		p.RegistrationDate,
 		p.BasicRegistration, --was the registration full or basic
 		--Basic Details (bd)
-		bd.Name,
+		bd.Name, --[3]
 		bd.OIB,
 		s.Name AS 'Sex', --Sex
 		bd.DateOfBirth,
 		--Contact Details (cd)
-		cd.PresentAddress,
+		cd.PresentAddress, --[7]
 		cd.PermanentAddress,
-		cPatient.TelephoneHome AS 'Patient''s home telephone',
+		cPatient.TelephoneHome AS 'Patient''s home telephone', --[9]
 		cPatient.TelephoneWork AS 'Patient''s work telephone',
 		cPatient.Mobile AS 'Patient''s mobile',
 		cPatient.Pager AS 'Patient''s pager',
 		cPatient.Fax AS 'Patient''s fax',
 		cPatient.Email AS 'Patient''s email',
 		--Contact of Next of Kin (cnk)
-		cnk.Name AS 'Name of Next of Kin',
+		cnk.Name AS 'Name of Next of Kin', --[15]
 		cnk.ContactAddress,
-		cNextOfKin.TelephoneHome,
+		cNextOfKin.TelephoneHome, --[17]
 		cNextOfKin.TelephoneWork,
 		cNextOfKin.Mobile,
 		cNextOfKin.Pager,
 		cNextOfKin.Fax,
 		cNextOfKin.Email,
 		--Personal Details (pd)
-		pd.MaritalStatus AS 'Married',
+		pd.MaritalStatus AS 'Married', --[23]
 		pd.NumberOfDependents,
 		pd.Height,
 		pd.Weight,
 		pd.BloodTypeRH,
 		--Profession Details (profD)
-		profD.Occupation,
+		profD.Occupation, --[28]
 		profD.GrossAnnualIncome,
 		--Lifestyle (l)
-		l.Vegetarian,
+		l.Vegetarian, --[30]
 		l.Smoker,
 		l.ConsumesAlcoholicBeverage,
 		l.UsesStimulants,
@@ -333,11 +350,11 @@ AS
 		l.RegularMeals,
 		peo.Name, --predominant eating option name
 		--Basic Complaints (bc)
-		bc.StatementOfComplaint,
+		bc.StatementOfComplaint, --[40]
 		bc.HistoryOfPreviousTreatment,
 		bc.PhysicianOrHospitalTreated,
 		--Medical Complaints (mc)
-		mc.Diabetic,
+		mc.Diabetic, --[43]
 		mc.Hypertensive,
 		mc.CardiacCondition,
 		mc.RespiratoryCondition,
@@ -372,12 +389,21 @@ CREATE PROC InsertBill
 	@PaymentTypeID INT,
 	@PatientID INT,
 	@Amount MONEY,
-	@InsertedID INT OUTPUT
+	@InsertedID INT OUTPUT,
+	@InsertedDateIssued DATETIME OUTPUT
 AS
+	DECLARE @insertedData TABLE
+	(
+		ID INT,
+		DateIssued DATETIME
+	)
+
 	INSERT INTO BILL(PaymentTypeID, PatientID, Amount)
+	OUTPUT inserted.ID, inserted.DateIssued INTO @insertedData
 	VALUES(@PaymentTypeID, @PatientID, @Amount)
 
-	SET @InsertedID = SCOPE_IDENTITY()
+	SET @InsertedID = (SELECT ID FROM @insertedData)
+	SET @InsertedDateIssued = (SELECT DateIssued FROM @insertedData)
 GO
 --ENDOF: InsertBill--------------------------------------------------------------------------------
 
@@ -393,9 +419,9 @@ CREATE PROC GetBills
 AS
 	SELECT
 		b.ID,
-		b.Amount,
 		b.DateIssued,
-		pt.Name --payment type
+		pt.Name, --payment type
+		b.Amount
 	FROM Bill AS b
 	INNER JOIN PaymentType AS pt ON pt.ID = b.PaymentTypeID
 	WHERE b.PatientID = @IDPatient
@@ -493,16 +519,25 @@ GO
 ----------------------
 
 CREATE PROC InsertPatientMedicine
-	@Quantity INT,
+	@Quantity FLOAT,
 	@MedicineID INT,
 	@PatientID INT,
 	@DoctorID INT,
-	@InsertedID INT OUTPUT
+	@InsertedID INT OUTPUT,
+	@InsertedDateIssued DATETIME OUTPUT
 AS
+	DECLARE @insertedData TABLE
+	(
+		ID INT,
+		DateIssued DATETIME
+	)
+
 	INSERT INTO PatientMedicine(Quantity, MedicineID, PatientID, DoctorID)
+	OUTPUT inserted.ID, inserted.DateIssued INTO @insertedData(ID, DateIssued)
 	VALUES(@Quantity, @MedicineID, @PatientID, @DoctorID)
 
-	SET @InsertedID = SCOPE_IDENTITY()
+	SET @InsertedID = (SELECT ID FROM @insertedData)
+	SET @InsertedDateIssued = (SELECT DateIssued FROM @insertedData)
 GO
 --ENDOF: InsertPatientMedicine---------------------------------------------------------------------
 
@@ -573,10 +608,38 @@ AS
 		d.ID,
 		bd.Name,
 		bd.OIB,
-		bd.DateOfBirth,
-		s.Name AS 'Sex'
+		s.Name AS 'Sex',
+		bd.DateOfBirth
 	FROM Doctor AS d
 	INNER JOIN BasicDetails AS bd ON bd.ID = d.BasicDetailsID
 	INNER JOIN Sex AS s ON s.ID = bd.SexID
 GO
 --ENDOF: GetDoctors--------------------------------------------------------------------------------
+
+-------------
+-- "Enums" --
+-------------
+
+CREATE PROC GetPaymentTypes
+AS
+	SELECT * FROM PaymentType
+GO
+--ENDOF: GetPaymentTypes---------------------------------------------------------------------------
+
+CREATE PROC GetPredominantEatingOptions
+AS
+	SELECT * FROM PredominantEatingOption
+GO
+--ENDOF: GetPredominantEatingOptions---------------------------------------------------------------
+
+CREATE PROC GetSexes
+AS
+	SELECT * FROM Sex
+GO
+--ENDOF: GetSexes----------------------------------------------------------------------------------
+
+CREATE PROC GetMedicines
+AS
+	SELECT * FROM Medicine
+GO
+--ENDOF: GetMedicines------------------------------------------------------------------------------

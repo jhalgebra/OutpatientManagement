@@ -34,4 +34,13 @@ public class ContactDetails {
     public void setContact(Contact contact) {
         this.contact = contact;
     }
+
+    @Override
+    public String toString() {
+        return "ContactDetails{" +
+                "presentAddress='" + presentAddress + '\'' +
+                ", permanentAddress='" + permanentAddress + '\'' +
+                ", contact=" + contact +
+                '}';
+    }
 }

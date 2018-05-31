@@ -34,4 +34,13 @@ public class ContactOfNextOfKin {
     public void setContact(Contact contact) {
         this.contact = contact;
     }
+
+    @Override
+    public String toString() {
+        return "ContactOfNextOfKin{" +
+                "name='" + name + '\'' +
+                ", contactAddress='" + contactAddress + '\'' +
+                ", contact=" + contact +
+                '}';
+    }
 }

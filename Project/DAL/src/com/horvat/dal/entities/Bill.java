@@ -1,22 +1,27 @@
 package com.horvat.dal.entities;
 
+import com.lib.dal.entities.IDatabaseObject;
+
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.function.Function;
 
-public class Bill {
-    private int id;
+public class Bill implements IDatabaseObject<Bill> {
+    private Integer id;
     private Date dateIssued;
     private String paymentType;
     private BigDecimal amount;
 
-    public Bill(int id, Date dateIssued, String paymentType, BigDecimal amount) {
+    public Bill() { }
+
+    public Bill(Integer id, Date dateIssued, String paymentType, BigDecimal amount) {
         this.id = id;
         this.dateIssued = dateIssued;
         this.paymentType = paymentType;
         this.amount = amount;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -42,5 +47,25 @@ public class Bill {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    @Override
+    public Function<Object[], Bill> getConverter(Object... objects) {
+        return data -> new Bill(
+                (Integer)data[0],
+                (Date)data[1],
+                (String)data[2],
+                (BigDecimal)data[3]
+        );
+    }
+
+    @Override
+    public String toString() {
+        return "Bill{" +
+                "id=" + id +
+                ", dateIssued=" + dateIssued +
+                ", paymentType='" + paymentType + '\'' +
+                ", amount=" + amount +
+                '}';
     }
 }

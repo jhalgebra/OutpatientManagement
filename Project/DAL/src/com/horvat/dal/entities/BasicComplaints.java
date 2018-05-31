@@ -34,4 +34,13 @@ public class BasicComplaints {
     public void setPhysicianOrHospitalTreated(String physicianOrHospitalTreated) {
         PhysicianOrHospitalTreated = physicianOrHospitalTreated;
     }
+
+    @Override
+    public String toString() {
+        return "BasicComplaints{" +
+                "statementOfComplaint='" + statementOfComplaint + '\'' +
+                ", historyOfPreviousTreatment='" + historyOfPreviousTreatment + '\'' +
+                ", PhysicianOrHospitalTreated='" + PhysicianOrHospitalTreated + '\'' +
+                '}';
+    }
 }

@@ -26,4 +26,12 @@ public class ProfessionDetails {
     public void setGrossAnnualIncome(BigDecimal grossAnnualIncome) {
         this.grossAnnualIncome = grossAnnualIncome;
     }
+
+    @Override
+    public String toString() {
+        return "ProfessionDetails{" +
+                "occupation='" + occupation + '\'' +
+                ", grossAnnualIncome=" + grossAnnualIncome +
+                '}';
+    }
 }

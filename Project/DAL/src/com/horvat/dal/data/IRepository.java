@@ -6,13 +6,15 @@ import java.util.List;
 import java.util.Map;
 
 import com.horvat.dal.entities.*;
+import javafx.util.Pair;
 
 public interface IRepository {
 
-    //===Patients===
-    int insertPatientWithBasicDetails(
+    //region Patient
+
+    Patient insertPatientWithBasicDetails(
         String name,
-        int sexID,
+        Integer sexID,
         Date dateOfBirth,
         String statementOfComplaint,
         String telephoneWork,
@@ -20,7 +22,6 @@ public interface IRepository {
         String nameOfNextOfKin
     );
 
-    int insertPatientWithFullDetails(Patient patient);
     Patient insertPatientWithFullDetails(
         BasicDetails basicDetails,
         ContactDetails contactDetails,
@@ -32,64 +33,81 @@ public interface IRepository {
         ImportantMedicalComplaints medicalComplaints
     );
 
-    void removePatient(int patientID);
+    Boolean removePatient(Integer patientID);
     List<Patient> getPatients();
 
-    //===Bills===
-    int insertBill(
-        int paymentTypeID,
-        int patientID,
+    //endregion
+
+    //region Bill
+
+    Bill insertBill(
+        String paymentType,
+        Integer patientID,
         BigDecimal amount
     );
 
-    void removeBill(int billID);
+    Boolean removeBill(Integer billID);
 
-    List<Bill> getBills(int patientID);
+    List<Bill> getBills(Integer patientID);
 
-    //===Appointments===
-    int insertAppointment(
-        int doctorID,
-        int patientID,
+    //endregion
+
+    //region Appointment
+
+    Appointment insertAppointment(
+        Integer doctorID,
+        Integer patientID,
         String delegate,
         Date dateAppointed,
         String details
     );
 
-    void removeAppointment(int appointmentID);
+    Boolean removeAppointment(Integer appointmentID);
 
-    List<Appointment> getAppointments(int patientID);
+    List<Appointment> getAppointments(Integer patientID);
 
-    //===Tests===
-    int insertTest(
-        int patientID,
-        int doctorID,
+    //endregion
+
+    //region Test
+
+    Test insertTest(
+        Integer patientID,
+        Integer doctorID,
         String name,
         String details,
         Date testDateTime
     );
 
-    void removeTest(int testID);
+    Boolean removeTest(Integer testID);
 
-    List<Test> getTests(int patientID);
+    List<Test> getTests(Integer patientID);
 
-    //===PrescribedMedicine===
-    int insertPrescribedMedicine(
-            double quantity,
-            int medicineID,
-            int patientID,
-            int doctorID
+    //endregion
+
+    //region PrescribedMedicine
+
+    PrescribedMedicine insertPrescribedMedicine(
+            Double quantity,
+            String medicineName,
+            Integer patientID,
+            Integer doctorID
     );
 
-    void removePrescribedMedicine(int prescribedMedicineID);
+    Boolean removePrescribedMedicine(Integer prescribedMedicineID);
 
-    List<PrescribedMedicine> getPrescribedMedicine(int patientID);
+    List<PrescribedMedicine> getPrescribedMedicine(Integer patientID);
 
-    //Other objects' getters
+    //endregion
+
     List<Doctor> getDoctors();
-    //"Enums"
-    Map<Integer, String> getPaymentTypes();
-    Map<Integer, String> getPredominantEatingOptions();
-    Map<Integer, String> getSexes();
-    Map<Integer, String> getMedicines();
+
+    //region "Enums"
+
+    List<Pair<Integer, String>> getPaymentTypes();
+    List<Pair<Integer, String>> getPredominantEatingOptions();
+    List<Pair<Integer, String>> getSexes();
+    List<Pair<Integer, String>> getMedicines();
+
+    //endregion
 
 }

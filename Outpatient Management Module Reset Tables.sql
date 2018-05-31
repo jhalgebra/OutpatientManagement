@@ -1,12 +1,6 @@
 USE OutpatientManagementModule
 GO
 
-DELETE FROM Doctor
-DBCC CHECKIDENT('Doctor', RESEED, 0)
-
-DELETE FROM Patient
-DBCC CHECKIDENT('Patient', RESEED, 0)
-
 DELETE FROM Bill
 DBCC CHECKIDENT('Bill', RESEED, 0)
 
@@ -18,6 +12,12 @@ DBCC CHECKIDENT('Test', RESEED, 0)
 
 DELETE FROM PatientMedicine
 DBCC CHECKIDENT('PatientMedicine', RESEED, 0)
+
+DELETE FROM Doctor
+DBCC CHECKIDENT('Doctor', RESEED, 0)
+
+DELETE FROM Patient
+DBCC CHECKIDENT('Patient', RESEED, 0)
 
 DELETE FROM BasicDetails
 DBCC CHECKIDENT('BasicDetails', RESEED, 0)

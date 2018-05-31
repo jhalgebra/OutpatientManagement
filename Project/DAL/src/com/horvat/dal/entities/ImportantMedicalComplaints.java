@@ -1,23 +1,25 @@
 package com.horvat.dal.entities;
 
 public class ImportantMedicalComplaints {
-    private boolean diabetic;
-    private boolean hypertensive;
+    private Boolean diabetic;
+    private Boolean hypertensive;
     private String cardiacCondition;
     private String respiratoryCondition;
     private String digestiveCondition;
+    private String orthopedicCondition;
     private String muscularCondition;
     private String neurologicalCondition;
     private String knownAllergies;
     private String knownAdverseReactionToSpecificDrugs;
     private String majorSurgeries;
 
-    public ImportantMedicalComplaints(boolean diabetic, boolean hypertensive, String cardiacCondition, String respiratoryCondition, String digestiveCondition, String muscularCondition, String neurologicalCondition, String knownAllergies, String knownAdverseReactionToSpecificDrugs, String majorSurgeries) {
+    public ImportantMedicalComplaints(Boolean diabetic, Boolean hypertensive, String cardiacCondition, String respiratoryCondition, String digestiveCondition, String orthopedicCondition, String muscularCondition, String neurologicalCondition, String knownAllergies, String knownAdverseReactionToSpecificDrugs, String majorSurgeries) {
         this.diabetic = diabetic;
         this.hypertensive = hypertensive;
         this.cardiacCondition = cardiacCondition;
         this.respiratoryCondition = respiratoryCondition;
         this.digestiveCondition = digestiveCondition;
+        this.orthopedicCondition = orthopedicCondition;
         this.muscularCondition = muscularCondition;
         this.neurologicalCondition = neurologicalCondition;
         this.knownAllergies = knownAllergies;
@@ -25,19 +27,19 @@ public class ImportantMedicalComplaints {
         this.majorSurgeries = majorSurgeries;
     }
 
-    public boolean isDiabetic() {
+    public Boolean isDiabetic() {
         return diabetic;
     }
 
-    public void setDiabetic(boolean diabetic) {
+    public void setDiabetic(Boolean diabetic) {
         this.diabetic = diabetic;
     }
 
-    public boolean isHypertensive() {
+    public Boolean isHypertensive() {
         return hypertensive;
     }
 
-    public void setHypertensive(boolean hypertensive) {
+    public void setHypertensive(Boolean hypertensive) {
         this.hypertensive = hypertensive;
     }
 
@@ -63,6 +65,14 @@ public class ImportantMedicalComplaints {
 
     public void setDigestiveCondition(String digestiveCondition) {
         this.digestiveCondition = digestiveCondition;
+    }
+
+    public String getOrthopedicCondition() {
+        return orthopedicCondition;
+    }
+
+    public void setOrthopedicCondition(String orthopedicCondition) {
+        this.orthopedicCondition = orthopedicCondition;
     }
 
     public String getMuscularCondition() {
@@ -103,5 +113,22 @@ public class ImportantMedicalComplaints {
 
     public void setMajorSurgeries(String majorSurgeries) {
         this.majorSurgeries = majorSurgeries;
+    }
+
+    @Override
+    public String toString() {
+        return "ImportantMedicalComplaints{" +
+                "diabetic=" + diabetic +
+                ", hypertensive=" + hypertensive +
+                ", cardiacCondition='" + cardiacCondition + '\'' +
+                ", respiratoryCondition='" + respiratoryCondition + '\'' +
+                ", digestiveCondition='" + digestiveCondition + '\'' +
+                ", orthopedicCondition='" + orthopedicCondition + '\'' +
+                ", muscularCondition='" + muscularCondition + '\'' +
+                ", neurologicalCondition='" + neurologicalCondition + '\'' +
+                ", knownAllergies='" + knownAllergies + '\'' +
+                ", knownAdverseReactionToSpecificDrugs='" + knownAdverseReactionToSpecificDrugs + '\'' +
+                ", majorSurgeries='" + majorSurgeries + '\'' +
+                '}';
     }
 }

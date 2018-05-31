@@ -42,4 +42,14 @@ public class BasicDetails {
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
+    @Override
+    public String toString() {
+        return "BasicDetails{" +
+                "name='" + name + '\'' +
+                ", oib='" + oib + '\'' +
+                ", sex='" + sex + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                '}';
+    }
 }

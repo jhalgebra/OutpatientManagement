@@ -1,18 +1,18 @@
 package com.horvat.dal.entities;
 
 public class Lifestyle {
-    private boolean vegeterian;
-    private boolean smoker;
-    private boolean consumesAlcoholicBeverage;
-    private boolean usesStimulants;
+    private Boolean vegeterian;
+    private Boolean smoker;
+    private Boolean consumesAlcoholicBeverage;
+    private Boolean usesStimulants;
     private String stimulantsUsed;
-    private double coffeeConsumptionPerDay;
-    private double teaConsumptionPerDay;
-    private double softDrinkConsumptionPerDay;
-    private boolean regularMeals;
+    private Double coffeeConsumptionPerDay;
+    private Double teaConsumptionPerDay;
+    private Double softDrinkConsumptionPerDay;
+    private Boolean regularMeals;
     private String predominantEatingOption;
 
-    public Lifestyle(boolean vegeterian, boolean smoker, boolean consumesAlcoholicBeverage, boolean usesStimulants, String stimulantsUsed, double coffeeConsumptionPerDay, double teaConsumptionPerDay, double softDrinkConsumptionPerDay, boolean regularMeals, String predominantEatingOption) {
+    public Lifestyle(Boolean vegeterian, Boolean smoker, Boolean consumesAlcoholicBeverage, Boolean usesStimulants, String stimulantsUsed, Double coffeeConsumptionPerDay, Double teaConsumptionPerDay, Double softDrinkConsumptionPerDay, Boolean regularMeals, String predominantEatingOption) {
         this.vegeterian = vegeterian;
         this.smoker = smoker;
         this.consumesAlcoholicBeverage = consumesAlcoholicBeverage;
@@ -25,35 +25,35 @@ public class Lifestyle {
         this.predominantEatingOption = predominantEatingOption;
     }
 
-    public boolean isVegeterian() {
+    public Boolean isVegeterian() {
         return vegeterian;
     }
 
-    public void setVegeterian(boolean vegeterian) {
+    public void setVegeterian(Boolean vegeterian) {
         this.vegeterian = vegeterian;
     }
 
-    public boolean isSmoker() {
+    public Boolean isSmoker() {
         return smoker;
     }
 
-    public void setSmoker(boolean smoker) {
+    public void setSmoker(Boolean smoker) {
         this.smoker = smoker;
     }
 
-    public boolean isConsumesAlcoholicBeverage() {
+    public Boolean isConsumesAlcoholicBeverage() {
         return consumesAlcoholicBeverage;
     }
 
-    public void setConsumesAlcoholicBeverage(boolean consumesAlcoholicBeverage) {
+    public void setConsumesAlcoholicBeverage(Boolean consumesAlcoholicBeverage) {
         this.consumesAlcoholicBeverage = consumesAlcoholicBeverage;
     }
 
-    public boolean isUsesStimulants() {
+    public Boolean isUsesStimulants() {
         return usesStimulants;
     }
 
-    public void setUsesStimulants(boolean usesStimulants) {
+    public void setUsesStimulants(Boolean usesStimulants) {
         this.usesStimulants = usesStimulants;
     }
 
@@ -65,35 +65,35 @@ public class Lifestyle {
         this.stimulantsUsed = stimulantsUsed;
     }
 
-    public double getCoffeeConsumptionPerDay() {
+    public Double getCoffeeConsumptionPerDay() {
         return coffeeConsumptionPerDay;
     }
 
-    public void setCoffeeConsumptionPerDay(double coffeeConsumptionPerDay) {
+    public void setCoffeeConsumptionPerDay(Double coffeeConsumptionPerDay) {
         this.coffeeConsumptionPerDay = coffeeConsumptionPerDay;
     }
 
-    public double getTeaConsumptionPerDay() {
+    public Double getTeaConsumptionPerDay() {
         return teaConsumptionPerDay;
     }
 
-    public void setTeaConsumptionPerDay(double teaConsumptionPerDay) {
+    public void setTeaConsumptionPerDay(Double teaConsumptionPerDay) {
         this.teaConsumptionPerDay = teaConsumptionPerDay;
     }
 
-    public double getSoftDrinkConsumptionPerDay() {
+    public Double getSoftDrinkConsumptionPerDay() {
         return softDrinkConsumptionPerDay;
     }
 
-    public void setSoftDrinkConsumptionPerDay(double softDrinkConsumptionPerDay) {
+    public void setSoftDrinkConsumptionPerDay(Double softDrinkConsumptionPerDay) {
         this.softDrinkConsumptionPerDay = softDrinkConsumptionPerDay;
     }
 
-    public boolean isRegularMeals() {
+    public Boolean isRegularMeals() {
         return regularMeals;
     }
 
-    public void setRegularMeals(boolean regularMeals) {
+    public void setRegularMeals(Boolean regularMeals) {
         this.regularMeals = regularMeals;
     }
 
@@ -103,5 +103,21 @@ public class Lifestyle {
 
     public void setPredominantEatingOption(String predominantEatingOption) {
         this.predominantEatingOption = predominantEatingOption;
+    }
+
+    @Override
+    public String toString() {
+        return "Lifestyle{" +
+                "vegeterian=" + vegeterian +
+                ", smoker=" + smoker +
+                ", consumesAlcoholicBeverage=" + consumesAlcoholicBeverage +
+                ", usesStimulants=" + usesStimulants +
+                ", stimulantsUsed='" + stimulantsUsed + '\'' +
+                ", coffeeConsumptionPerDay=" + coffeeConsumptionPerDay +
+                ", teaConsumptionPerDay=" + teaConsumptionPerDay +
+                ", softDrinkConsumptionPerDay=" + softDrinkConsumptionPerDay +
+                ", regularMeals=" + regularMeals +
+                ", predominantEatingOption='" + predominantEatingOption + '\'' +
+                '}';
     }
 }

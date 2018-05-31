@@ -1,16 +1,21 @@
 package com.horvat.dal.entities;
 
-import java.util.Date;
+import com.lib.dal.entities.IDatabaseObject;
 
-public class Test {
-    private int id;
-    private int doctorID;
+import java.util.Date;
+import java.util.function.Function;
+
+public class Test implements IDatabaseObject<Test> {
+    private Integer id;
+    private Integer doctorID;
     private String name;
     private String doctorName;
     private Date date;
     private String details;
 
-    public Test(int id, int doctorID, String name, String doctorName, Date date, String details) {
+    public Test() { }
+
+    public Test(Integer id, Integer doctorID, String name, String doctorName, Date date, String details) {
         this.id = id;
         this.doctorID = doctorID;
         this.name = name;
@@ -19,11 +24,11 @@ public class Test {
         this.details = details;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public int getDoctorID() {
+    public Integer getDoctorID() {
         return doctorID;
     }
 
@@ -53,5 +58,29 @@ public class Test {
 
     public void setDetails(String details) {
         this.details = details;
+    }
+
+    @Override
+    public Function<Object[], Test> getConverter(Object... objects) {
+        return data -> new Test(
+                (Integer)data[0],
+                (Integer)data[1],
+                (String)data[2],
+                (String)data[3],
+                (Date)data[4],
+                (String)data[5]
+        );
+    }
+
+    @Override
+    public String toString() {
+        return "Test{" +
+                "id=" + id +
+                ", doctorID=" + doctorID +
+                ", name='" + name + '\'' +
+                ", doctorName='" + doctorName + '\'' +
+                ", date=" + date +
+                ", details='" + details + '\'' +
+                '}';
     }
 }

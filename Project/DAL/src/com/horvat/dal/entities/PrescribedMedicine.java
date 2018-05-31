@@ -1,16 +1,21 @@
 package com.horvat.dal.entities;
 
-import java.util.Date;
+import com.lib.dal.entities.IDatabaseObject;
 
-public class PrescribedMedicine {
-    private int id;
-    private int doctorID;
+import java.util.Date;
+import java.util.function.Function;
+
+public class PrescribedMedicine implements IDatabaseObject<PrescribedMedicine> {
+    private Integer id;
+    private Integer doctorID;
     private String name;
-    private double quantity;
+    private Double quantity;
     private Date dateIssued;
     private String doctorName;
 
-    public PrescribedMedicine(int id, int doctorID, String name, double quantity, Date dateIssued, String doctorName) {
+    public PrescribedMedicine() { }
+
+    public PrescribedMedicine(Integer id, Integer doctorID, String name, Double quantity, Date dateIssued, String doctorName) {
         this.id = id;
         this.doctorID = doctorID;
         this.name = name;
@@ -19,11 +24,11 @@ public class PrescribedMedicine {
         this.doctorName = doctorName;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public int getDoctorID() {
+    public Integer getDoctorID() {
         return doctorID;
     }
 
@@ -35,11 +40,11 @@ public class PrescribedMedicine {
         this.name = name;
     }
 
-    public double getQuantity() {
+    public Double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(double quantity) {
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
 
@@ -57,5 +62,29 @@ public class PrescribedMedicine {
 
     public void setDoctorName(String doctorName) {
         this.doctorName = doctorName;
+    }
+
+    @Override
+    public Function<Object[], PrescribedMedicine> getConverter(Object... objects) {
+        return data -> new PrescribedMedicine(
+                (Integer)data[0],
+                (Integer)data[1],
+                (String)data[2],
+                (Double)data[3],
+                (Date)data[4],
+                (String)data[5]
+        );
+    }
+
+    @Override
+    public String toString() {
+        return "PrescribedMedicine{" +
+                "id=" + id +
+                ", doctorID=" + doctorID +
+                ", name='" + name + '\'' +
+                ", quantity=" + quantity +
+                ", dateIssued=" + dateIssued +
+                ", doctorName='" + doctorName + '\'' +
+                '}';
     }
 }

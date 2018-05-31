@@ -1,16 +1,21 @@
 package com.horvat.dal.entities;
 
-import java.util.Date;
+import com.lib.dal.entities.IDatabaseObject;
 
-public class Appointment {
-    private int id;
-    private int doctorID;
+import java.util.Date;
+import java.util.function.Function;
+
+public class Appointment implements IDatabaseObject<Appointment> {
+    private Integer id;
+    private Integer doctorID;
     private String delegate;
     private Date date;
     private String details;
     private String doctorName;
 
-    public Appointment(int id, int doctorID, String delegate, Date date, String details, String doctorName) {
+    public Appointment() { }
+
+    public Appointment(Integer id, Integer doctorID, String delegate, Date date, String details, String doctorName) {
         this.id = id;
         this.doctorID = doctorID;
         this.delegate = delegate;
@@ -19,11 +24,11 @@ public class Appointment {
         this.doctorName = doctorName;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public int getDoctorID() {
+    public Integer getDoctorID() {
         return doctorID;
     }
 
@@ -53,5 +58,29 @@ public class Appointment {
 
     public String getDoctorName() {
         return doctorName;
+    }
+
+    @Override
+    public Function<Object[], Appointment> getConverter(Object... objects) {
+        return data -> new Appointment(
+                (Integer)data[0],
+                (Integer)data[1],
+                (String)data[2],
+                (Date)data[3],
+                (String)data[4],
+                (String)data[5]
+        );
+    }
+
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "id=" + id +
+                ", doctorID=" + doctorID +
+                ", delegate='" + delegate + '\'' +
+                ", date=" + date +
+                ", details='" + details + '\'' +
+                ", doctorName='" + doctorName + '\'' +
+                '}';
     }
 }
