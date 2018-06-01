@@ -28,11 +28,15 @@ public class Doctor {
     @Override
     public String toString() {
         return MessageFormat.format(
-                "Dr. {0}: {1}, born {2}; OIB: {3}",
-                basicDetails.getName(),
+                "{0}: {1}, born {2}; OIB: {3}",
+                nameWithTitle(),
                 basicDetails.getSex(),
                 basicDetails.getDateOfBirth(),
                 basicDetails.getOib()
         );
+    }
+
+    public String nameWithTitle(){
+        return "Dr. " + getBasicDetails().getName();
     }
 }

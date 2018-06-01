@@ -20,11 +20,12 @@ public class Patient {
     private ProfessionDetails professionDetails;
     private Lifestyle lifestyle;
     private BasicComplaints basicComplaints;
-    private ImportantMedicalComplaints importantMedicalComplaints;
+    private MedicalComplaints medicalComplaints;
 
-    public Patient() { }
+    public Patient() {
+    }
 
-    public Patient(Integer id, Date registrationDate, Boolean basicRegistration, List<Bill> bills, List<Appointment> appointments, List<Test> tests, List<PrescribedMedicine> prescribedMedicine, BasicDetails basicDetails, ContactDetails contactDetails, ContactOfNextOfKin contactOfNextOfKin, PersonalDetails personalDetails, ProfessionDetails professionDetails, Lifestyle lifestyle, BasicComplaints basicComplaints, ImportantMedicalComplaints importantMedicalComplaints) {
+    public Patient(Integer id, Date registrationDate, Boolean basicRegistration, List<Bill> bills, List<Appointment> appointments, List<Test> tests, List<PrescribedMedicine> prescribedMedicine, BasicDetails basicDetails, ContactDetails contactDetails, ContactOfNextOfKin contactOfNextOfKin, PersonalDetails personalDetails, ProfessionDetails professionDetails, Lifestyle lifestyle, BasicComplaints basicComplaints, MedicalComplaints medicalComplaints) {
         this.id = id;
         this.registrationDate = registrationDate;
         this.basicRegistration = basicRegistration;
@@ -39,7 +40,7 @@ public class Patient {
         this.professionDetails = professionDetails;
         this.lifestyle = lifestyle;
         this.basicComplaints = basicComplaints;
-        this.importantMedicalComplaints = importantMedicalComplaints;
+        this.medicalComplaints = medicalComplaints;
     }
 
     public Integer getId() {
@@ -142,12 +143,12 @@ public class Patient {
         this.basicComplaints = basicComplaints;
     }
 
-    public ImportantMedicalComplaints getImportantMedicalComplaints() {
-        return importantMedicalComplaints;
+    public MedicalComplaints getMedicalComplaints() {
+        return medicalComplaints;
     }
 
-    public void setImportantMedicalComplaints(ImportantMedicalComplaints importantMedicalComplaints) {
-        this.importantMedicalComplaints = importantMedicalComplaints;
+    public void setMedicalComplaints(MedicalComplaints medicalComplaints) {
+        this.medicalComplaints = medicalComplaints;
     }
 
     @Override
@@ -168,5 +169,41 @@ public class Patient {
                 System.lineSeparator(),
                 basicComplaints.getStatementOfComplaint()
         );
+    }
+
+    public String getFullInfo() {
+        String line = System.lineSeparator() + "===============================================";
+
+        StringBuilder info = new StringBuilder(line)
+                .append(System.lineSeparator())
+                .append(System.lineSeparator())
+                .append(toString());
+
+        appendCollection(info, "Appointments:", appointments);
+        appendCollection(info, "Tests:", tests);
+        appendCollection(info, "Prescribed Medicine:", prescribedMedicine);
+        appendCollection(info, "Bills:", bills);
+
+        info
+                .append(System.lineSeparator())
+                .append(line);
+
+        return info.toString();
+    }
+
+    private <T> void appendCollection(StringBuilder builder, String label, List<T> collection) {
+        builder.append(System.lineSeparator()).append(System.lineSeparator());
+
+        builder.append(label);
+
+        if (collection.size() == 0) {
+            builder.append(" empty").append(System.lineSeparator());
+            return;
+        }
+
+        for (T item : collection) {
+            builder.append(System.lineSeparator()).append(System.lineSeparator());
+            builder.append(item.toString());
+        }
     }
 }

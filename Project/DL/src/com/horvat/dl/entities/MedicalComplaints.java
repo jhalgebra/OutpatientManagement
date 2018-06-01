@@ -1,6 +1,6 @@
 package com.horvat.dl.entities;
 
-public class ImportantMedicalComplaints {
+public class MedicalComplaints {
     private Boolean diabetic;
     private Boolean hypertensive;
     private String cardiacCondition;
@@ -13,7 +13,7 @@ public class ImportantMedicalComplaints {
     private String knownAdverseReactionToSpecificDrugs;
     private String majorSurgeries;
 
-    public ImportantMedicalComplaints(Boolean diabetic, Boolean hypertensive, String cardiacCondition, String respiratoryCondition, String digestiveCondition, String orthopedicCondition, String muscularCondition, String neurologicalCondition, String knownAllergies, String knownAdverseReactionToSpecificDrugs, String majorSurgeries) {
+    public MedicalComplaints(Boolean diabetic, Boolean hypertensive, String cardiacCondition, String respiratoryCondition, String digestiveCondition, String orthopedicCondition, String muscularCondition, String neurologicalCondition, String knownAllergies, String knownAdverseReactionToSpecificDrugs, String majorSurgeries) {
         this.diabetic = diabetic;
         this.hypertensive = hypertensive;
         this.cardiacCondition = cardiacCondition;
@@ -117,7 +117,7 @@ public class ImportantMedicalComplaints {
 
     @Override
     public String toString() {
-        return "ImportantMedicalComplaints{" +
+        return "MedicalComplaints{" +
                 "diabetic=" + diabetic +
                 ", hypertensive=" + hypertensive +
                 ", cardiacCondition='" + cardiacCondition + '\'' +

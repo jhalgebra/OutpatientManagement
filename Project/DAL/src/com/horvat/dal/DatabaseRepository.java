@@ -10,7 +10,6 @@ import java.math.BigDecimal;
 import java.sql.Types;
 import java.util.Date;
 import java.util.List;
-import java.util.function.Function;
 
 public class DatabaseRepository implements IRepository {
     private DBExecutor executor;
@@ -24,11 +23,18 @@ public class DatabaseRepository implements IRepository {
     //region Patient
 
     @Override
-    public Patient insertPatientWithBasicDetails(String name, Integer sexID, Date dateOfBirth, String statementOfComplaint, String telephoneWork, String telephoneHome, String nameOfNextOfKin) {
+    public Patient insertPatientWithBasicDetails(String name, String sex, Date dateOfBirth, String statementOfComplaint, String telephoneWork, String telephoneHome, String nameOfNextOfKin) {
         try {
             SQLParameter<Integer> insertedID = new SQLParameter<>(Types.INTEGER);
             SQLParameter<Date> insertedRegistrationDate = new SQLParameter<>(Types.DATE);
-            SQLParameter<String> insertedSex = new SQLParameter<>(Types.NVARCHAR);
+
+            Integer sexID = -1;
+            for (Pair<Integer, String> sexPair : getSexes()) {
+                if (sexPair.getValue().equals(sex)) {
+                    sexID = sexPair.getKey();
+                    break;
+                }
+            }
 
             if (executor.executeProcedure(
                     "InsertPatientWithBasicDetails",
@@ -40,8 +46,7 @@ public class DatabaseRepository implements IRepository {
                     new SQLParameter<>(telephoneHome),
                     new SQLParameter<>(nameOfNextOfKin),
                     insertedID,
-                    insertedRegistrationDate,
-                    insertedSex
+                    insertedRegistrationDate
             ) <= 0) return null;
 
             else return new Patient(
@@ -52,7 +57,7 @@ public class DatabaseRepository implements IRepository {
                     null,
                     null,
                     null,
-                    new BasicDetails(name, null, insertedSex.getValue(), dateOfBirth),
+                    new BasicDetails(name, null, sex, dateOfBirth),
                     new ContactDetails(null, null, new Contact(telephoneHome, telephoneWork, null, null, null, null)),
                     new ContactOfNextOfKin(nameOfNextOfKin, null, null),
                     null,
@@ -69,7 +74,7 @@ public class DatabaseRepository implements IRepository {
     }
 
     @Override
-    public Patient insertPatientWithFullDetails(BasicDetails basicDetails, ContactDetails contactDetails, ContactOfNextOfKin contactOfNextOfKin, PersonalDetails personalDetails, ProfessionDetails professionDetails, Lifestyle lifestyle, BasicComplaints basicComplaints, ImportantMedicalComplaints medicalComplaints) {
+    public Patient insertPatientWithFullDetails(BasicDetails basicDetails, ContactDetails contactDetails, ContactOfNextOfKin contactOfNextOfKin, PersonalDetails personalDetails, ProfessionDetails professionDetails, Lifestyle lifestyle, BasicComplaints basicComplaints, MedicalComplaints medicalComplaints) {
         try {
             SQLParameter<Integer> insertedID = new SQLParameter<>(Types.INTEGER);
             SQLParameter<Date> insertedRegistrationDate = new SQLParameter<>(Types.DATE);
@@ -213,6 +218,29 @@ public class DatabaseRepository implements IRepository {
         }
     }
 
+    @Override
+    public List<Patient> getPatientsForDoctor(Integer doctorID) {
+        try {
+            List<Patient> patients = executor.executeProcedure(
+                    "GetPatientsForDoctor",
+                    Converters.getPatientConverter(),
+                    new SQLParameter<>(doctorID)
+            );
+
+            for (Patient patient : patients) {
+                patient.setBills(getBills(patient.getId()));
+                patient.setAppointments(getAppointments(patient.getId()));
+                patient.setTests(getTests(patient.getId()));
+                patient.setPrescribedMedicine(getPrescribedMedicine(patient.getId()));
+            }
+
+            return patients;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
     //endregion
 
     //region Bill
@@ -314,6 +342,23 @@ public class DatabaseRepository implements IRepository {
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
+        }
+    }
+
+    @Override
+    public boolean updateAppointment(Appointment appointment) {
+        try {
+            return executor.executeProcedure(
+                    "UpdateAppointment",
+                    new SQLParameter<>(appointment.getId()),
+                    new SQLParameter<>(appointment.getDelegate()),
+                    new SQLParameter<>(appointment.getDate()),
+                    new SQLParameter<>(appointment.getDetails())
+            ) > 0;
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+            return false;
         }
     }
 

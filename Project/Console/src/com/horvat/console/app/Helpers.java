@@ -1,17 +1,84 @@
 package com.horvat.console.app;
 
+import java.io.IOException;
+import java.math.BigDecimal;
 import java.text.MessageFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import java.util.function.Function;
 
 public class Helpers {
-    private static final Scanner scanner = new Scanner(System.in);
+    //region Readonly fields
+
+    private static final String DATE_FORMAT = "dd.MM.yyyy.";
+    private static final String DATE_WITH_TIME_FORMAT = "dd.MM.yyyy. HH:mm:ss";
+
+    public static final SimpleDateFormat dateFormatter = new SimpleDateFormat(DATE_FORMAT);
+    public static final SimpleDateFormat dateWithTimeFormatter = new SimpleDateFormat(DATE_WITH_TIME_FORMAT);
+    public static final Scanner scanner = new Scanner(System.in);
+
+    //endregion
+
+    public static Date getCurrentDate() {
+        return Date.from(ZonedDateTime.now().toInstant());
+    }
+
+    //region Reading data
+
+    public static BigDecimal readDecimal(String message) {
+        return read(
+                item -> BigDecimal.valueOf(Double.parseDouble(item)),
+                item -> item.doubleValue() > 0,
+                message
+        );
+    }
+
+    public static Date readDateInFuture(String message, boolean includeTime) {
+        return readDate(input -> input.after(getCurrentDate()), message, includeTime);
+    }
+
+    public static Date readDate(Function<Date, Boolean> predicate, String message, boolean includeTime) {
+        return read(
+                input -> {
+                    try {
+                        if (includeTime)
+                            return dateWithTimeFormatter.parse(input);
+                        else
+                            return dateFormatter.parse(input);
+                    } catch (ParseException e) {
+                        return null;
+                    }
+                },
+                predicate,
+                MessageFormat.format("{0} (format: {1})",
+                        message,
+                        includeTime
+                                ? DATE_WITH_TIME_FORMAT
+                                : DATE_FORMAT
+                )
+        );
+    }
+
+    public static String readString(Function<String, Boolean> predicate, String message) {
+        return read(input -> input, predicate, message);
+    }
+
+    public static String readString(String message) {
+        return readString(input -> input.length() > 0, message);
+    }
+
+    public static String enterString(String fieldName) {
+        return readString("Enter " + fieldName);
+    }
 
     public static <T> T read(Function<String, T> converter, Function<T, Boolean> predicate, String message) {
         while (true) {
             String error = "";
-            System.out.print(message);
+            System.out.print(message + ": ");
 
             String input = scanner.nextLine();
 
@@ -28,15 +95,12 @@ public class Helpers {
                 error = "Conversion failed";
             }
 
-            if (error.length() > 0) {
-                System.out.print(error + ". Continue? (enter y to continue): ");
-                input = scanner.nextLine();
-
-                if (!(input.equals("y") || input.equals("Y")))
-                    return null;
-            }
+            if (error.length() > 0 && !confirm(error))
+                return null;
         }
     }
+
+    //endregion
 
     //region Choose Option
 
@@ -64,10 +128,13 @@ public class Helpers {
     public static <T> T labelledChooseOption(String inputMessage, List<T> collection, Function<T, String> toString) {
         String[] array = new String[collection.size()];
 
-        for(int i = 0; i < collection.size(); i++)
+        for (int i = 0; i < collection.size(); i++)
             array[i] = collection.get(i).toString();
 
         int choice = labelledChooseOption(inputMessage, array);
+
+        if (choice < 1)
+            return null;
 
         return collection.get(choice - 1);
     }
@@ -110,5 +177,23 @@ public class Helpers {
         builder.append(inputMessage).append(": ");
 
         return builder.toString();
+    }
+
+    public static boolean confirm(String message) {
+        System.out.println();
+        System.out.print(message + ". Continue? (enter y to continue): ");
+        String input = scanner.nextLine();
+
+        return input.equals("y") || input.equals("Y");
+    }
+
+    public static void waitForInput(int numLinesToPrintAfter) {
+        System.out.println();
+        System.out.print("Press Enter to continue... ");
+
+        scanner.nextLine();
+
+        for (int i = 0; i < numLinesToPrintAfter; i++)
+            System.out.println();
     }
 }

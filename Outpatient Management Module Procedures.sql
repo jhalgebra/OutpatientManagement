@@ -7,11 +7,14 @@ GO
 DROP PROC InsertPatientWithBasicDetails
 DROP PROC InsertPatientWithFullDetails
 DROP PROC RemovePatient
+DROP FUNCTION dbo.SelectPatients
 DROP PROC GetPatients
+DROP PROC GetPatientsForDoctor
 DROP PROC InsertBill
 DROP PROC RemoveBill
 DROP PROC GetBills
 DROP PROC InsertAppointment
+DROP PROC UpdateAppointment
 DROP PROC RemoveAppointment
 DROP PROC GetAppointments
 DROP PROC InsertTest
@@ -23,6 +26,10 @@ DROP PROC GetPatientMedicine
 DROP PROC InsertDoctor
 DROP PROC RemoveDoctor
 DROP PROC GetDoctors
+DROP PROC GetPaymentTypes
+DROP PROC GetPredominantEatingOptions
+DROP PROC GetSexes
+DROP PROC GetMedicines
 
 GO
 
@@ -45,7 +52,6 @@ CREATE PROC InsertPatientWithBasicDetails
 	--Patient
 	@InsertedID INT OUTPUT,
 	@InsertedRegistrationDate DATETIME OUTPUT,
-	@InsertedSex NVARCHAR(100) OUTPUT
 AS --InsertPatientWithBasicDetails	
 	DECLARE @BasicDetailsID INT, @BasicComplaintsID INT,
 			@ContactDetailsID INT, @ContactOfNextOfKinID INT
@@ -300,14 +306,17 @@ AS
 GO
 --ENDOF: RemovePatient-----------------------------------------------------------------------------
 
-CREATE PROC GetPatients
+--Helper function for Patient getters
+CREATE FUNCTION dbo.SelectPatients()
+RETURNS TABLE
 AS
-	SELECT
+RETURN 
+	(SELECT
 		p.ID,--[0]
 		p.RegistrationDate,
 		p.BasicRegistration, --was the registration full or basic
 		--Basic Details (bd)
-		bd.Name, --[3]
+		bd.Name AS 'Patient''s name', --[3]
 		bd.OIB,
 		s.Name AS 'Sex', --Sex
 		bd.DateOfBirth,
@@ -377,7 +386,22 @@ AS
 	LEFT JOIN Contact AS cPatient ON cPatient.ID = cd.ContactID
 	LEFT JOIN Contact AS cNextOfKin ON cNextOfKin.ID = cnk.ContactID
 	LEFT JOIN Sex AS s ON s.ID = bd.SexID
-	LEFT JOIN PredominantEatingOption AS peo ON peo.ID = l.PredominantEatingOptionID
+	LEFT JOIN PredominantEatingOption AS peo ON peo.ID = l.PredominantEatingOptionID)
+GO
+--ENDOF: dbo.SelectPatients()----------------------------------------------------------------------
+
+CREATE PROC GetPatients
+AS
+	SELECT * FROM dbo.SelectPatients()
+GO
+--ENDOF: GetPatients-------------------------------------------------------------------------------
+
+CREATE PROC GetPatientsForDoctor
+	@IDDoctor INT
+AS
+	SELECT * FROM dbo.SelectPatients() AS p
+	INNER JOIN Appointment AS a ON a.PatientID = p.ID
+	WHERE a.DoctorID = @IDDoctor
 GO
 --ENDOF: GetPatients-------------------------------------------------------------------------------
 
@@ -446,6 +470,20 @@ AS
 	SET @InsertedID = SCOPE_IDENTITY()
 GO
 --ENDOF: InsertAppointment-------------------------------------------------------------------------
+
+CREATE PROC UpdateAppointment
+	@IDAppointment INT,
+	@Delegate NVARCHAR(150),
+	@DateAppointed DATETIME,
+	@Details NVARCHAR(1000)
+AS
+	UPDATE Appointment SET
+		Delegate = @Delegate,
+		DateAppointed = @DateAppointed,
+		Details = @Details
+	WHERE ID = @IDAppointment
+GO
+--ENDOF: UpdateAppointment-------------------------------------------------------------------------
 
 CREATE PROC RemoveAppointment
 	@IDAppointment INT

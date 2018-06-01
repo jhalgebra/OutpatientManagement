@@ -132,7 +132,7 @@ public class Converters {
                             (String) data[41],
                             (String) data[42]
                     ),
-                    new ImportantMedicalComplaints(
+                    new MedicalComplaints(
                             (Boolean) data[43],
                             (Boolean) data[44],
                             (String) data[45],

@@ -7,7 +7,6 @@ import com.horvat.dl.entities.Bill;
 import com.horvat.dl.entities.Patient;
 import com.horvat.dl.entities.Test;
 import com.horvat.dl.entities.*;
-import com.lib.dal.entities.IDatabaseObject;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
@@ -59,7 +58,7 @@ public class DatabaseTest {
         Appointment appointment = repo.insertAppointment(4, 2, "Nurse", Date.from(ZonedDateTime.now().plusMonths(130).toInstant()), "None");
         System.out.println("Added new appointment: " + appointment);
 
-        Patient newFullPatient = repo.insertPatientWithFullDetails(new BasicDetails("Jerko", "1239123", "Male", Date.from(ZonedDateTime.now().minusYears(20).toInstant())), new ContactDetails("Maksimirska 13", "Braće Domany 6", new Contact("3841234", "3840345", "0912584293", "454", "3840293", "neki@email.com")), new ContactOfNextOfKin("Miroslav", "Neka adresa", new Contact("3841845", "3840213", "0992340231", "923", "3840222", "kontakt@firma.com")), new PersonalDetails(true, 2, 184.3, 88.2, "AB+"), new ProfessionDetails("Lawyer", BigDecimal.valueOf(88888)), new Lifestyle(true, true, true, false, "None", 3.0, 0.0, 2.0, true, "Home Food"), new BasicComplaints("Stuff hurts man", "None", "Some Hospital"), new ImportantMedicalComplaints(true, true, "Good", "Bad", "Good", "OK", "Good", "Bad", "None", "None", "None"));
+        Patient newFullPatient = repo.insertPatientWithFullDetails(new BasicDetails("Jerko", "1239123", "Male", Date.from(ZonedDateTime.now().minusYears(20).toInstant())), new ContactDetails("Maksimirska 13", "Braće Domany 6", new Contact("3841234", "3840345", "0912584293", "454", "3840293", "neki@email.com")), new ContactOfNextOfKin("Miroslav", "Neka adresa", new Contact("3841845", "3840213", "0992340231", "923", "3840222", "kontakt@firma.com")), new PersonalDetails(true, 2, 184.3, 88.2, "AB+"), new ProfessionDetails("Lawyer", BigDecimal.valueOf(88888)), new Lifestyle(true, true, true, false, "None", 3.0, 0.0, 2.0, true, "Home Food"), new BasicComplaints("Stuff hurts man", "None", "Some Hospital"), new MedicalComplaints(true, true, "Good", "Bad", "Good", "OK", "Good", "Bad", "None", "None", "None"));
         System.out.println("Added new full patient: " + newFullPatient);
 
         System.out.println();

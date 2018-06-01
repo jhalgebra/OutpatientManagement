@@ -20,6 +20,12 @@ EXEC GetTests @patientID
 EXEC InsertAppointment @doctorID, @patientID, 'Doctor', '20170307', 'Exam', @insertedID OUTPUT
 EXEC GetAppointments @patientID
 
+DECLARE @now DATETIME = GETDATE()
+EXEC UpdateAppointment @insertedID, 'Dr. House', @now, 'Stuff'
+EXEC GetAppointments @patientID
+
+EXEC GetPatientsForDoctor @doctorID
+
 EXEC RemoveAppointment @insertedID
 EXEC GetAppointments @patientID
 

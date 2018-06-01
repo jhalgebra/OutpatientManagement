@@ -1,5 +1,7 @@
 package com.horvat.console.dialogs.base;
 
+import com.horvat.console.app.Helpers;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,11 +10,15 @@ public class DialogNavigator {
 
     public DialogNavigator(Dialog first) {
         dialogs.add(first);
-        reprintCurrentDialog();
     }
 
     public void reprintCurrentDialog() {
         dialogs.get(dialogs.size() - 1).print();
+    }
+
+    public void reprintCurrentDialogAfterInput(int numLinesToPrintAfter){
+        Helpers.waitForInput(numLinesToPrintAfter);
+        reprintCurrentDialog();
     }
 
     public void goToNewDialog(Dialog dialog) {
@@ -20,8 +26,12 @@ public class DialogNavigator {
         dialog.print();
     }
 
+    public boolean canGoToPreviousDialog(){
+        return dialogs.size() > 1;
+    }
+
     public boolean goToPreviousDialog() {
-        if (dialogs.size() == 0)
+        if (!canGoToPreviousDialog())
             return false;
 
         dialogs.remove(dialogs.size() - 1);

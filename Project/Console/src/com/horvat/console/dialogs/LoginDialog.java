@@ -1,30 +1,65 @@
 package com.horvat.console.dialogs;
 
+import com.horvat.bll.viewmodels.doctor.DoctorMenuViewModel;
 import com.horvat.bll.viewmodels.LoginViewModel;
+import com.horvat.bll.viewmodels.receptionist.ReceptionistMenuViewModel;
+import com.horvat.bll.viewmodels.report.ReportViewModel;
 import com.horvat.console.app.Helpers;
 import com.horvat.console.dialogs.base.Dialog;
+import com.horvat.console.dialogs.base.DialogOption;
+import com.horvat.console.dialogs.doctor.DoctorMenuDialog;
+import com.horvat.console.dialogs.receptionist.ReceptionistMenuDialog;
+import com.horvat.console.dialogs.report.ReportDialog;
 import com.horvat.dl.entities.Doctor;
 
-public class LoginDialog extends Dialog<LoginViewModel> {
+import java.util.ArrayList;
+import java.util.List;
 
+public class LoginDialog extends Dialog<LoginViewModel> {
     public LoginDialog(String title, char underlineChar, LoginViewModel viewModel) {
         super(title, underlineChar, viewModel);
-    }
 
-    @Override
-    protected void askForInput() {
-        choice = Helpers.chooseOption("Login as a doctor", "Login as a receptionist");
+        options = new ArrayList<DialogOption>() {{
+            add(new DialogOption("Login as a doctor", item -> {
+                List<Doctor> doctors = viewModel.getDoctors();
 
-        if(choice == 1){ //Doctor
-            System.out.println();
-            System.out.println(Helpers.getUnderlined("Choose a doctor", '-'));
+                if (doctors.size() == 0) {
+                    System.out.println("Can't login as a doctor, there aren't any doctors in the database...");
+                    dialogNavigator.reprintCurrentDialog();
+                    return;
+                }
 
-            Doctor doctor = Helpers.chooseOption(viewModel.getDoctors());
+                System.out.println(Helpers.getUnderlined("Choose a doctor", '-'));
 
-            System.out.println("Selected doctor: " + doctor);
-        }
-        else{ //Receptionist
-            System.out.println("Welcome, receptionist...");
-        }
+                dialogNavigator.goToNewDialog(
+                        new DoctorMenuDialog(
+                                "Doctor Menu",
+                                '=',
+                                new DoctorMenuViewModel(Helpers.chooseOption(viewModel.getDoctors()))
+                        )
+                );
+            }));
+
+            add(new DialogOption("Login as a receptionist", item -> dialogNavigator.goToNewDialog(
+                    new ReceptionistMenuDialog(
+                            "Receptionist Menu",
+                            '=',
+                            new ReceptionistMenuViewModel()
+                    )
+            )));
+
+            add(new DialogOption("View Reports", item -> dialogNavigator.goToNewDialog(
+                    new ReportDialog(
+                            "Reports",
+                            '=',
+                            new ReportViewModel()
+                    )
+            )));
+
+            add(new DialogOption("Exit", item -> {
+                Helpers.scanner.close();
+                System.exit(0);
+            }));
+        }};
     }
 }

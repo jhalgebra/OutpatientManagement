@@ -13,7 +13,7 @@ public interface IRepository {
 
     Patient insertPatientWithBasicDetails(
         String name,
-        Integer sexID,
+        String sex,
         Date dateOfBirth,
         String statementOfComplaint,
         String telephoneWork,
@@ -29,11 +29,12 @@ public interface IRepository {
         ProfessionDetails professionDetails,
         Lifestyle lifestyle,
         BasicComplaints basicComplaints,
-        ImportantMedicalComplaints medicalComplaints
+        MedicalComplaints medicalComplaints
     );
 
     Boolean removePatient(Integer patientID);
     List<Patient> getPatients();
+    List<Patient> getPatientsForDoctor(Integer doctorID);
 
     //endregion
 
@@ -60,6 +61,8 @@ public interface IRepository {
         Date dateAppointed,
         String details
     );
+
+    boolean updateAppointment(Appointment appointment);
 
     Boolean removeAppointment(Integer appointmentID);
 
