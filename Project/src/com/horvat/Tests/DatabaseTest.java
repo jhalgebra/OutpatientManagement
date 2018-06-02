@@ -43,7 +43,7 @@ public class DatabaseTest {
     }
 
     private static List<Object> testInserts(){
-        Patient newPatient = repo.insertPatientWithBasicDetails("Luka", 1, Date.from(ZonedDateTime.now().minusMonths(300).toInstant()), "Complaining", "3841123", "3841444", "Mirko");
+        Patient newPatient = repo.insertPatientWithBasicDetails("Luka", "Male", Date.from(ZonedDateTime.now().minusMonths(300).toInstant()), "Complaining", "3841123", "3841444", "Mirko");
         System.out.println("Added new patient: " + newPatient);
 
         Test newTest = repo.insertTest(2, 2, "Chill test", "The patient wasn't chillin'", Date.from(ZonedDateTime.now().minusMonths(50).toInstant()));

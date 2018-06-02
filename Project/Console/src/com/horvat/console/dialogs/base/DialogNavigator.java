@@ -38,4 +38,17 @@ public class DialogNavigator {
         reprintCurrentDialog();
         return true;
     }
+
+    public void backToFirstMenu(){
+        for(int i = dialogs.size() - 1; i > 0; i--)
+            dialogs.remove(i);
+
+        reprintCurrentDialog();
+    }
+
+    public void backToFirstMenuAfterInput(int numLinesToPrintAfter){
+        Helpers.waitForInput(numLinesToPrintAfter);
+
+        backToFirstMenu();
+    }
 }

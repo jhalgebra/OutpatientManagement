@@ -29,6 +29,14 @@ public class Helpers {
 
     //region Reading data
 
+    public static Boolean readBoolean(String message){
+        return read(Boolean::parseBoolean, input -> true, message + "? (1 or 0)");
+    }
+
+    public static Double readDouble(Function<Double, Boolean> predicate, String message){
+        return read(Double::parseDouble, predicate, message);
+    }
+
     public static BigDecimal readDecimal(String message) {
         return read(
                 item -> BigDecimal.valueOf(Double.parseDouble(item)),
@@ -38,7 +46,11 @@ public class Helpers {
     }
 
     public static Date readDateInFuture(String message, boolean includeTime) {
-        return readDate(input -> input.after(getCurrentDate()), message, includeTime);
+        return readDate(input -> input != null && input.after(getCurrentDate()), message, includeTime);
+    }
+
+    public static Date readDateInPast(String message, boolean includeTime) {
+        return readDate(input -> input != null && input.before(getCurrentDate()), message, includeTime);
     }
 
     public static Date readDate(Function<Date, Boolean> predicate, String message, boolean includeTime) {
