@@ -27,7 +27,7 @@ public class ReceptionistMenuDialog extends Dialog<ReceptionistMenuViewModel> {
         options = new ArrayList<DialogOption>() {{
             add(new DialogOption(
                     "Insert New Patient",
-                    item -> {
+                    () -> {
                         boolean basic = Helpers.chooseOption("Basic Registration", "Full Registration") == 1;
 
                         dialogNavigator.goToNewDialog(new InsertPatientDialog(
@@ -40,7 +40,7 @@ public class ReceptionistMenuDialog extends Dialog<ReceptionistMenuViewModel> {
 
             add(new DialogOption(
                     "Make an Appointment",
-                    item -> {
+                    () -> {
                         Patient patient = Helpers.chooseOption(patients);
                         Doctor doctor = Helpers.chooseOption(doctors);
 
@@ -53,7 +53,7 @@ public class ReceptionistMenuDialog extends Dialog<ReceptionistMenuViewModel> {
 
             add(new DialogOption(
                     "Issue Bill",
-                    item -> {
+                    () -> {
                         Patient patient = Helpers.chooseOption(patients);
 
                         dialogNavigator.goToNewDialog(new IssueBillDialog(
@@ -64,5 +64,18 @@ public class ReceptionistMenuDialog extends Dialog<ReceptionistMenuViewModel> {
                     })
             );
         }};
+    }
+
+    @Override
+    protected void processDialogEndData(List<Object> dialogEndData) {
+        if(dialogEndData == null || dialogEndData.size() < 1)
+            return;
+
+        Patient insertedPatient = (Patient)dialogEndData.get(0);
+
+        if(insertedPatient == null)
+            return;
+
+        patients.add(insertedPatient);
     }
 }

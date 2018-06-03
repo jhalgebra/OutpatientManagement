@@ -15,8 +15,10 @@ public class OrderTestDialog extends Dialog<OrderTestViewModel> {
         viewModel.setName(Helpers.enterString("name"));
         viewModel.setTestDate(Helpers.readDateInFuture("Enter date", true));
 
-        System.out.println(viewModel.saveChanges()
-                ? "Data saved successfully"
-                : "Data wasn't saved...");
+        dialogNavigator.goBackOnSuccess(
+                this,
+                () -> viewModel.getPatient().getTests().add(viewModel.getTest()),
+                DoctorMenuDialog.class
+        );
     }
 }

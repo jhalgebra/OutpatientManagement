@@ -23,7 +23,8 @@ public class Converters {
                     (String) data[2],
                     (Date) data[3],
                     (String) data[4],
-                    (String) data[5]
+                    (String) data[5],
+                    (Boolean)data[6]
             );
 
     private static final Function<Object[], Bill> billConverter =
@@ -148,7 +149,6 @@ public class Converters {
             );
 
     //endregion
-
 
     public static Function<Object[], Pair<Integer, String>> getEnumConverter() {
         return enumConverter;

@@ -20,13 +20,17 @@ public class IssueBillViewModel extends BaseViewModel {
         this.patient = patient;
     }
 
-    public boolean saveChanges(){
+    @Override
+    public boolean saveChanges(Runnable successCallback){
         IRepository repository = RepositoryFactory.getRepository();
 
         bill = repository.insertBill(
                 paymentType,
                 patient.getId(),
                 amount);
+
+        if(successCallback != null)
+            successCallback.run();
 
         return bill != null;
     }

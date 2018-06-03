@@ -18,6 +18,7 @@ public class InsertPatientViewModel extends BaseViewModel {
     private Lifestyle lifestyle;
     private BasicComplaints basicComplaints;
     private MedicalComplaints medicalComplaints;
+    private Patient patient;
 
     public InsertPatientViewModel(boolean basic) {
         this.basic = basic;
@@ -27,10 +28,9 @@ public class InsertPatientViewModel extends BaseViewModel {
         return basic;
     }
 
-    public boolean saveChanges() {
+    @Override
+    public boolean saveChanges(Runnable successCallback) {
         IRepository repository = RepositoryFactory.getRepository();
-
-        Patient patient;
 
         if (basic)
             patient = repository.insertPatientWithBasicDetails(
@@ -54,7 +54,14 @@ public class InsertPatientViewModel extends BaseViewModel {
                     medicalComplaints
             );
 
+        if(successCallback != null)
+            successCallback.run();
+
         return patient != null;
+    }
+
+    public Patient getPatient() {
+        return patient;
     }
 
     public void setBasicDetails(BasicDetails basicDetails) {

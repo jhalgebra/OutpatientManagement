@@ -78,7 +78,6 @@ public class DatabaseRepository implements IRepository {
         try {
             SQLParameter<Integer> insertedID = new SQLParameter<>(Types.INTEGER);
             SQLParameter<Date> insertedRegistrationDate = new SQLParameter<>(Types.DATE);
-            SQLParameter<String> insertedSex = new SQLParameter<>(Types.NVARCHAR);
 
             Integer sexID = -1;
             for (Pair<Integer, String> sex : getSexes()) {
@@ -158,8 +157,7 @@ public class DatabaseRepository implements IRepository {
                     new SQLParameter<>(medicalComplaints.getMajorSurgeries()),
 
                     insertedID,
-                    insertedRegistrationDate,
-                    insertedSex
+                    insertedRegistrationDate
             ) <= 0) return null;
 
             else return new Patient(
@@ -309,7 +307,7 @@ public class DatabaseRepository implements IRepository {
     //region Appointment
 
     @Override
-    public Appointment insertAppointment(Integer doctorID, Integer patientID, String delegate, Date dateAppointed, String details) {
+    public Appointment insertAppointment(Integer doctorID, Integer patientID, String delegate, Date dateAppointed, String details, Boolean secondOpinion) {
         try {
             SQLParameter<Integer> insertedID = new SQLParameter<>(Types.INTEGER);
 
@@ -320,6 +318,7 @@ public class DatabaseRepository implements IRepository {
                     new SQLParameter<>(delegate),
                     new SQLParameter<>(dateAppointed),
                     new SQLParameter<>(details),
+                    new SQLParameter<>(secondOpinion),
                     insertedID
             ) <= 0) return null;
 
@@ -337,7 +336,8 @@ public class DatabaseRepository implements IRepository {
                     delegate,
                     dateAppointed,
                     details,
-                    doctorName
+                    doctorName,
+                    secondOpinion
             );
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -346,14 +346,15 @@ public class DatabaseRepository implements IRepository {
     }
 
     @Override
-    public boolean updateAppointment(Appointment appointment) {
+    public Boolean updateAppointment(Appointment appointment) {
         try {
             return executor.executeProcedure(
                     "UpdateAppointment",
                     new SQLParameter<>(appointment.getId()),
                     new SQLParameter<>(appointment.getDelegate()),
                     new SQLParameter<>(appointment.getDate()),
-                    new SQLParameter<>(appointment.getDetails())
+                    new SQLParameter<>(appointment.getDetails()),
+                    new SQLParameter<>(appointment.getSecondOpinion())
             ) > 0;
         }
         catch (Exception ex){

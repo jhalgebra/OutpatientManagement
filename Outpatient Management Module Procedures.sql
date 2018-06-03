@@ -51,7 +51,7 @@ CREATE PROC InsertPatientWithBasicDetails
 	@NameOfNextOfKin NVARCHAR(100),
 	--Patient
 	@InsertedID INT OUTPUT,
-	@InsertedRegistrationDate DATETIME OUTPUT,
+	@InsertedRegistrationDate DATETIME OUTPUT
 AS --InsertPatientWithBasicDetails	
 	DECLARE @BasicDetailsID INT, @BasicComplaintsID INT,
 			@ContactDetailsID INT, @ContactOfNextOfKinID INT
@@ -100,7 +100,6 @@ AS --InsertPatientWithBasicDetails
 
 	SET @InsertedID = (SELECT ID FROM @insertedData)
 	SET @InsertedRegistrationDate = (SELECT RegistrationDate FROM @insertedData)
-	SET @InsertedSex = (SELECT Name FROM Sex WHERE ID = @SexID)
 GO 
 --ENDOF: InsertPatientWithBasicDetails-------------------------------------------------------------
 
@@ -166,8 +165,7 @@ CREATE PROC InsertPatientWithFullDetails
 	@MajorSurgeries NVARCHAR(4000),
 	--Patient
 	@InsertedID INT OUTPUT,
-	@InsertedRegistrationDate DATETIME OUTPUT,
-	@InsertedSex NVARCHAR(100) OUTPUT
+	@InsertedRegistrationDate DATETIME OUTPUT
 AS --InsertPatientWithFullDetails
 	DECLARE @BasicDetailsID INT, @ContactDetailsID INT, @ContactOfNextOfKinID INT, @PersonalDetailsID INT,
 			@ProfessionDetailsID INT, @LifestyleID INT, @BasicComplaintsID INT, @MedicalComplaintsID INT
@@ -252,7 +250,6 @@ AS --InsertPatientWithFullDetails
 
 	SET @InsertedID = (SELECT ID FROM @insertedData)
 	SET @InsertedRegistrationDate = (SELECT RegistrationDate FROM @insertedData)
-	SET @InsertedSex = (SELECT Name FROM Sex WHERE ID = @SexID)
 GO
 --ENDOF: InsertPatientWithFullDetails--------------------------------------------------------------
 
@@ -462,10 +459,11 @@ CREATE PROC InsertAppointment
 	@Delegate NVARCHAR(150),
 	@DateAppointed DATETIME,
 	@Details NVARCHAR(1000),
+	@SecondOption BIT,
 	@InsertedID INT OUTPUT
 AS
-	INSERT INTO Appointment(DoctorID, PatientID, Delegate, DateAppointed, Details)
-	VALUES(@DoctorID, @PatientID, @Delegate, @DateAppointed, @Details)
+	INSERT INTO Appointment(DoctorID, PatientID, Delegate, DateAppointed, Details, SecondOpinion)
+	VALUES(@DoctorID, @PatientID, @Delegate, @DateAppointed, @Details, @SecondOption)
 
 	SET @InsertedID = SCOPE_IDENTITY()
 GO
@@ -475,12 +473,14 @@ CREATE PROC UpdateAppointment
 	@IDAppointment INT,
 	@Delegate NVARCHAR(150),
 	@DateAppointed DATETIME,
-	@Details NVARCHAR(1000)
+	@Details NVARCHAR(1000),
+	@SecondOpinion BIT
 AS
 	UPDATE Appointment SET
 		Delegate = @Delegate,
 		DateAppointed = @DateAppointed,
-		Details = @Details
+		Details = @Details,
+		SecondOpinion = @SecondOpinion
 	WHERE ID = @IDAppointment
 GO
 --ENDOF: UpdateAppointment-------------------------------------------------------------------------
@@ -501,6 +501,7 @@ AS
 		a.Delegate, --who set up the appointment
 		a.DateAppointed,
 		a.Details,
+		a.SecondOpinion,
 		bd.Name --doctor's name
 	FROM Appointment AS a
 	INNER JOIN Doctor AS d ON d.ID = a.DoctorID

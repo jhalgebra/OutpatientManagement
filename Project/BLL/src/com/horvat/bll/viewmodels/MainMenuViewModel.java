@@ -6,7 +6,7 @@ import com.horvat.dl.entities.Doctor;
 
 import java.util.List;
 
-public class LoginViewModel extends BaseViewModel {
+public class MainMenuViewModel extends BaseViewModel {
     public List<Doctor> getDoctors(){
         return RepositoryFactory.getRepository().getDoctors();
     }

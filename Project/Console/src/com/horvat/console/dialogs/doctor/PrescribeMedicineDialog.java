@@ -21,12 +21,14 @@ public class PrescribeMedicineDialog extends Dialog<PrescribeMedicineViewModel> 
         viewModel.setQuantity(Helpers.read(
                 Double::parseDouble,
                 item -> item > 0,
-                "Enter quantity")
-        );
+                "Enter quantity"
+        ));
         viewModel.setMedicineName(Helpers.chooseOption(medicine).getValue());
 
-        System.out.println(viewModel.saveChanges()
-                ? "Data saved successfully"
-                : "Data wasn't saved...");
+        dialogNavigator.goBackOnSuccess(
+                this,
+                () -> viewModel.getPatient().getPrescribedMedicine().add(viewModel.getMedicine()),
+                DoctorMenuDialog.class
+        );
     }
 }

@@ -16,9 +16,8 @@ public class Helpers {
 
     private static final String DATE_FORMAT = "dd.MM.yyyy.";
     private static final String DATE_WITH_TIME_FORMAT = "dd.MM.yyyy. HH:mm:ss";
+    private static final SimpleDateFormat dateFormatter = new SimpleDateFormat(DATE_FORMAT);
 
-    public static final SimpleDateFormat dateFormatter = new SimpleDateFormat(DATE_FORMAT);
-    public static final SimpleDateFormat dateWithTimeFormatter = new SimpleDateFormat(DATE_WITH_TIME_FORMAT);
     public static final Scanner scanner = new Scanner(System.in);
 
     //endregion
@@ -29,11 +28,11 @@ public class Helpers {
 
     //region Reading data
 
-    public static Boolean readBoolean(String message){
+    public static Boolean readBoolean(String message) {
         return read(Boolean::parseBoolean, input -> true, message + "? (1 or 0)");
     }
 
-    public static Double readDouble(Function<Double, Boolean> predicate, String message){
+    public static Double readDouble(Function<Double, Boolean> predicate, String message) {
         return read(Double::parseDouble, predicate, message);
     }
 
@@ -57,10 +56,10 @@ public class Helpers {
         return read(
                 input -> {
                     try {
-                        if (includeTime)
-                            return dateWithTimeFormatter.parse(input);
-                        else
-                            return dateFormatter.parse(input);
+                        return dateFormatter.parse(input + (includeTime
+                                ? " 00:00:00"
+                                : ""
+                        ));
                     } catch (ParseException e) {
                         return null;
                     }

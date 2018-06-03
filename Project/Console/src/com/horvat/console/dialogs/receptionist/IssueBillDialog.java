@@ -15,8 +15,10 @@ public class IssueBillDialog extends Dialog<IssueBillViewModel> {
 
         viewModel.setPaymentType(Helpers.chooseOption(viewModel.getPaymentTypes()).getValue());
 
-        System.out.println(viewModel.saveChanges()
-                ? "Data saved successfully"
-                : "Data wasn't saved...");
+        dialogNavigator.goBackOnSuccess(
+                this,
+                () -> viewModel.getPatient().getBills().add(viewModel.getBill()),
+                ReceptionistMenuDialog.class
+        );
     }
 }

@@ -5,16 +5,15 @@ import com.horvat.console.app.Helpers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 public abstract class Dialog<T extends BaseViewModel> {
     protected static DialogNavigator dialogNavigator;
 
     private String title;
     private char underlineChar;
+    private List<Object> dialogEndData;
 
     protected T viewModel;
-    protected int choice;
     protected List<DialogOption> options;
 
     public Dialog(String title, char underlineChar, T viewModel) {
@@ -23,18 +22,24 @@ public abstract class Dialog<T extends BaseViewModel> {
         this.viewModel = viewModel;
     }
 
+    public void setDialogEndData(List<Object> dialogEndData) { this.dialogEndData = dialogEndData; }
+
     public static void initialize(Dialog firstDialog) {
         dialogNavigator = new DialogNavigator(firstDialog);
         dialogNavigator.reprintCurrentDialog();
     }
 
     public void print() {
+        processDialogEndData(dialogEndData);
+
         System.out.println(System.lineSeparator());
 
         System.out.println(Helpers.getUnderlined(title, underlineChar));
 
         askForInput();
     }
+
+    protected void processDialogEndData(List<Object> dialogEndData) { }
 
     protected void askForInput() {
         if (dialogNavigator.canGoToPreviousDialog()) {
@@ -50,7 +55,7 @@ public abstract class Dialog<T extends BaseViewModel> {
             options.add(
                     new DialogOption(
                             label,
-                            item -> dialogNavigator.goToPreviousDialog()
+                            () -> dialogNavigator.goToPreviousDialog()
                     )
             );
         }
@@ -68,10 +73,21 @@ public abstract class Dialog<T extends BaseViewModel> {
         DialogOption chosenOption = Helpers.chooseOption(options);
 
         if (chosenOption != null) {
-            Consumer<Object> action = chosenOption.getAction();
+            Runnable action = chosenOption.getAction();
 
             if (action != null)
-                action.accept(null);
+                action.run();
         }
+    }
+
+    protected boolean saveChanges(Runnable successCallback) {
+        boolean saved = viewModel.saveChanges(successCallback);
+
+        System.out.println(saved
+                ? "Data saved successfully"
+                : "Data wasn't saved..."
+        );
+
+        return saved;
     }
 }

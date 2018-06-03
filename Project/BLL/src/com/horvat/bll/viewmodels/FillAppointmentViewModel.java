@@ -16,6 +16,7 @@ public class FillAppointmentViewModel extends BaseViewModel {
     private Doctor doctor;
     private Patient patient;
     private Appointment appointment;
+    private Boolean secondOpinion;
     private boolean editMode;
 
     public FillAppointmentViewModel(Doctor doctor, Patient patient) {
@@ -31,22 +32,30 @@ public class FillAppointmentViewModel extends BaseViewModel {
         editMode = true;
     }
 
-    public boolean saveChanges() {
+    @Override
+    public boolean saveChanges(Runnable successCallback) {
         IRepository repository = RepositoryFactory.getRepository();
+        boolean success;
 
         if (editMode)
-            return repository.updateAppointment(appointment);
+            success = repository.updateAppointment(appointment);
         else {
             appointment = repository.insertAppointment(
                     getDoctor().getId(),
                     getPatient().getId(),
                     delegate,
                     appointmentDate,
-                    details
+                    details,
+                    secondOpinion
             );
 
-            return appointment != null;
+            success = appointment != null;
         }
+
+        if(successCallback != null)
+            successCallback.run();
+
+        return success;
     }
 
     public boolean isEditMode() {
@@ -62,16 +71,6 @@ public class FillAppointmentViewModel extends BaseViewModel {
     }
 
     public Appointment getAppointment() {
-        if (appointment == null)
-            appointment = new Appointment(
-                    -1,
-                    doctor.getId(),
-                    delegate,
-                    appointmentDate,
-                    details,
-                    doctor.getBasicDetails().getName()
-            );
-
         return appointment;
     }
 
@@ -94,5 +93,9 @@ public class FillAppointmentViewModel extends BaseViewModel {
 
         if (appointment != null)
             appointment.setDetails(details);
+    }
+
+    public void setSecondOpinion(Boolean secondOpinion) {
+        this.secondOpinion = secondOpinion;
     }
 }

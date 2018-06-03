@@ -10,16 +10,18 @@ public class Appointment{
     private Date date;
     private String details;
     private String doctorName;
+    private Boolean secondOpinion;
 
     public Appointment() { }
 
-    public Appointment(Integer id, Integer doctorID, String delegate, Date date, String details, String doctorName) {
+    public Appointment(Integer id, Integer doctorID, String delegate, Date date, String details, String doctorName, Boolean secondOpinion) {
         this.id = id;
         this.doctorID = doctorID;
         this.delegate = delegate;
         this.date = date;
         this.details = details;
         this.doctorName = doctorName;
+        this.secondOpinion = secondOpinion;
     }
 
     public Integer getId() {
@@ -56,6 +58,14 @@ public class Appointment{
 
     public String getDoctorName() {
         return doctorName;
+    }
+
+    public Boolean getSecondOpinion() {
+        return secondOpinion;
+    }
+
+    public void setSecondOpinion(Boolean secondOpinion) {
+        this.secondOpinion = secondOpinion;
     }
 
     @Override

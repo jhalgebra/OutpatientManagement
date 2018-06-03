@@ -23,7 +23,8 @@ public class OrderTestViewModel extends BaseViewModel {
         this.doctor = doctor;
     }
 
-    public boolean saveChanges() {
+    @Override
+    public boolean saveChanges(Runnable successCallback) {
         IRepository repository = RepositoryFactory.getRepository();
 
         test = repository.insertTest(
@@ -33,6 +34,9 @@ public class OrderTestViewModel extends BaseViewModel {
                 details,
                 testDate
         );
+
+        if(successCallback != null)
+            successCallback.run();
 
         return test != null;
     }

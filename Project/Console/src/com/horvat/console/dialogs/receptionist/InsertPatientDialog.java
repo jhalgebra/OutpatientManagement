@@ -6,7 +6,9 @@ import com.horvat.console.dialogs.base.Dialog;
 import com.horvat.dl.entities.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static com.horvat.console.app.Helpers.enterString;
 
@@ -25,13 +27,12 @@ public class InsertPatientDialog extends Dialog<InsertPatientViewModel> {
         String telephoneHome = enterString("home telephone");
         String nameOfNextOfKin = enterString("Name of next of kin");
 
-        if(viewModel.isBasic()){
+        if (viewModel.isBasic()) {
             viewModel.setBasicDetails(new BasicDetails(name, null, sex, dateOfBirth));
             viewModel.setBasicComplaints(new BasicComplaints(statementOfComplaint, null, null));
             viewModel.setContactDetails(new ContactDetails(null, null, new Contact(telephoneHome, telephoneWork, null, null, null, null)));
             viewModel.setContactOfNextOfKin(new ContactOfNextOfKin(nameOfNextOfKin, null, null));
-        }
-        else{
+        } else {
             String oib = enterString("OIB");
 
             viewModel.setBasicDetails(new BasicDetails(name, oib, sex, dateOfBirth));
@@ -102,8 +103,8 @@ public class InsertPatientDialog extends Dialog<InsertPatientViewModel> {
             viewModel.setMedicalComplaints(new MedicalComplaints(diabetic, hypertensive, cardiacCondition, respiratoryCondition, digestiveCondition, orthopedicCondition, muscularCondition, neurologicalCondition, knownAllergies, knownAdverseReactionsToSpecificDrugs, majorSurgeries));
         }
 
-        System.out.println(viewModel.saveChanges()
-                ? "Data saved successfully"
-                : "Data wasn't saved...");
+        dialogNavigator.goBackOnSuccess(this, () -> new ArrayList<Object>(){{
+            add(viewModel.getPatient());
+        }}, ReceptionistMenuDialog.class);
     }
 }

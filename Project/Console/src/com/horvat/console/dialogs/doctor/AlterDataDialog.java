@@ -35,7 +35,7 @@ public class AlterDataDialog extends Dialog<AlterDataViewModel> {
                                 appointmentDate,
                                 appointment.getDetails()
                         ),
-                        item -> {
+                        () -> {
                             dialogNavigator.goToNewDialog(new FillAppointmentDialog(
                                     "Alter appointment for " + patient.getBasicDetails().getName(),
                                     '=',
@@ -45,26 +45,5 @@ public class AlterDataDialog extends Dialog<AlterDataViewModel> {
                 ));
             }
         }
-
-        /*
-        counter = 1;
-        for (Test test : patient.getTests()) {
-            Date testDate = test.getDate();
-
-            if (testDate.after(now)) {
-                options.add(new DialogOption(
-                        MessageFormat.format(
-                                "Update test {0} ({1}): {2}",
-                                counter++,
-                                testDate,
-                                test.getDetails()
-                        ),
-                        item -> {
-
-                        }
-                ));
-            }
-        }
-        */
     }
 }

@@ -59,10 +59,11 @@ public interface IRepository {
         Integer patientID,
         String delegate,
         Date dateAppointed,
-        String details
+        String details,
+        Boolean secondOpinion
     );
 
-    boolean updateAppointment(Appointment appointment);
+    Boolean updateAppointment(Appointment appointment);
 
     Boolean removeAppointment(Integer appointmentID);
 

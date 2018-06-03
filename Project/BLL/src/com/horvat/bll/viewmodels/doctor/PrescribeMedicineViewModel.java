@@ -22,7 +22,8 @@ public class PrescribeMedicineViewModel extends BaseViewModel {
         this.doctor = doctor;
     }
 
-    public boolean saveChanges(){
+    @Override
+    public boolean saveChanges(Runnable successCallback){
         IRepository repository = RepositoryFactory.getRepository();
 
         medicine = repository.insertPrescribedMedicine(
@@ -31,6 +32,9 @@ public class PrescribeMedicineViewModel extends BaseViewModel {
                 patient.getId(),
                 doctor.getId()
         );
+
+        if(successCallback != null)
+            successCallback.run();
 
         return medicine != null;
     }

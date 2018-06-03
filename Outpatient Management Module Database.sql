@@ -213,6 +213,7 @@ CREATE TABLE Appointment
 	Delegate NVARCHAR(150) NOT NULL,
 	DateAppointed DATETIME NOT NULL,
 	Details NVARCHAR(1000) NULL,
+	SecondOpinion BIT NOT NULL,
 
 	CONSTRAINT FK_Appointment_Patient FOREIGN KEY(PatientID) REFERENCES Patient(ID),
 	CONSTRAINT FK_Appointment_Doctor FOREIGN KEY(DoctorID) REFERENCES Doctor(ID)

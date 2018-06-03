@@ -26,14 +26,14 @@ public class DoctorMenuDialog extends Dialog<DoctorMenuViewModel> {
         }
 
         options = new ArrayList<DialogOption>() {{
-            add(new DialogOption("View Patients' Data", item -> {
+            add(new DialogOption("View Patients' Data", () -> {
                 for (Patient patient : patients)
                     System.out.println(patient.getFullInfo());
 
                 dialogNavigator.reprintCurrentDialogAfterInput(10);
             }));
 
-            add(new DialogOption("Order Test for Patient", item -> {
+            add(new DialogOption("Order Test for Patient", () -> {
                 Patient patient = choosePatient();
 
                 dialogNavigator.goToNewDialog(new OrderTestDialog(
@@ -43,7 +43,7 @@ public class DoctorMenuDialog extends Dialog<DoctorMenuViewModel> {
                 ));
             }));
 
-            add(new DialogOption("Prescribe Medicine to patient", item ->{
+            add(new DialogOption("Prescribe Medicine to patient", () ->{
                 Patient patient = choosePatient();
 
                 dialogNavigator.goToNewDialog(new PrescribeMedicineDialog(
@@ -53,7 +53,7 @@ public class DoctorMenuDialog extends Dialog<DoctorMenuViewModel> {
                 ));
             }));
 
-            add(new DialogOption("Alter Future Tests / Appointments", item ->{
+            add(new DialogOption("Alter Future Tests / Appointments", () ->{
                 Patient patient = choosePatient();
 
                 dialogNavigator.goToNewDialog(new AlterDataDialog(

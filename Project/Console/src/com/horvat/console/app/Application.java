@@ -1,15 +1,15 @@
 package com.horvat.console.app;
 
 import com.horvat.bll.helpers.IApplication;
-import com.horvat.bll.viewmodels.LoginViewModel;
-import com.horvat.console.dialogs.LoginDialog;
+import com.horvat.bll.viewmodels.MainMenuViewModel;
+import com.horvat.console.dialogs.MainMenuDialog;
 import com.horvat.console.dialogs.base.Dialog;
 
 public class Application implements IApplication {
     @Override
     public void start() {
-        LoginViewModel viewModel = new LoginViewModel();
-        LoginDialog startDialog = new LoginDialog("Login", '=', viewModel);
+        MainMenuViewModel viewModel = new MainMenuViewModel();
+        MainMenuDialog startDialog = new MainMenuDialog("Login", '=', viewModel);
 
         Dialog.initialize(startDialog);
     }

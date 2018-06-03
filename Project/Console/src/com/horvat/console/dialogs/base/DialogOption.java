@@ -1,17 +1,15 @@
 package com.horvat.console.dialogs.base;
 
-import java.util.function.Consumer;
-
 public class DialogOption {
     private String label;
-    private Consumer<Object> action;
+    private Runnable action;
 
-    public DialogOption(String label, Consumer<Object> action) {
+    public DialogOption(String label, Runnable action) {
         this.label = label;
         this.action = action;
     }
 
-    public Consumer<Object> getAction() {
+    public Runnable getAction() {
         return action;
     }
 

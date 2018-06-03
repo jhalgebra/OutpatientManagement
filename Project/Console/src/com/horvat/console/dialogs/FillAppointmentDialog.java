@@ -3,8 +3,12 @@ package com.horvat.console.dialogs;
 import com.horvat.bll.viewmodels.FillAppointmentViewModel;
 import com.horvat.console.app.Helpers;
 import com.horvat.console.dialogs.base.Dialog;
+import com.horvat.console.dialogs.doctor.DoctorMenuDialog;
+import com.horvat.console.dialogs.receptionist.ReceptionistMenuDialog;
+import com.horvat.dl.entities.Appointment;
 
 import java.util.Date;
+import java.util.List;
 
 public class FillAppointmentDialog extends Dialog<FillAppointmentViewModel> {
     public FillAppointmentDialog(String title, char underlineChar, FillAppointmentViewModel viewModel) {
@@ -20,10 +24,12 @@ public class FillAppointmentDialog extends Dialog<FillAppointmentViewModel> {
             return;
         }
 
+        Boolean secondOpinion = Helpers.readBoolean("Second opinion");
         String details = Helpers.enterString("Appointment details");
 
         Date date = Helpers.readDateInFuture("Enter date and time", true);
 
+        viewModel.setSecondOpinion(secondOpinion);
         viewModel.setDetails(details);
         viewModel.setAppointmentDate(date);
 
@@ -35,8 +41,25 @@ public class FillAppointmentDialog extends Dialog<FillAppointmentViewModel> {
                         : Helpers.enterString("Appointment delegate")
         );
 
-        System.out.println(viewModel.saveChanges()
-                ? "Data saved successfully"
-                : "Data wasn't saved...");
+        dialogNavigator.goBackOnSuccess(
+                this,
+                () -> {
+                    if (viewModel.isEditMode()) {
+                        Appointment addedAppointment = viewModel.getAppointment();
+                        List<Appointment> patientsAppointments = viewModel.getPatient().getAppointments();
+
+                        for (int i = 0; i < patientsAppointments.size(); i++) {
+                            if (patientsAppointments.get(i).getId().equals(addedAppointment.getId())) {
+                                patientsAppointments.set(i, addedAppointment);
+                                break;
+                            }
+                        }
+                    } else
+                        viewModel.getPatient().getAppointments().add(viewModel.getAppointment());
+                },
+                viewModel.isEditMode()
+                        ? DoctorMenuDialog.class
+                        : ReceptionistMenuDialog.class
+        );
     }
 }

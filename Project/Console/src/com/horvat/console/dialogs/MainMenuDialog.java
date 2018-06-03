@@ -1,7 +1,7 @@
 package com.horvat.console.dialogs;
 
 import com.horvat.bll.viewmodels.doctor.DoctorMenuViewModel;
-import com.horvat.bll.viewmodels.LoginViewModel;
+import com.horvat.bll.viewmodels.MainMenuViewModel;
 import com.horvat.bll.viewmodels.receptionist.ReceptionistMenuViewModel;
 import com.horvat.bll.viewmodels.report.ReportViewModel;
 import com.horvat.console.app.Helpers;
@@ -15,12 +15,12 @@ import com.horvat.dl.entities.Doctor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginDialog extends Dialog<LoginViewModel> {
-    public LoginDialog(String title, char underlineChar, LoginViewModel viewModel) {
+public class MainMenuDialog extends Dialog<MainMenuViewModel> {
+    public MainMenuDialog(String title, char underlineChar, MainMenuViewModel viewModel) {
         super(title, underlineChar, viewModel);
 
         options = new ArrayList<DialogOption>() {{
-            add(new DialogOption("Login as a doctor", item -> {
+            add(new DialogOption("Login as a doctor", () -> {
                 List<Doctor> doctors = viewModel.getDoctors();
 
                 if (doctors.size() == 0) {
@@ -40,7 +40,7 @@ public class LoginDialog extends Dialog<LoginViewModel> {
                 );
             }));
 
-            add(new DialogOption("Login as a receptionist", item -> dialogNavigator.goToNewDialog(
+            add(new DialogOption("Login as a receptionist", () -> dialogNavigator.goToNewDialog(
                     new ReceptionistMenuDialog(
                             "Receptionist Menu",
                             '=',
@@ -48,7 +48,7 @@ public class LoginDialog extends Dialog<LoginViewModel> {
                     )
             )));
 
-            add(new DialogOption("View Reports", item -> dialogNavigator.goToNewDialog(
+            add(new DialogOption("View Reports", () -> dialogNavigator.goToNewDialog(
                     new ReportDialog(
                             "Reports",
                             '=',
@@ -56,7 +56,7 @@ public class LoginDialog extends Dialog<LoginViewModel> {
                     )
             )));
 
-            add(new DialogOption("Exit", item -> {
+            add(new DialogOption("Exit", () -> {
                 Helpers.scanner.close();
                 System.exit(0);
             }));
