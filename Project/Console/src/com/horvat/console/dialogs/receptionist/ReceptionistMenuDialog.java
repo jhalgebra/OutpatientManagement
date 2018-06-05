@@ -4,7 +4,7 @@ import com.horvat.bll.viewmodels.FillAppointmentViewModel;
 import com.horvat.bll.viewmodels.receptionist.InsertPatientViewModel;
 import com.horvat.bll.viewmodels.receptionist.IssueBillViewModel;
 import com.horvat.bll.viewmodels.receptionist.ReceptionistMenuViewModel;
-import com.horvat.console.app.Helpers;
+import com.horvat.console.app.Utils;
 import com.horvat.console.dialogs.FillAppointmentDialog;
 import com.horvat.console.dialogs.base.Dialog;
 import com.horvat.console.dialogs.base.DialogOption;
@@ -28,7 +28,7 @@ public class ReceptionistMenuDialog extends Dialog<ReceptionistMenuViewModel> {
             add(new DialogOption(
                     "Insert New Patient",
                     () -> {
-                        boolean basic = Helpers.chooseOption("Basic Registration", "Full Registration") == 1;
+                        boolean basic = Utils.chooseOption("Basic Registration", "Full Registration") == 1;
 
                         dialogNavigator.goToNewDialog(new InsertPatientDialog(
                                 "Insert new patient (" + (basic ? "Basic)" : "Full)"),
@@ -41,8 +41,8 @@ public class ReceptionistMenuDialog extends Dialog<ReceptionistMenuViewModel> {
             add(new DialogOption(
                     "Make an Appointment",
                     () -> {
-                        Patient patient = Helpers.chooseOption(patients);
-                        Doctor doctor = Helpers.chooseOption(doctors);
+                        Patient patient = Utils.chooseOption(patients);
+                        Doctor doctor = Utils.chooseOption(doctors);
 
                         dialogNavigator.goToNewDialog(new FillAppointmentDialog(
                                 "Make an Appointment",
@@ -54,7 +54,7 @@ public class ReceptionistMenuDialog extends Dialog<ReceptionistMenuViewModel> {
             add(new DialogOption(
                     "Issue Bill",
                     () -> {
-                        Patient patient = Helpers.chooseOption(patients);
+                        Patient patient = Utils.chooseOption(patients);
 
                         dialogNavigator.goToNewDialog(new IssueBillDialog(
                                 "Issue Bill to " + patient.getBasicDetails().getName(),

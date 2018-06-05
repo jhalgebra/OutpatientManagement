@@ -18,16 +18,16 @@ EXEC InsertDoctor '41387482748', 'Sara', 2, '19820412', @insertedInt
 -- Patients --
 --------------
 
-EXEC InsertPatientWithFullDetails '24975492304', 'Mirko', 1, '19740312', 'Ilica 212', 'Ilica 212', '3841123', '3841987', '0912138423', '123', '3841555', 'mirko@mail.hr', 'Slavko', 'Braæe Domany 6', '3841915', '3840213', '0981239423', '543', '3840111', 'slavko@hotmail.com', 1, 3, 183.2, 70, 'A+', 'Useless', 23142, 0, 0, 1, 1, 'Marijuana', 3, 0, 0, 1, 2, 'Complaining about this ''n that', 'No history :)', 'Iza ugla', 0, 1, 'Nice', 'Nice', 'OK', 'OK', 'OK', 'Bad', 'None', 'Alergic to coconut oil', 'Tonsils removed', @insertedInt OUTPUT, @insertedDate OUTPUT, @insertedString OUTPUT
-EXEC InsertPatientWithFullDetails '51292492304', 'Ante', 1, '19610312', 'Ilica 212', 'Ilica 212', '3841123', '3841987', '0912138423', '123', '3841555', 'mirko@mail.hr', 'Slavko', 'Braæe Domany 6', '3841915', '3840213', '0981239423', '543', '3840111', 'slavko@hotmail.com', 1, 3, 183.2, 70, 'A+', 'Useless', 23142, 0, 0, 1, 1, 'Marijuana', 3, 0, 0, 1, 2, 'Complaining about this ''n that', 'No history :)', 'Iza ugla', 0, 1, 'Nice', 'Nice', 'OK', 'OK', 'OK', 'Bad', 'None', 'Alergic to coconut oil', 'Tonsils removed', @insertedInt OUTPUT, @insertedDate OUTPUT, @insertedString OUTPUT
-EXEC InsertPatientWithFullDetails '27893492304', 'Stjepan', 1, '19870312', 'Ilica 212', 'Ilica 212', '3841123', '3841987', '0912138423', '123', '3841555', 'mirko@mail.hr', 'Slavko', 'Braæe Domany 6', '3841915', '3840213', '0981239423', '543', '3840111', 'slavko@hotmail.com', 1, 3, 183.2, 70, 'A+', 'Useless', 23142, 0, 0, 1, 1, 'Marijuana', 3, 0, 0, 1, 2, 'Complaining about this ''n that', 'No history :)', 'Iza ugla', 0, 1, 'Nice', 'Nice', 'OK', 'OK', 'OK', 'Bad', 'None', 'Alergic to coconut oil', 'Tonsils removed', @insertedInt OUTPUT, @insertedDate OUTPUT, @insertedString OUTPUT
-EXEC InsertPatientWithFullDetails '99975492304', 'Mirjana', 2, '19950312', 'Ilica 212', 'Ilica 212', '3841123', '3841987', '0912138423', '123', '3841555', 'mirko@mail.hr', 'Slavko', 'Braæe Domany 6', '3841915', '3840213', '0981239423', '543', '3840111', 'slavko@hotmail.com', 1, 3, 183.2, 70, 'A+', 'Useless', 23142, 0, 0, 1, 1, 'Marijuana', 3, 0, 0, 1, 2, 'Complaining about this ''n that', 'No history :)', 'Iza ugla', 0, 1, 'Nice', 'Nice', 'OK', 'OK', 'OK', 'Bad', 'None', 'Alergic to coconut oil', 'Tonsils removed', @insertedInt OUTPUT, @insertedDate OUTPUT, @insertedString OUTPUT
-EXEC InsertPatientWithFullDetails '13275492304', 'Vatroslav', 1, '19850312', 'Ilica 212', 'Ilica 212', '3841123', '3841987', '0912138423', '123', '3841555', 'mirko@mail.hr', 'Slavko', 'Braæe Domany 6', '3841915', '3840213', '0981239423', '543', '3840111', 'slavko@hotmail.com', 1, 3, 183.2, 70, 'A+', 'Useless', 23142, 0, 0, 1, 1, 'Marijuana', 3, 0, 0, 1, 2, 'Complaining about this ''n that', 'No history :)', 'Iza ugla', 0, 1, 'Nice', 'Nice', 'OK', 'OK', 'OK', 'Bad', 'None', 'Alergic to coconut oil', 'Tonsils removed', @insertedInt OUTPUT, @insertedDate OUTPUT, @insertedString OUTPUT
-EXEC InsertPatientWithFullDetails '65475492304', 'Anita', 2, '19780312', 'Ilica 212', 'Ilica 212', '3841123', '3841987', '0912138423', '123', '3841555', 'mirko@mail.hr', 'Slavko', 'Braæe Domany 6', '3841915', '3840213', '0981239423', '543', '3840111', 'slavko@hotmail.com', 1, 3, 183.2, 70, 'A+', 'Useless', 23142, 0, 0, 1, 1, 'Marijuana', 3, 0, 0, 1, 2, 'Complaining about this ''n that', 'No history :)', 'Iza ugla', 0, 1, 'Nice', 'Nice', 'OK', 'OK', 'OK', 'Bad', 'None', 'Alergic to coconut oil', 'Tonsils removed', @insertedInt OUTPUT, @insertedDate OUTPUT, @insertedString OUTPUT
+EXEC InsertPatientWithFullDetails '24975492304', 'Mirko', 1, '19740312', 'Ilica 212', 'Ilica 212', '3841123', '3841987', '0912138423', '123', '3841555', 'mirko@mail.hr', 'Slavko', 'Braæe Domany 6', '3841915', '3840213', '0981239423', '543', '3840111', 'slavko@hotmail.com', 1, 3, 183.2, 70, 'A+', 'Useless', 23142, 0, 0, 1, 1, 'Marijuana', 3, 0, 0, 1, 2, 'Complaining about this ''n that', 'No history :)', 'Iza ugla', 0, 1, 'Nice', 'Nice', 'OK', 'OK', 'OK', 'Bad', 'None', 'Alergic to coconut oil', 'Tonsils removed', @insertedInt OUTPUT, @insertedDate OUTPUT
+EXEC InsertPatientWithFullDetails '51292492304', 'Ante', 1, '19610312', 'Ilica 212', 'Ilica 212', '3841123', '3841987', '0912138423', '123', '3841555', 'mirko@mail.hr', 'Slavko', 'Braæe Domany 6', '3841915', '3840213', '0981239423', '543', '3840111', 'slavko@hotmail.com', 1, 3, 183.2, 70, 'A+', 'Useless', 23142, 0, 0, 1, 1, 'Marijuana', 3, 0, 0, 1, 2, 'Complaining about this ''n that', 'No history :)', 'Iza ugla', 0, 1, 'Nice', 'Nice', 'OK', 'OK', 'OK', 'Bad', 'None', 'Alergic to coconut oil', 'Tonsils removed', @insertedInt OUTPUT, @insertedDate OUTPUT
+EXEC InsertPatientWithFullDetails '27893492304', 'Stjepan', 1, '19870312', 'Ilica 212', 'Ilica 212', '3841123', '3841987', '0912138423', '123', '3841555', 'mirko@mail.hr', 'Slavko', 'Braæe Domany 6', '3841915', '3840213', '0981239423', '543', '3840111', 'slavko@hotmail.com', 1, 3, 183.2, 70, 'A+', 'Useless', 23142, 0, 0, 1, 1, 'Marijuana', 3, 0, 0, 1, 2, 'Complaining about this ''n that', 'No history :)', 'Iza ugla', 0, 1, 'Nice', 'Nice', 'OK', 'OK', 'OK', 'Bad', 'None', 'Alergic to coconut oil', 'Tonsils removed', @insertedInt OUTPUT, @insertedDate OUTPUT
+EXEC InsertPatientWithFullDetails '99975492304', 'Mirjana', 2, '19950312', 'Ilica 212', 'Ilica 212', '3841123', '3841987', '0912138423', '123', '3841555', 'mirko@mail.hr', 'Slavko', 'Braæe Domany 6', '3841915', '3840213', '0981239423', '543', '3840111', 'slavko@hotmail.com', 1, 3, 183.2, 70, 'A+', 'Useless', 23142, 0, 0, 1, 1, 'Marijuana', 3, 0, 0, 1, 2, 'Complaining about this ''n that', 'No history :)', 'Iza ugla', 0, 1, 'Nice', 'Nice', 'OK', 'OK', 'OK', 'Bad', 'None', 'Alergic to coconut oil', 'Tonsils removed', @insertedInt OUTPUT, @insertedDate OUTPUT
+EXEC InsertPatientWithFullDetails '13275492304', 'Vatroslav', 1, '19850312', 'Ilica 212', 'Ilica 212', '3841123', '3841987', '0912138423', '123', '3841555', 'mirko@mail.hr', 'Slavko', 'Braæe Domany 6', '3841915', '3840213', '0981239423', '543', '3840111', 'slavko@hotmail.com', 1, 3, 183.2, 70, 'A+', 'Useless', 23142, 0, 0, 1, 1, 'Marijuana', 3, 0, 0, 1, 2, 'Complaining about this ''n that', 'No history :)', 'Iza ugla', 0, 1, 'Nice', 'Nice', 'OK', 'OK', 'OK', 'Bad', 'None', 'Alergic to coconut oil', 'Tonsils removed', @insertedInt OUTPUT, @insertedDate OUTPUT
+EXEC InsertPatientWithFullDetails '65475492304', 'Anita', 2, '19780312', 'Ilica 212', 'Ilica 212', '3841123', '3841987', '0912138423', '123', '3841555', 'mirko@mail.hr', 'Slavko', 'Braæe Domany 6', '3841915', '3840213', '0981239423', '543', '3840111', 'slavko@hotmail.com', 1, 3, 183.2, 70, 'A+', 'Useless', 23142, 0, 0, 1, 1, 'Marijuana', 3, 0, 0, 1, 2, 'Complaining about this ''n that', 'No history :)', 'Iza ugla', 0, 1, 'Nice', 'Nice', 'OK', 'OK', 'OK', 'Bad', 'None', 'Alergic to coconut oil', 'Tonsils removed', @insertedInt OUTPUT, @insertedDate OUTPUT
 
-EXEC InsertPatientWithBasicDetails 'Ana', 2, '19971212', 'Complaining', '3841293', '3840212', 'Leon', @insertedInt OUTPUT, @insertedDate OUTPUT, @insertedString OUTPUT
-EXEC InsertPatientWithBasicDetails 'Marta', 2, '19970925', 'Complaining', '3841293', '3840212', 'Leon', @insertedInt OUTPUT, @insertedDate OUTPUT, @insertedString OUTPUT
-EXEC InsertPatientWithBasicDetails 'Ivan', 1, '19970103', 'Complaining', '3841293', '3840212', 'Leon', @insertedInt OUTPUT, @insertedDate OUTPUT, @insertedString OUTPUT
+EXEC InsertPatientWithBasicDetails 'Ana', 2, '19971212', 'Complaining', '3841293', '3840212', 'Leon', @insertedInt OUTPUT, @insertedDate OUTPUT
+EXEC InsertPatientWithBasicDetails 'Marta', 2, '19970925', 'Complaining', '3841293', '3840212', 'Leon', @insertedInt OUTPUT, @insertedDate OUTPUT
+EXEC InsertPatientWithBasicDetails 'Ivan', 1, '19970103', 'Complaining', '3841293', '3840212', 'Leon', @insertedInt OUTPUT, @insertedDate OUTPUT
 
 -----------
 -- Bills --
@@ -49,15 +49,15 @@ EXEC InsertBill 1, 5, 815, @insertedInt OUTPUT, @insertedDate OUTPUT
 -- Appointments --
 ------------------
 
-EXEC InsertAppointment 2, 1, 'Doctor', '20181124', 'Exam', @insertedInt OUTPUT
-EXEC InsertAppointment 3, 3, 'Doctor', '20190303', 'Exam', @insertedInt OUTPUT
-EXEC InsertAppointment 4, 4, 'Doctor', '20180815', 'Exam', @insertedInt OUTPUT
-EXEC InsertAppointment 2, 2, 'Doctor', '20190419', 'Exam', @insertedInt OUTPUT
-EXEC InsertAppointment 1, 5, 'Doctor', '20190201', 'Exam', @insertedInt OUTPUT
-EXEC InsertAppointment 6, 1, 'Doctor', '20181124', 'Exam', @insertedInt OUTPUT
-EXEC InsertAppointment 5, 6, 'Doctor', '20180815', 'Exam', @insertedInt OUTPUT
-EXEC InsertAppointment 4, 5, 'Doctor', '20181213', 'Exam', @insertedInt OUTPUT
-EXEC InsertAppointment 1, 4, 'Doctor', '20190419', 'Exam', @insertedInt OUTPUT
+EXEC InsertAppointment 2, 1, 'Doctor', '20181124', 'Exam', 1, @insertedInt OUTPUT
+EXEC InsertAppointment 3, 3, 'Doctor', '20190303', 'Exam', 0, @insertedInt OUTPUT
+EXEC InsertAppointment 4, 4, 'Doctor', '20180815', 'Exam', 0, @insertedInt OUTPUT
+EXEC InsertAppointment 2, 2, 'Doctor', '20190419', 'Exam', 1, @insertedInt OUTPUT
+EXEC InsertAppointment 1, 5, 'Doctor', '20190201', 'Exam', 0, @insertedInt OUTPUT
+EXEC InsertAppointment 6, 1, 'Doctor', '20181124', 'Exam', 1, @insertedInt OUTPUT
+EXEC InsertAppointment 5, 6, 'Doctor', '20180815', 'Exam', 0, @insertedInt OUTPUT
+EXEC InsertAppointment 4, 5, 'Doctor', '20181213', 'Exam', 1, @insertedInt OUTPUT
+EXEC InsertAppointment 1, 4, 'Doctor', '20190419', 'Exam', 1, @insertedInt OUTPUT
 
 -----------
 -- Tests --

@@ -1,17 +1,13 @@
 package com.horvat.console.app;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.ZonedDateTime;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.function.Function;
 
-public class Helpers {
+public class Utils {
     //region Readonly fields
 
     private static final String DATE_FORMAT = "dd.MM.yyyy.";
@@ -21,10 +17,6 @@ public class Helpers {
     public static final Scanner scanner = new Scanner(System.in);
 
     //endregion
-
-    public static Date getCurrentDate() {
-        return Date.from(ZonedDateTime.now().toInstant());
-    }
 
     //region Reading data
 
@@ -45,11 +37,11 @@ public class Helpers {
     }
 
     public static Date readDateInFuture(String message, boolean includeTime) {
-        return readDate(input -> input != null && input.after(getCurrentDate()), message, includeTime);
+        return readDate(input -> input != null && input.after(new Date()), message, includeTime);
     }
 
     public static Date readDateInPast(String message, boolean includeTime) {
-        return readDate(input -> input != null && input.before(getCurrentDate()), message, includeTime);
+        return readDate(input -> input != null && input.before(new Date()), message, includeTime);
     }
 
     public static Date readDate(Function<Date, Boolean> predicate, String message, boolean includeTime) {
@@ -164,6 +156,8 @@ public class Helpers {
 
     //endregion
 
+    //region User interaction and printing
+
     public static StringBuilder getUnderlined(String text, char underlineChar) {
         StringBuilder builder = new StringBuilder(text);
 
@@ -207,4 +201,6 @@ public class Helpers {
         for (int i = 0; i < numLinesToPrintAfter; i++)
             System.out.println();
     }
+
+    //endregion
 }

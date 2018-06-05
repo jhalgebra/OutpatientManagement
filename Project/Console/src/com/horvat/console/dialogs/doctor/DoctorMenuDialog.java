@@ -4,7 +4,7 @@ import com.horvat.bll.viewmodels.doctor.AlterDataViewModel;
 import com.horvat.bll.viewmodels.doctor.DoctorMenuViewModel;
 import com.horvat.bll.viewmodels.doctor.OrderTestViewModel;
 import com.horvat.bll.viewmodels.doctor.PrescribeMedicineViewModel;
-import com.horvat.console.app.Helpers;
+import com.horvat.console.app.Utils;
 import com.horvat.console.dialogs.base.Dialog;
 import com.horvat.console.dialogs.base.DialogOption;
 import com.horvat.dl.entities.Patient;
@@ -66,7 +66,7 @@ public class DoctorMenuDialog extends Dialog<DoctorMenuViewModel> {
     }
 
     private Patient choosePatient() {
-        return Helpers.chooseOption(
+        return Utils.chooseOption(
                 patients
                 , patient -> patient.getBasicDetails().getName()
         );

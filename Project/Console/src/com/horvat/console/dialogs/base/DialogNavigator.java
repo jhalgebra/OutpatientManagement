@@ -1,9 +1,8 @@
 package com.horvat.console.dialogs.base;
 
-import com.horvat.console.app.Helpers;
+import com.horvat.console.app.Utils;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -19,7 +18,7 @@ public class DialogNavigator {
     }
 
     public void reprintCurrentDialogAfterInput(int numLinesToPrintAfter) {
-        Helpers.waitForInput(numLinesToPrintAfter);
+        Utils.waitForInput(numLinesToPrintAfter);
         reprintCurrentDialog();
     }
 
@@ -41,25 +40,16 @@ public class DialogNavigator {
         return true;
     }
 
-    public void backToFirstMenu() {
-        for (int i = dialogs.size() - 1; i > 0; i--)
-            dialogs.remove(i);
-
-        reprintCurrentDialog();
-    }
-
-    public void backToFirstMenuAfterInput(int numLinesToPrintAfter) {
-        Helpers.waitForInput(numLinesToPrintAfter);
-
-        backToFirstMenu();
-    }
-
     private void goBackOnSuccess(Supplier<Boolean> test, Class<? extends Dialog> targetDialog, Supplier<List<Object>> dialogEndData) {
-        if (test.get()) {
-            Dialog dialog = findTargetDialog(targetDialog);
+        try {
+            if (test.get()) {
+                Dialog dialog = findTargetDialog(targetDialog);
 
-            if(dialog != null && dialogEndData != null)
-                dialog.setDialogEndData(dialogEndData.get());
+                if(dialog != null && dialogEndData != null)
+                    dialog.setDialogEndData(dialogEndData.get());
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
 
         reprintCurrentDialog();

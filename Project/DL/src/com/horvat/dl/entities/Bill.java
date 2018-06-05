@@ -1,7 +1,9 @@
 package com.horvat.dl.entities;
 
+import javax.swing.text.NumberFormatter;
 import java.math.BigDecimal;
 import java.text.MessageFormat;
+import java.text.NumberFormat;
 import java.util.Date;
 
 public class Bill {
@@ -49,10 +51,12 @@ public class Bill {
 
     @Override
     public String toString() {
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+
         return MessageFormat.format(
                 "Bill issued on {0}, {1} payed by {2}",
                 dateIssued,
-                amount,
+                formatter.format(amount.doubleValue()),
                 paymentType
         );
     }

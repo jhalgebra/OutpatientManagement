@@ -4,7 +4,7 @@ import com.horvat.bll.viewmodels.doctor.DoctorMenuViewModel;
 import com.horvat.bll.viewmodels.MainMenuViewModel;
 import com.horvat.bll.viewmodels.receptionist.ReceptionistMenuViewModel;
 import com.horvat.bll.viewmodels.report.ReportViewModel;
-import com.horvat.console.app.Helpers;
+import com.horvat.console.app.Utils;
 import com.horvat.console.dialogs.base.Dialog;
 import com.horvat.console.dialogs.base.DialogOption;
 import com.horvat.console.dialogs.doctor.DoctorMenuDialog;
@@ -29,13 +29,13 @@ public class MainMenuDialog extends Dialog<MainMenuViewModel> {
                     return;
                 }
 
-                System.out.println(Helpers.getUnderlined("Choose a doctor", '-'));
+                System.out.println(Utils.getUnderlined("Choose a doctor", '-'));
 
                 dialogNavigator.goToNewDialog(
                         new DoctorMenuDialog(
                                 "Doctor Menu",
                                 '=',
-                                new DoctorMenuViewModel(Helpers.chooseOption(viewModel.getDoctors()))
+                                new DoctorMenuViewModel(Utils.chooseOption(viewModel.getDoctors()))
                         )
                 );
             }));
@@ -57,7 +57,7 @@ public class MainMenuDialog extends Dialog<MainMenuViewModel> {
             )));
 
             add(new DialogOption("Exit", () -> {
-                Helpers.scanner.close();
+                Utils.scanner.close();
                 System.exit(0);
             }));
         }};

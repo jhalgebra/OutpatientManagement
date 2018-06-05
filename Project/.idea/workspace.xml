@@ -2,26 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ce0fafa-4b58-4884-a3c6-0c3d842ab709" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/report/DailyReportViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/report/WeeklyOrMonthlyReportViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/DailyReportDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/WeeklyOrMonthlyReportDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/helpers/DateWithin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/models/DailyReport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/models/PatientReport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/helpers/ToStringUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUI/src/com/horvat/gui/windows/MainMenuWindow.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUI/src/com/horvat/gui/windows/MainMenuWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUI/src/com/horvat/gui/windows/base/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Outpatient Management Module Inserts.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Outpatient Management Module Inserts.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Outpatient Management Module Procedures.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Outpatient Management Module Procedures.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/FillAppointmentViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/FillAppointmentViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/LoginViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/MainMenuViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/base/BaseViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/base/BaseViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/doctor/OrderTestViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/doctor/OrderTestViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/doctor/PrescribeMedicineViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/doctor/PrescribeMedicineViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/receptionist/InsertPatientViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/receptionist/InsertPatientViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/receptionist/IssueBillViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/receptionist/IssueBillViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/app/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/app/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/app/Helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/app/Helpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BLL/src/com/horvat/bll/helpers/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/helpers/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/report/DailyReportViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/report/DailyReportViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/report/WeeklyOrMonthlyReportViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/report/WeeklyOrMonthlyReportViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/app/Helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/app/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/FillAppointmentDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/FillAppointmentDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/LoginDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/MainMenuDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/MainMenuDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/MainMenuDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/Dialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/DialogNavigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/DialogNavigator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/DialogOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/DialogOption.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/doctor/AlterDataDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/doctor/AlterDataDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/doctor/DoctorMenuDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/doctor/DoctorMenuDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/doctor/OrderTestDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/doctor/OrderTestDialog.java" afterDir="false" />
@@ -29,36 +28,32 @@
       <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/receptionist/InsertPatientDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/receptionist/InsertPatientDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/receptionist/IssueBillDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/receptionist/IssueBillDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/receptionist/ReceptionistMenuDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/receptionist/ReceptionistMenuDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/ReportDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/ReportDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/Converters.java" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/src/com/horvat/dal/Converters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/DatabaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/src/com/horvat/dal/DatabaseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DAL/src/com/horvat/dal/IRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/DAL/src/com/horvat/dal/IRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Appointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/FillAppointmentViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/FillAppointmentViewModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/LoginViewModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/base/BaseViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/base/BaseViewModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/doctor/OrderTestViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/doctor/OrderTestViewModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/doctor/PrescribeMedicineViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/doctor/PrescribeMedicineViewModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/receptionist/InsertPatientViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/receptionist/InsertPatientViewModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/receptionist/IssueBillViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/receptionist/IssueBillViewModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/app/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/app/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/app/Helpers.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/app/Helpers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/FillAppointmentDialog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/LoginDialog$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/LoginDialog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/DailyReportDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/DailyReportDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/WeeklyOrMonthlyReportDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/WeeklyOrMonthlyReportDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Bill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Patient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/src/com/horvat/gui/app/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/src/com/horvat/gui/app/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/helpers/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/helpers/Utils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/report/DailyReportViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/report/DailyReportViewModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/report/WeeklyOrMonthlyReportViewModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BLL/com/horvat/bll/viewmodels/report/WeeklyOrMonthlyReportViewModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/app/Helpers.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/FillAppointmentDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/FillAppointmentDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/MainMenuDialog$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/MainMenuDialog$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/base/Dialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/base/Dialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/base/DialogNavigator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/base/DialogOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/base/DialogOption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/base/DialogNavigator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/base/DialogNavigator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/doctor/AlterDataDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/doctor/AlterDataDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/doctor/DoctorMenuDialog$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/doctor/DoctorMenuDialog$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/doctor/OrderTestDialog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/doctor/DoctorMenuDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/doctor/DoctorMenuDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/doctor/OrderTestDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/doctor/OrderTestDialog.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/doctor/PrescribeMedicineDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/doctor/PrescribeMedicineDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/receptionist/InsertPatientDialog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/receptionist/IssueBillDialog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/receptionist/InsertPatientDialog$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/receptionist/InsertPatientDialog$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/receptionist/InsertPatientDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/receptionist/InsertPatientDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/receptionist/IssueBillDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/receptionist/IssueBillDialog.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/receptionist/ReceptionistMenuDialog$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/receptionist/ReceptionistMenuDialog$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/report/ReportDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/report/ReportDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/DatabaseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAL/com/horvat/dal/DatabaseRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/horvat/Tests/DatabaseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/horvat/Tests/DatabaseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/report/DailyReportDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/report/DailyReportDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/report/WeeklyOrMonthlyReportDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Console/com/horvat/console/dialogs/report/WeeklyOrMonthlyReportDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DL/com/horvat/dl/entities/Bill.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DL/com/horvat/dl/entities/Bill.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DL/com/horvat/dl/entities/Patient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DL/com/horvat/dl/entities/Patient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GUI/com/horvat/gui/app/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GUI/com/horvat/gui/app/Application.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -74,16 +69,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pro</find>
-      <find>int insertAppointment\(\n            int doctorID\,\n            int patientID\,\n            String delegate\,\n            Date dateAppointed\,\n            String details\n    \)\;\n\n    void removeAppointment\(int appointmentID\)\;\n\n    List\&lt;Appointment\&gt; getAppointments\(int patientID\)\;</find>
       <find>void remove</find>
       <find>&lt;Integer&gt;(</find>
       <find>new SQLParameter&lt;Integer&gt;(</find>
@@ -112,6 +105,8 @@
       <find>callback</find>
       <find>successCallback</find>
       <find>update</find>
+      <find>max</find>
+      <find>min</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -127,6 +122,8 @@
       <replace>enterString</replace>
       <replace>Runnable successCallback</replace>
       <replace>successCallback</replace>
+      <replace>min</replace>
+      <replace>max</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -135,37 +132,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/converters/AppointmentConverter.java" />
-        <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/converters/base/BaseConverter.java" />
-        <option value="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/PrescribedMedicine.java" />
-        <option value="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Test.java" />
-        <option value="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Bill.java" />
-        <option value="$PROJECT_DIR$/src/com/horvat/Main.java" />
-        <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/MainMenuViewModel.java" />
-        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/MainMenuDialog.java" />
-        <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/ReceptionistMenuViewModel.java" />
-        <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/ReportViewModel.java" />
-        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/ReportDialog.java" />
-        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/ReceptionistMenuDialog.java" />
-        <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/OrderTestViewModel.java" />
-        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/OrderTestDialog.java" />
-        <option value="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Patient.java" />
         <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/DoctorMenuViewModel.java" />
         <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/DoctorMenuDialog.java" />
-        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/app/Application.java" />
         <option value="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Doctor.java" />
         <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/doctor/DoctorMenuViewModel.java" />
         <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/doctor/AlterDataViewModel.java" />
         <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/receptionist/ReceptionistMenuViewModel.java" />
-        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/app/Helpers.java" />
         <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/DialogOption.java" />
-        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/doctor/AlterDataDialog.java" />
         <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/LoginDialog.java" />
-        <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/report/DailyReportViewModel.java" />
-        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/WeeklyOrMonthlyReportDialog.java" />
-        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/DailyReportDialog.java" />
         <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/ReportDialog.java" />
-        <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/report/WeeklyOrMonthlyReportViewModel.java" />
         <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/base/BaseViewModel.java" />
         <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/doctor/OrderTestViewModel.java" />
         <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/receptionist/IssueBillViewModel.java" />
@@ -175,9 +150,7 @@
         <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/doctor/PrescribeMedicineDialog.java" />
         <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/receptionist/IssueBillDialog.java" />
         <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/receptionist/InsertPatientViewModel.java" />
-        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/Dialog.java" />
         <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/receptionist/ReceptionistMenuDialog.java" />
-        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/DialogNavigator.java" />
         <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/receptionist/InsertPatientDialog.java" />
         <option value="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Appointment.java" />
         <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/FillAppointmentViewModel.java" />
@@ -186,12 +159,36 @@
         <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/IRepository.java" />
         <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/Converters.java" />
         <option value="$PROJECT_DIR$/DAL/src/com/horvat/dal/DatabaseRepository.java" />
+        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/app/Helpers.java" />
+        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/doctor/AlterDataDialog.java" />
+        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/helpers/DateWithin.java" />
+        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/app/Application.java" />
+        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/helpers/Utils.java" />
+        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/app/Utils.java" />
+        <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/helpers/Utils.java" />
+        <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/report/DailyReportViewModel.java" />
+        <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/report/WeeklyOrMonthlyReportViewModel.java" />
+        <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/models/PatientReport.java" />
+        <option value="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Patient.java" />
+        <option value="$PROJECT_DIR$/BLL/src/com/horvat/bll/models/DailyReport.java" />
+        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/DailyReportDialog.java" />
+        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/WeeklyOrMonthlyReportDialog.java" />
+        <option value="$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Bill.java" />
+        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/DialogNavigator.java" />
+        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/Dialog.java" />
+        <option value="$PROJECT_DIR$/GUI/src/com/horvat/gui/windows/Test.form" />
+        <option value="$PROJECT_DIR$/GUI/src/com/horvat/gui/windows/MainMenuWindow.form" />
+        <option value="$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/MainMenuDialog.java" />
+        <option value="$PROJECT_DIR$/GUI/src/com/horvat/gui/windows/base/Window.java" />
+        <option value="$PROJECT_DIR$/GUI/src/com/horvat/gui/app/Application.java" />
+        <option value="$PROJECT_DIR$/GUI/src/com/horvat/gui/windows/MainMenuWindow.java" />
+        <option value="$PROJECT_DIR$/DL/src/com/horvat/dl/helpers/ToStringUtils.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
+    <option name="x" value="132" />
+    <option name="y" value="-1094" />
     <option name="width" value="1938" />
     <option name="height" value="1048" />
   </component>
@@ -203,7 +200,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -214,68 +210,6 @@
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="BLL" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="BLL" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="BLL" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="bll" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="BLL" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="bll" type="462c0819:PsiDirectoryNode" />
-              <item name="viewmodels" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="BLL" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="bll" type="462c0819:PsiDirectoryNode" />
-              <item name="viewmodels" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="BLL" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="bll" type="462c0819:PsiDirectoryNode" />
-              <item name="viewmodels" type="462c0819:PsiDirectoryNode" />
-              <item name="doctor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="BLL" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="bll" type="462c0819:PsiDirectoryNode" />
-              <item name="viewmodels" type="462c0819:PsiDirectoryNode" />
-              <item name="receptionist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="BLL" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="bll" type="462c0819:PsiDirectoryNode" />
-              <item name="viewmodels" type="462c0819:PsiDirectoryNode" />
-              <item name="report" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="Console" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -290,14 +224,6 @@
               <item name="Console" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="console" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="Console" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="console" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
@@ -342,30 +268,13 @@
               <item name="console" type="462c0819:PsiDirectoryNode" />
               <item name="dialogs" type="462c0819:PsiDirectoryNode" />
               <item name="report" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="DAL" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="DAL" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="DAL" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="dal" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -374,7 +283,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="project.propGUI" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -466,7 +375,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-1088" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -474,17 +383,16 @@
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005952" side_tool="true" weight="0.2384702" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49940476" weight="0.23721436" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49940476" weight="0.23721436" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Designer" order="2" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2140625" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3295838" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39825898" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39825898" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -494,6 +402,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32861805" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -505,273 +414,10 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/PersonalDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
-          <folding>
-            <element signature="method#PersonalDetails#0;class#PersonalDetails#0" />
-            <element signature="method#toString#0;class#PersonalDetails#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/ProfessionDetails.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding>
-            <element signature="method#ProfessionDetails#0;class#ProfessionDetails#0" />
-            <element signature="method#toString#0;class#ProfessionDetails#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/converters/base/IConverter.java" />
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/RepositoryFactory.java" />
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/converters/AppointmentConverter.java" />
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/converters/base/BaseConverter.java" />
-    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
-          <caret line="61" column="29" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Bill.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/horvat/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/MainMenuViewModel.java" />
-    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/MainMenuDialog.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_172/src.zip!/java/util/ArrayList.java" />
-    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/report/ReportViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/app/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/PrescribedMedicine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="49" column="11" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Doctor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="31" column="32" lean-forward="true" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DAL/src/com/horvat/dal/FileManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/app/Helpers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
-          <folding>
-            <element signature="e#358#382#0" />
-            <element signature="e#927#948#0" />
-            <element signature="method#readBoolean#0;class#Helpers#0" />
-            <element signature="method#readDouble#0;class#Helpers#0" />
-            <element signature="method#readDecimal#0;class#Helpers#0" />
-            <element signature="method#readDateInFuture#0;class#Helpers#0" />
-            <element signature="method#readDateInPast#0;class#Helpers#0" />
-            <element signature="method#readDate#0;class#Helpers#0" />
-            <element signature="e#2018#2354#0" />
-            <element signature="method#readString#0;class#Helpers#0" />
-            <element signature="method#read#0;class#Helpers#0" />
-            <element signature="e#3806#3828#0" />
-            <element signature="method#labelledChooseOption#0;class#Helpers#0" />
-            <element signature="method#labelledChooseOption#1;class#Helpers#0" />
-            <element signature="method#chooseOption#1;class#Helpers#0" />
-            <element signature="method#labelledChooseOption#2;class#Helpers#0" />
-            <element signature="method#getUnderlined#0;class#Helpers#0" />
-            <element signature="method#constructInputOptions#0;class#Helpers#0" />
-            <element signature="method#confirm#0;class#Helpers#0" />
-            <element signature="method#waitForInput#0;class#Helpers#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/DialogOption.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/MainMenuDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="58" column="43" selection-start-line="58" selection-start-column="43" selection-end-line="58" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/MainMenuViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/WeeklyOrMonthlyReportDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/DailyReportDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/report/WeeklyOrMonthlyReportViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
-          <folding>
-            <element signature="e#254#255#0" expanded="true" />
-            <element signature="e#292#293#0" expanded="true" />
-            <element signature="e#356#357#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/ReportDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/doctor/AlterDataDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="43" column="25" lean-forward="true" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Patient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="205" selection-start-line="205" selection-end-line="205" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/doctor/OrderTestDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
-          <folding>
-            <element signature="method#OrderTestDialog#0;class#OrderTestDialog#0" />
-            <element signature="method#askForInput#0;class#OrderTestDialog#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/receptionist/IssueBillDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/doctor/DoctorMenuDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/doctor/PrescribeMedicineDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="341">
           <caret line="30" column="38" lean-forward="true" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
-          <folding>
-            <element signature="method#PrescribeMedicineDialog#0;class#PrescribeMedicineDialog#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/Dialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
-          <folding>
-            <element signature="method#Dialog#0;class#Dialog#0" />
-            <element signature="method#setDialogEndData#0;class#Dialog#0" />
-            <element signature="method#initialize#0;class#Dialog#0" />
-            <element signature="method#print#0;class#Dialog#0" />
-            <element signature="method#processDialogEndData#0;class#Dialog#0" />
-            <element signature="method#askForInput#0;class#Dialog#0" />
-            <element signature="method#printOptions#0;class#Dialog#0" />
-            <element signature="method#saveChanges#0;class#Dialog#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/DialogNavigator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="56" column="133" selection-start-line="56" selection-start-column="133" selection-end-line="56" selection-end-column="133" />
-          <folding>
-            <element signature="method#reprintCurrentDialogAfterInput#0;class#DialogNavigator#0" />
-            <element signature="method#goToNewDialog#0;class#DialogNavigator#0" />
-            <element signature="method#goToPreviousDialog#0;class#DialogNavigator#0" />
-            <element signature="method#backToFirstMenu#0;class#DialogNavigator#0" />
-            <element signature="method#backToFirstMenuAfterInput#0;class#DialogNavigator#0" />
-            <element signature="method#goBackOnSuccess#0;class#DialogNavigator#0" />
-            <element signature="method#goBackOnSuccess#1;class#DialogNavigator#0" />
-            <element signature="method#goBackOnSuccess#2;class#DialogNavigator#0" />
-            <element signature="method#findTargetDialog#0;class#DialogNavigator#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -779,12 +425,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-          <folding>
-            <element signature="method#InsertPatientDialog#0;class#InsertPatientDialog#0" />
-            <element signature="method#askForInput#0;class#InsertPatientDialog#0" />
-            <element signature="class#6692:6737" />
-            <element signature="initializer##0;class#6692:6742" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -792,27 +432,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
-          <folding>
-            <element signature="method#ReceptionistMenuDialog#0;class#ReceptionistMenuDialog#0" />
-            <element signature="class#1060:2695" />
-            <element signature="initializer##0;class#1060:2695" />
-            <element signature="e#1185#1622#0" />
-            <element signature="e#1737#2166#0" />
-            <element signature="e#2272#2668#0" />
-            <element signature="method#processDialogEndData#0;class#ReceptionistMenuDialog#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Appointment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
-          <caret line="62" column="37" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="37" />
-          <folding>
-            <element signature="method#Appointment#0;class#Appointment#0" />
-            <element signature="method#Appointment#1;class#Appointment#0" />
-            <element signature="method#toString#0;class#Appointment#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -820,28 +439,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="28" column="63" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />
-          <folding>
-            <element signature="method#run#0;class#DatabaseTest#0" />
-            <element signature="method#testDeletes#0;class#DatabaseTest#0" />
-            <element signature="method#testInserts#0;class#DatabaseTest#0" />
-            <element signature="method#testGetters#0;class#DatabaseTest#0" />
-            <element signature="method#print#0;class#DatabaseTest#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/FillAppointmentViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
-          <folding>
-            <element signature="method#FillAppointmentViewModel#0;class#FillAppointmentViewModel#0" />
-            <element signature="method#FillAppointmentViewModel#1;class#FillAppointmentViewModel#0" />
-            <element signature="method#saveChanges#0;class#FillAppointmentViewModel#0" />
-            <element signature="method#setDelegate#0;class#FillAppointmentViewModel#0" />
-            <element signature="method#setAppointmentDate#0;class#FillAppointmentViewModel#0" />
-            <element signature="method#setDetails#0;class#FillAppointmentViewModel#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -849,9 +446,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="318">
           <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -866,19 +460,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-          <folding>
-            <element signature="method#AlterDataViewModel#0;class#AlterDataViewModel#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/doctor/DoctorMenuViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
-          <folding>
-            <element signature="method#getPatients#0;class#DoctorMenuViewModel#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -886,10 +467,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="26" column="50" selection-start-line="26" selection-start-column="50" selection-end-line="26" selection-end-column="50" />
-          <folding>
-            <element signature="method#OrderTestViewModel#0;class#OrderTestViewModel#0" />
-            <element signature="method#saveChanges#0;class#OrderTestViewModel#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -897,10 +474,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
-          <folding>
-            <element signature="method#PrescribeMedicineViewModel#0;class#PrescribeMedicineViewModel#0" />
-            <element signature="method#saveChanges#0;class#PrescribeMedicineViewModel#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -908,13 +481,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="291">
           <caret line="62" column="31" selection-start-line="62" selection-start-column="31" selection-end-line="62" selection-end-column="31" />
-          <folding>
-            <element signature="method#saveChanges#0;class#InsertPatientViewModel#0" />
-            <element signature="method#setContactOfNextOfKin#0;class#InsertPatientViewModel#0" />
-            <element signature="method#setProfessionDetails#0;class#InsertPatientViewModel#0" />
-            <element signature="method#setMedicalComplaints#0;class#InsertPatientViewModel#0" />
-            <element signature="method#getPredominantEatingOptions#0;class#InsertPatientViewModel#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -922,9 +488,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
           <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
-          <folding>
-            <element signature="method#saveChanges#0;class#IssueBillViewModel#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -932,16 +495,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/report/DailyReportViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -949,14 +502,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
-          <folding>
-            <element signature="e#196#212#0" />
-            <element signature="e#990#1003#0" />
-            <element signature="e#1222#1242#0" />
-            <element signature="e#1639#1652#0" />
-            <element signature="e#1914#1941#0" />
-            <element signature="e#2316#2332#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -964,35 +509,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="359" column="29" lean-forward="true" selection-start-line="359" selection-start-column="29" selection-end-line="359" selection-end-column="29" />
-          <folding>
-            <element signature="method#DatabaseRepository#0;class#DatabaseRepository#0" />
-            <element signature="e#562#578#0" />
-            <element signature="method#insertPatientWithBasicDetails#0;class#DatabaseRepository#0" />
-            <element signature="method#insertPatientWithFullDetails#0;class#DatabaseRepository#0" />
-            <element signature="method#removePatient#0;class#DatabaseRepository#0" />
-            <element signature="method#getPatients#0;class#DatabaseRepository#0" />
-            <element signature="method#getPatientsForDoctor#0;class#DatabaseRepository#0" />
-            <element signature="e#10519#10532#0" />
-            <element signature="method#insertBill#0;class#DatabaseRepository#0" />
-            <element signature="method#removeBill#0;class#DatabaseRepository#0" />
-            <element signature="method#getBills#0;class#DatabaseRepository#0" />
-            <element signature="method#insertAppointment#0;class#DatabaseRepository#0" />
-            <element signature="method#removeAppointment#0;class#DatabaseRepository#0" />
-            <element signature="e#15207#15220#0" />
-            <element signature="method#insertTest#0;class#DatabaseRepository#0" />
-            <element signature="method#removeTest#0;class#DatabaseRepository#0" />
-            <element signature="method#getTests#0;class#DatabaseRepository#0" />
-            <element signature="e#17192#17219#0" />
-            <element signature="method#insertPrescribedMedicine#0;class#DatabaseRepository#0" />
-            <element signature="method#removePrescribedMedicine#0;class#DatabaseRepository#0" />
-            <element signature="method#getPrescribedMedicine#0;class#DatabaseRepository#0" />
-            <element signature="method#getDoctors#0;class#DatabaseRepository#0" />
-            <element signature="e#20022#20038#0" />
-            <element signature="method#getPaymentTypes#0;class#DatabaseRepository#0" />
-            <element signature="method#getPredominantEatingOptions#0;class#DatabaseRepository#0" />
-            <element signature="method#getSexes#0;class#DatabaseRepository#0" />
-            <element signature="method#getMedicines#0;class#DatabaseRepository#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1000,10 +516,223 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="24" column="31" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/time/ZonedDateTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="197" column="32" selection-start-line="197" selection-start-column="32" selection-end-line="197" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/doctor/AlterDataDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="47" column="1" lean-forward="true" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/ReportDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/helpers/DateWithin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/helpers/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1166">
+          <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/stream/Collectors.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2410">
+          <caret line="103" column="19" selection-start-line="103" selection-start-column="19" selection-end-line="103" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/report/DailyReportViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/report/WeeklyOrMonthlyReportViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/doctor/DoctorMenuViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/doctor/DoctorMenuDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/models/PatientReport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="56" column="30" lean-forward="true" selection-start-line="56" selection-start-column="30" selection-end-line="56" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/models/DailyReport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="58" column="30" lean-forward="true" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="617" column="17" selection-start-line="617" selection-start-column="17" selection-end-line="617" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/WeeklyOrMonthlyReportDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/report/DailyReportDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="27" column="105" selection-start-line="27" selection-start-column="44" selection-end-line="27" selection-end-column="105" />
           <folding>
-            <element signature="e#5887#5888#0" expanded="true" />
-            <element signature="e#5930#5931#0" expanded="true" />
+            <element signature="e#718#901#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/app/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/app/Utils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Appointment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-341">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Doctor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Bill.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BLL/src/com/horvat/bll/viewmodels/FillAppointmentViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="35" column="57" selection-start-line="35" selection-start-column="57" selection-end-line="35" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/Dialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/base/DialogNavigator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="40" column="5" lean-forward="true" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/src/com/horvat/gui/windows.java" />
+    <entry file="file://$PROJECT_DIR$/GUI/src/com/horvat/gui/windows/MainMenuWindowse.java" />
+    <entry file="file://$PROJECT_DIR$/GUI/src/com/horvat/gui/windows/Test.java" />
+    <entry file="file://$PROJECT_DIR$/GUI/src/com/horvat/gui/windows/s.java" />
+    <entry file="file://$PROJECT_DIR$/GUI/src/com/horvat/gui/windows/base/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Console/src/com/horvat/console/dialogs/MainMenuDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/entities/Patient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DL/src/com/horvat/dl/helpers/ToStringUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="41" column="94" selection-start-line="41" selection-start-column="94" selection-end-line="41" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/src/com/horvat/gui/windows/MainMenuWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="23" column="48" lean-forward="true" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/src/com/horvat/gui/app/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
         </state>
       </provider>
     </entry>

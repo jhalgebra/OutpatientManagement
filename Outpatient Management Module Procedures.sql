@@ -501,8 +501,8 @@ AS
 		a.Delegate, --who set up the appointment
 		a.DateAppointed,
 		a.Details,
-		a.SecondOpinion,
-		bd.Name --doctor's name
+		bd.Name, --doctor's name
+		a.SecondOpinion
 	FROM Appointment AS a
 	INNER JOIN Doctor AS d ON d.ID = a.DoctorID
 	INNER JOIN BasicDetails AS bd ON bd.ID = d.BasicDetailsID

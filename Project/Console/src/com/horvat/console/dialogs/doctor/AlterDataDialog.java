@@ -2,7 +2,6 @@ package com.horvat.console.dialogs.doctor;
 
 import com.horvat.bll.viewmodels.FillAppointmentViewModel;
 import com.horvat.bll.viewmodels.doctor.AlterDataViewModel;
-import com.horvat.console.app.Helpers;
 import com.horvat.console.dialogs.FillAppointmentDialog;
 import com.horvat.console.dialogs.base.Dialog;
 import com.horvat.console.dialogs.base.DialogOption;
@@ -21,7 +20,7 @@ public class AlterDataDialog extends Dialog<AlterDataViewModel> {
 
         options = new ArrayList<>();
 
-        Date now = Helpers.getCurrentDate();
+        Date now = new Date();
 
         int counter = 1;
         for (Appointment appointment : patient.getAppointments()) {

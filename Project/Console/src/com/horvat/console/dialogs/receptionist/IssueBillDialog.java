@@ -1,7 +1,7 @@
 package com.horvat.console.dialogs.receptionist;
 
 import com.horvat.bll.viewmodels.receptionist.IssueBillViewModel;
-import com.horvat.console.app.Helpers;
+import com.horvat.console.app.Utils;
 import com.horvat.console.dialogs.base.Dialog;
 
 public class IssueBillDialog extends Dialog<IssueBillViewModel> {
@@ -11,9 +11,9 @@ public class IssueBillDialog extends Dialog<IssueBillViewModel> {
 
     @Override
     protected void askForInput() {
-        viewModel.setAmount(Helpers.readDecimal("Enter amount"));
+        viewModel.setAmount(Utils.readDecimal("Enter amount"));
 
-        viewModel.setPaymentType(Helpers.chooseOption(viewModel.getPaymentTypes()).getValue());
+        viewModel.setPaymentType(Utils.chooseOption(viewModel.getPaymentTypes()).getValue());
 
         dialogNavigator.goBackOnSuccess(
                 this,

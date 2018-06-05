@@ -1,7 +1,7 @@
 package com.horvat.console.dialogs.base;
 
 import com.horvat.bll.viewmodels.base.BaseViewModel;
-import com.horvat.console.app.Helpers;
+import com.horvat.console.app.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ public abstract class Dialog<T extends BaseViewModel> {
 
         System.out.println(System.lineSeparator());
 
-        System.out.println(Helpers.getUnderlined(title, underlineChar));
+        System.out.println(Utils.getUnderlined(title, underlineChar));
 
         askForInput();
     }
@@ -68,9 +68,9 @@ public abstract class Dialog<T extends BaseViewModel> {
             return;
 
         if (subtitle != null && subtitle.length() > 0)
-            System.out.println(Helpers.getUnderlined(subtitle, '-'));
+            System.out.println(Utils.getUnderlined(subtitle, '-'));
 
-        DialogOption chosenOption = Helpers.chooseOption(options);
+        DialogOption chosenOption = Utils.chooseOption(options);
 
         if (chosenOption != null) {
             Runnable action = chosenOption.getAction();

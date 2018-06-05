@@ -1,6 +1,10 @@
 package com.horvat.dl.entities;
 
+import com.horvat.dl.helpers.ToStringUtils;
+import javafx.util.Pair;
+
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -172,38 +176,13 @@ public class Patient {
     }
 
     public String getFullInfo() {
-        String line = System.lineSeparator() + "===============================================";
-
-        StringBuilder info = new StringBuilder(line)
-                .append(System.lineSeparator())
-                .append(System.lineSeparator())
-                .append(toString());
-
-        appendCollection(info, "Appointments:", appointments);
-        appendCollection(info, "Tests:", tests);
-        appendCollection(info, "Prescribed Medicine:", prescribedMedicine);
-        appendCollection(info, "Bills:", bills);
-
-        info
-                .append(System.lineSeparator())
-                .append(line);
-
-        return info.toString();
+        return ToStringUtils.construct('=',
+                new Pair<>("Appointments:", new ArrayList<>(appointments)),
+                new Pair<>("Tests:", new ArrayList<>(tests)),
+                new Pair<>("Prescribed Medicine:", new ArrayList<>(prescribedMedicine)),
+                new Pair<>("Bills:", new ArrayList<>(bills))
+        );
     }
 
-    private <T> void appendCollection(StringBuilder builder, String label, List<T> collection) {
-        builder.append(System.lineSeparator()).append(System.lineSeparator());
 
-        builder.append(label);
-
-        if (collection.size() == 0) {
-            builder.append(" empty").append(System.lineSeparator());
-            return;
-        }
-
-        for (T item : collection) {
-            builder.append(System.lineSeparator()).append(System.lineSeparator());
-            builder.append(item.toString());
-        }
-    }
 }

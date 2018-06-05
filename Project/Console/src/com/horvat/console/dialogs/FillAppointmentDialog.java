@@ -1,7 +1,7 @@
 package com.horvat.console.dialogs;
 
 import com.horvat.bll.viewmodels.FillAppointmentViewModel;
-import com.horvat.console.app.Helpers;
+import com.horvat.console.app.Utils;
 import com.horvat.console.dialogs.base.Dialog;
 import com.horvat.console.dialogs.doctor.DoctorMenuDialog;
 import com.horvat.console.dialogs.receptionist.ReceptionistMenuDialog;
@@ -18,16 +18,16 @@ public class FillAppointmentDialog extends Dialog<FillAppointmentViewModel> {
     @Override
     protected void askForInput() {
         if (viewModel.isEditMode() &&
-                !Helpers.confirm("You are about to override appointment " + viewModel.getAppointment())
+                !Utils.confirm("You are about to override appointment " + viewModel.getAppointment())
                 ) {
             dialogNavigator.goToPreviousDialog();
             return;
         }
 
-        Boolean secondOpinion = Helpers.readBoolean("Second opinion");
-        String details = Helpers.enterString("Appointment details");
+        Boolean secondOpinion = Utils.readBoolean("Second opinion");
+        String details = Utils.enterString("Appointment details");
 
-        Date date = Helpers.readDateInFuture("Enter date and time", true);
+        Date date = Utils.readDateInFuture("Enter date and time", true);
 
         viewModel.setSecondOpinion(secondOpinion);
         viewModel.setDetails(details);
@@ -38,7 +38,7 @@ public class FillAppointmentDialog extends Dialog<FillAppointmentViewModel> {
                         //Edit mode - doctor is editing it
                         ? viewModel.getDoctor().nameWithTitle()
                         //New appointment
-                        : Helpers.enterString("Appointment delegate")
+                        : Utils.enterString("Appointment delegate")
         );
 
         dialogNavigator.goBackOnSuccess(

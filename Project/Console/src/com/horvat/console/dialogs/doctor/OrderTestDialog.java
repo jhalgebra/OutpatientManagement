@@ -1,7 +1,7 @@
 package com.horvat.console.dialogs.doctor;
 
 import com.horvat.bll.viewmodels.doctor.OrderTestViewModel;
-import com.horvat.console.app.Helpers;
+import com.horvat.console.app.Utils;
 import com.horvat.console.dialogs.base.Dialog;
 
 public class OrderTestDialog extends Dialog<OrderTestViewModel> {
@@ -11,9 +11,9 @@ public class OrderTestDialog extends Dialog<OrderTestViewModel> {
 
     @Override
     protected void askForInput() {
-        viewModel.setDetails(Helpers.enterString("details"));
-        viewModel.setName(Helpers.enterString("name"));
-        viewModel.setTestDate(Helpers.readDateInFuture("Enter date", true));
+        viewModel.setDetails(Utils.enterString("details"));
+        viewModel.setName(Utils.enterString("name"));
+        viewModel.setTestDate(Utils.readDateInFuture("Enter date", true));
 
         dialogNavigator.goBackOnSuccess(
                 this,
