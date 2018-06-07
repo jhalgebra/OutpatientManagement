@@ -1,8 +1,11 @@
 package com.horvat.dl.entities;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
-public class BasicDetails {
+public class BasicDetails implements IDisplayable {
     private String name;
     private String oib;
     private String sex;
@@ -51,5 +54,17 @@ public class BasicDetails {
                 ", sex='" + sex + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 '}';
+    }
+
+    @Override
+    public Map<String, Map<String, Object>> getDisplayDataGroups() {
+        return new HashMap<String, Map<String, Object>>() {{
+            put(NON_GROUPED_NAME, new HashMap<String, Object>() {{
+                put("Name", name);
+                put("OIB", oib);
+                put("Sex", sex);
+                put("Date of birth", dateOfBirth);
+            }});
+        }};
     }
 }

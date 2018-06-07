@@ -1,6 +1,10 @@
 package com.horvat.dl.entities;
 
-public class ContactOfNextOfKin {
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class ContactOfNextOfKin implements IDisplayable {
     private String name;
     private String contactAddress;
     private Contact contact;
@@ -42,5 +46,17 @@ public class ContactOfNextOfKin {
                 ", contactAddress='" + contactAddress + '\'' +
                 ", contact=" + contact +
                 '}';
+    }
+
+    @Override
+    public Map<String, Map<String, Object>> getDisplayDataGroups() {
+        return new HashMap<String, Map<String, Object>>() {{
+            put(NON_GROUPED_NAME, new HashMap<String, Object>() {{
+                put("Name", name);
+                put("Contact address", contactAddress);
+            }});
+
+            put("Contact", contact.getDisplayDataGroups().get(NON_GROUPED_NAME));
+        }};
     }
 }

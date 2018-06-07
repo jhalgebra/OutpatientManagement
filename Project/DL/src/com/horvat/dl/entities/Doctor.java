@@ -1,8 +1,11 @@
 package com.horvat.dl.entities;
 
 import java.text.MessageFormat;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
-public class Doctor {
+public class Doctor implements IDisplayable {
     private Integer id;
     private BasicDetails basicDetails;
 
@@ -38,5 +41,12 @@ public class Doctor {
 
     public String nameWithTitle(){
         return "Dr. " + getBasicDetails().getName();
+    }
+
+    @Override
+    public Map<String, Map<String, Object>> getDisplayDataGroups() {
+        return new HashMap<String, Map<String, Object>>() {{
+            put(NON_GROUPED_NAME, basicDetails.getDisplayDataGroups().get(NON_GROUPED_NAME));
+        }};
     }
 }

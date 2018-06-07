@@ -129,7 +129,7 @@ public class DatabaseRepository implements IRepository {
                     new SQLParameter<>(professionDetails.getOccupation()),
                     new SQLParameter<>(professionDetails.getGrossAnnualIncome()),
 
-                    new SQLParameter<>(lifestyle.isVegeterian()),
+                    new SQLParameter<>(lifestyle.isvegetarian()),
                     new SQLParameter<>(lifestyle.isSmoker()),
                     new SQLParameter<>(lifestyle.isConsumesAlcoholicBeverage()),
                     new SQLParameter<>(lifestyle.isUsesStimulants()),

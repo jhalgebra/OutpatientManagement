@@ -1,6 +1,10 @@
 package com.horvat.dl.entities;
 
-public class Contact {
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class Contact implements IDisplayable {
     private String telephoneHome;
     private String telephoneWork;
     private String mobile;
@@ -75,5 +79,19 @@ public class Contact {
                 ", fax='" + fax + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public Map<String, Map<String, Object>> getDisplayDataGroups() {
+        return new HashMap<String, Map<String, Object>>() {{
+            put(NON_GROUPED_NAME, new HashMap<String, Object>() {{
+                put("Home telephone", telephoneHome);
+                put("Work telephone", telephoneWork);
+                put("Mobile", mobile);
+                put("Pager", pager);
+                put("Fax", fax);
+                put("Email", email);
+            }});
+        }};
     }
 }

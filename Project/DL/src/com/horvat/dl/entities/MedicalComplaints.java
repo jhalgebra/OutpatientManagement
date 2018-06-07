@@ -1,6 +1,10 @@
 package com.horvat.dl.entities;
 
-public class MedicalComplaints {
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class MedicalComplaints implements IDisplayable {
     private Boolean diabetic;
     private Boolean hypertensive;
     private String cardiacCondition;
@@ -130,5 +134,24 @@ public class MedicalComplaints {
                 ", knownAdverseReactionToSpecificDrugs='" + knownAdverseReactionToSpecificDrugs + '\'' +
                 ", majorSurgeries='" + majorSurgeries + '\'' +
                 '}';
+    }
+
+    @Override
+    public Map<String, Map<String, Object>> getDisplayDataGroups() {
+        return new HashMap<String, Map<String, Object>>() {{
+            put(NON_GROUPED_NAME, new HashMap<String, Object>() {{
+                put("Diabetic", diabetic);
+                put("Hypertensive", hypertensive);
+                put("Cardiac condition", cardiacCondition);
+                put("Respiratory condition", respiratoryCondition);
+                put("Digestive condition", digestiveCondition);
+                put("Orthopedic condition", orthopedicCondition);
+                put("Muscular condition", muscularCondition);
+                put("Neurological condition", neurologicalCondition);
+                put("Known allergies", knownAllergies);
+                put("Known adverse reaction to specific drugs", knownAdverseReactionToSpecificDrugs);
+                put("Major surgeries", majorSurgeries);
+            }});
+        }};
     }
 }

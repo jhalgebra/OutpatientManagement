@@ -1,6 +1,8 @@
 package com.horvat.dl.entities;
 
-public class PersonalDetails {
+import java.util.*;
+
+public class PersonalDetails implements IDisplayable {
     private Boolean married;
     private Integer numberOfDependents;
     private Double height;
@@ -64,5 +66,18 @@ public class PersonalDetails {
                 ", weight=" + weight +
                 ", bloodTypeRH='" + bloodTypeRH + '\'' +
                 '}';
+    }
+
+    @Override
+    public Map<String, Map<String, Object>> getDisplayDataGroups() {
+        return new HashMap<String, Map<String, Object>>() {{
+            put(NON_GROUPED_NAME, new HashMap<String, Object>() {{
+                put("Married", married);
+                put("Number of dependents", numberOfDependents);
+                put("Height", height);
+                put("Weight", weight);
+                put("Blood type and RH factor", bloodTypeRH);
+            }});
+        }};
     }
 }

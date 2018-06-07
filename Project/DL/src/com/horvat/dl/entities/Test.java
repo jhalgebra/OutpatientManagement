@@ -2,8 +2,11 @@ package com.horvat.dl.entities;
 
 import java.text.MessageFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
-public class Test {
+public class Test implements IDisplayable {
     private Integer id;
     private Integer doctorID;
     private String name;
@@ -68,5 +71,17 @@ public class Test {
                 System.lineSeparator(),
                 details
         );
+    }
+
+    @Override
+    public Map<String, Map<String, Object>> getDisplayDataGroups() {
+        return new HashMap<String, Map<String, Object>>() {{
+            put(NON_GROUPED_NAME, new HashMap<String, Object>() {{
+                put("Name", name);
+                put("Date", date);
+                put("Details", details);
+                put("Doctor's name", "Dr. " + doctorName);
+            }});
+        }};
     }
 }

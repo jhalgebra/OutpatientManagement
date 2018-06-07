@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.horvat.gui.dialogs.DisplayDataDialog">
+  <grid id="cbd77" binding="contentPane" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="48" y="54" width="436" height="418"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <scrollpane id="fb51e">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <horizontalScrollBarPolicy value="31"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="a47bc" class="javax.swing.JTable" binding="table">
+            <constraints/>
+            <properties>
+              <autoResizeMode value="4"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+    </children>
+  </grid>
+</form>

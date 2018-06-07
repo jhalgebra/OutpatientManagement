@@ -2,8 +2,11 @@ package com.horvat.dl.entities;
 
 import java.text.MessageFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
-public class Appointment{
+public class Appointment implements IDisplayable{
     private Integer id;
     private Integer doctorID;
     private String delegate;
@@ -78,5 +81,18 @@ public class Appointment{
                 System.lineSeparator(),
                 details
         );
+    }
+
+    @Override
+    public Map<String, Map<String, Object>> getDisplayDataGroups() {
+        return new HashMap<String, Map<String, Object>>() {{
+            put(NON_GROUPED_NAME, new HashMap<String, Object>() {{
+                put("Delegate", delegate);
+                put("Date", date);
+                put("Details", details);
+                put("Doctor", "Dr. " + doctorName);
+                put("Second Opinion", secondOpinion);
+            }});
+        }};
     }
 }

@@ -5,8 +5,11 @@ import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.text.NumberFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
-public class Bill {
+public class Bill implements IDisplayable {
     private Integer id;
     private Date dateIssued;
     private String paymentType;
@@ -59,5 +62,16 @@ public class Bill {
                 formatter.format(amount.doubleValue()),
                 paymentType
         );
+    }
+
+    @Override
+    public Map<String, Map<String, Object>> getDisplayDataGroups() {
+        return new HashMap<String, Map<String, Object>>() {{
+            put(NON_GROUPED_NAME, new HashMap<String, Object>() {{
+                put("Date issued", dateIssued);
+                put("Payment type", paymentType);
+                put("Amount", amount);
+            }});
+        }};
     }
 }

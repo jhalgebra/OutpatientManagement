@@ -1,7 +1,11 @@
 package com.horvat.dl.entities;
 
-public class Lifestyle {
-    private Boolean vegeterian;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class Lifestyle implements IDisplayable {
+    private Boolean vegetarian;
     private Boolean smoker;
     private Boolean consumesAlcoholicBeverage;
     private Boolean usesStimulants;
@@ -12,8 +16,8 @@ public class Lifestyle {
     private Boolean regularMeals;
     private String predominantEatingOption;
 
-    public Lifestyle(Boolean vegeterian, Boolean smoker, Boolean consumesAlcoholicBeverage, Boolean usesStimulants, String stimulantsUsed, Double coffeeConsumptionPerDay, Double teaConsumptionPerDay, Double softDrinkConsumptionPerDay, Boolean regularMeals, String predominantEatingOption) {
-        this.vegeterian = vegeterian;
+    public Lifestyle(Boolean vegetarian, Boolean smoker, Boolean consumesAlcoholicBeverage, Boolean usesStimulants, String stimulantsUsed, Double coffeeConsumptionPerDay, Double teaConsumptionPerDay, Double softDrinkConsumptionPerDay, Boolean regularMeals, String predominantEatingOption) {
+        this.vegetarian = vegetarian;
         this.smoker = smoker;
         this.consumesAlcoholicBeverage = consumesAlcoholicBeverage;
         this.usesStimulants = usesStimulants;
@@ -25,12 +29,12 @@ public class Lifestyle {
         this.predominantEatingOption = predominantEatingOption;
     }
 
-    public Boolean isVegeterian() {
-        return vegeterian;
+    public Boolean isvegetarian() {
+        return vegetarian;
     }
 
-    public void setVegeterian(Boolean vegeterian) {
-        this.vegeterian = vegeterian;
+    public void setvegetarian(Boolean vegetarian) {
+        this.vegetarian = vegetarian;
     }
 
     public Boolean isSmoker() {
@@ -108,7 +112,7 @@ public class Lifestyle {
     @Override
     public String toString() {
         return "Lifestyle{" +
-                "vegeterian=" + vegeterian +
+                "vegetarian=" + vegetarian +
                 ", smoker=" + smoker +
                 ", consumesAlcoholicBeverage=" + consumesAlcoholicBeverage +
                 ", usesStimulants=" + usesStimulants +
@@ -119,5 +123,23 @@ public class Lifestyle {
                 ", regularMeals=" + regularMeals +
                 ", predominantEatingOption='" + predominantEatingOption + '\'' +
                 '}';
+    }
+
+    @Override
+    public Map<String, Map<String, Object>> getDisplayDataGroups() {
+        return new HashMap<String, Map<String, Object>>() {{
+            put(NON_GROUPED_NAME, new HashMap<String, Object>() {{
+                put("Vegetarian", vegetarian);
+                put("Smoker", smoker);
+                put("Consumes alcoholic beverage", consumesAlcoholicBeverage);
+                put("Uses stimulants", usesStimulants);
+                put("Stimulants used", stimulantsUsed);
+                put("Coffee consumption per day", coffeeConsumptionPerDay);
+                put("Tea consumption per day", teaConsumptionPerDay);
+                put("Soft drink consumption per day", teaConsumptionPerDay);
+                put("Regular meals", regularMeals);
+                put("Predominant eating option", predominantEatingOption);
+            }});
+        }};
     }
 }

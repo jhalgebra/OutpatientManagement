@@ -1,8 +1,11 @@
 package com.horvat.dl.entities;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
-public class ProfessionDetails {
+public class ProfessionDetails implements IDisplayable {
     private String occupation;
     private BigDecimal grossAnnualIncome;
 
@@ -33,5 +36,15 @@ public class ProfessionDetails {
                 "occupation='" + occupation + '\'' +
                 ", grossAnnualIncome=" + grossAnnualIncome +
                 '}';
+    }
+
+    @Override
+    public Map<String, Map<String, Object>> getDisplayDataGroups() {
+        return new HashMap<String, Map<String, Object>>() {{
+            put(NON_GROUPED_NAME, new HashMap<String, Object>() {{
+                put("Occupation", occupation);
+                put("Gross annual income", grossAnnualIncome);
+            }});
+        }};
     }
 }

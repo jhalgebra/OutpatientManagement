@@ -4,11 +4,9 @@ import com.horvat.dl.helpers.ToStringUtils;
 import javafx.util.Pair;
 
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
-public class Patient {
+public class Patient implements IDisplayable {
     private Integer id;
     private Date registrationDate;
     private Boolean basicRegistration;
@@ -184,5 +182,22 @@ public class Patient {
         );
     }
 
+    @Override
+    public Map<String, Map<String, Object>> getDisplayDataGroups() {
+        return new HashMap<String, Map<String, Object>>() {{
+            put(NON_GROUPED_NAME, new HashMap<String, Object>() {{
+                put("Registration date", registrationDate);
+                put("Basic registration", basicRegistration);
+            }});
 
+            put("Basic details", basicDetails.getDisplayDataGroups().get(NON_GROUPED_NAME));
+            put("Contact details", contactDetails.getDisplayDataGroups().get(NON_GROUPED_NAME));
+            put("Contact of next of kin", contactOfNextOfKin.getDisplayDataGroups().get(NON_GROUPED_NAME));
+            put("Personal details", personalDetails.getDisplayDataGroups().get(NON_GROUPED_NAME));
+            put("Profession details", professionDetails.getDisplayDataGroups().get(NON_GROUPED_NAME));
+            put("Lifestyle details", lifestyle.getDisplayDataGroups().get(NON_GROUPED_NAME));
+            put("Basic complaints", basicComplaints.getDisplayDataGroups().get(NON_GROUPED_NAME));
+            put("Medical complaints", medicalComplaints.getDisplayDataGroups().get(NON_GROUPED_NAME));
+        }};
+    }
 }
