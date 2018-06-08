@@ -1,9 +1,6 @@
 package com.horvat.dl.entities;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class BasicDetails implements IDisplayable {
     private String name;
@@ -66,5 +63,10 @@ public class BasicDetails implements IDisplayable {
                 put("Date of birth", dateOfBirth);
             }});
         }};
+    }
+
+    @Override
+    public Map<String, List<? extends IDisplayable>> getInnerData() {
+        return null;
     }
 }

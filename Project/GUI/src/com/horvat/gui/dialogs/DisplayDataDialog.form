@@ -18,10 +18,19 @@
             <constraints/>
             <properties>
               <autoResizeMode value="4"/>
+              <intercellSpacing width="1" height="1"/>
+              <rowHeight value="25"/>
+              <rowMargin value="1"/>
             </properties>
           </component>
         </children>
       </scrollpane>
+      <grid id="a37a8" binding="pnlButtons" layout-manager="GridBagLayout">
+        <constraints border-constraint="South"/>
+        <properties/>
+        <border type="none"/>
+        <children/>
+      </grid>
     </children>
   </grid>
 </form>

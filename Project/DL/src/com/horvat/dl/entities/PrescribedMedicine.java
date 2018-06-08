@@ -1,10 +1,7 @@
 package com.horvat.dl.entities;
 
 import java.text.MessageFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class PrescribedMedicine implements IDisplayable {
     private Integer id;
@@ -86,5 +83,10 @@ public class PrescribedMedicine implements IDisplayable {
                 put("Doctor's name", "Dr. " + doctorName);
             }});
         }};
+    }
+
+    @Override
+    public Map<String, List<? extends IDisplayable>> getInnerData() {
+        return null;
     }
 }

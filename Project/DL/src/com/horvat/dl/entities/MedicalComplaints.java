@@ -1,6 +1,7 @@
 package com.horvat.dl.entities;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -153,5 +154,10 @@ public class MedicalComplaints implements IDisplayable {
                 put("Major surgeries", majorSurgeries);
             }});
         }};
+    }
+
+    @Override
+    public Map<String, List<? extends IDisplayable>> getInnerData() {
+        return null;
     }
 }

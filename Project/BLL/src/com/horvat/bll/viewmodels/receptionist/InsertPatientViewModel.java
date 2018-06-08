@@ -54,10 +54,12 @@ public class InsertPatientViewModel extends BaseViewModel {
                     medicalComplaints
             );
 
-        if(successCallback != null)
+        boolean changesSaved = patient != null;
+
+        if(successCallback != null && changesSaved)
             successCallback.run();
 
-        return patient != null;
+        return changesSaved;
     }
 
     public Patient getPatient() {

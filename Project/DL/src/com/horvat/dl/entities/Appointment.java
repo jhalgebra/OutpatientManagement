@@ -1,10 +1,7 @@
 package com.horvat.dl.entities;
 
 import java.text.MessageFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Appointment implements IDisplayable{
     private Integer id;
@@ -94,5 +91,10 @@ public class Appointment implements IDisplayable{
                 put("Second Opinion", secondOpinion);
             }});
         }};
+    }
+
+    @Override
+    public Map<String, List<? extends IDisplayable>> getInnerData() {
+        return null;
     }
 }

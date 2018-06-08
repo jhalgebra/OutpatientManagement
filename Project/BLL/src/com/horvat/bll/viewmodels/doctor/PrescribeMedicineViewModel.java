@@ -33,10 +33,12 @@ public class PrescribeMedicineViewModel extends BaseViewModel {
                 doctor.getId()
         );
 
-        if(successCallback != null)
+        boolean changesSaved = medicine != null;
+
+        if(successCallback != null && changesSaved)
             successCallback.run();
 
-        return medicine != null;
+        return changesSaved;
     }
 
     public void setQuantity(Double quantity) {

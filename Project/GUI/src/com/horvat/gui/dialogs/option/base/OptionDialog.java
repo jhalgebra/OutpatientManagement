@@ -1,4 +1,4 @@
-package com.horvat.gui.dialogs.optionDialogs.base;
+package com.horvat.gui.dialogs.option.base;
 
 import com.horvat.gui.dialogs.base.BaseDialog;
 

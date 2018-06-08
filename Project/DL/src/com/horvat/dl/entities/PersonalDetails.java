@@ -80,4 +80,9 @@ public class PersonalDetails implements IDisplayable {
             }});
         }};
     }
+
+    @Override
+    public Map<String, List<? extends IDisplayable>> getInnerData() {
+        return null;
+    }
 }

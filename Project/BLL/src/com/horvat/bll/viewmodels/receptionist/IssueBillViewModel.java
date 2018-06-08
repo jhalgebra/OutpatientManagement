@@ -29,10 +29,12 @@ public class IssueBillViewModel extends BaseViewModel {
                 patient.getId(),
                 amount);
 
-        if(successCallback != null)
+        boolean changesSaved = bill != null;
+
+        if(successCallback != null && changesSaved)
             successCallback.run();
 
-        return bill != null;
+        return changesSaved;
     }
 
     public Patient getPatient() {

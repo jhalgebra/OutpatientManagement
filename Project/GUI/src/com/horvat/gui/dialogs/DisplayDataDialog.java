@@ -1,67 +1,74 @@
 package com.horvat.gui.dialogs;
 
 import com.horvat.dl.entities.IDisplayable;
-import com.horvat.gui.dialogs.optionDialogs.base.OptionDialog;
+import com.horvat.gui.dialogs.option.base.OptionDialog;
+import com.horvat.gui.dialogs.report.DisplaySimpleDataDialog;
+import com.horvat.gui.entities.ButtonCellRenderer;
+import com.horvat.gui.entities.CustomTableModel;
+import javafx.util.Pair;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableModel;
 import java.awt.*;
-import java.awt.print.PrinterException;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
-public class DisplayDataDialog extends OptionDialog<Object> {
+public class DisplayDataDialog<T extends IDisplayable> extends OptionDialog<Object> {
     private JPanel contentPane;
     private JTable table;
+    private JPanel pnlButtons;
 
     public DisplayDataDialog(Window owner, String title, int width, int height) {
         super(owner, title, width, height);
         setContentPane(contentPane);
     }
 
-    public DisplayDataDialog(Window owner, String title, int width, int height, List<? extends IDisplayable> data) {
+    public DisplayDataDialog(Window owner, String title, int width, int height, List<T> data) {
         this(owner, title, width, height);
         setTableData(data);
-    }
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                TableModel model = table.getModel();
 
-    public void setTableData(List<? extends IDisplayable> data) {
-        if (data.size() == 0)
-            return;
+                if (!(model instanceof CustomTableModel))
+                    return;
 
-        List<String> columnNames = new ArrayList<>();
-        Object[][] modelData = new Object[data.size()][];
+                Pair<String, Object> cellData = ((CustomTableModel<T>) model).getCellContent(
+                        table.getSelectedRow(),
+                        table.getSelectedColumn()
+                );
 
-        for (int i = 0; i < data.size(); i++) {
-            IDisplayable displayable = data.get(i);
-            Map<String, Map<String, Object>> displayDataGroups = displayable.getDisplayDataGroups();
-
-            List<Object> modelObjects = new ArrayList<>();
-
-            for (String key : displayDataGroups.keySet()) {
-                Map<String, Object> displayData = displayDataGroups.get(key);
-
-                if (key.equals(IDisplayable.NON_GROUPED_NAME)) {
-                    for (String columnName : displayData.keySet()) {
-                        if (!columnNames.contains(columnName))
-                            columnNames.add(columnName);
-
-                        modelObjects.add(displayData.get(columnName));
+                if (cellData != null) {
+                    if (cellData.getValue() instanceof Map) {
+                        DisplaySimpleDataDialog dialog = new DisplaySimpleDataDialog(
+                                owner, cellData.getKey(), 400, 500, (Map<String, Object>) cellData.getValue()
+                        );
+                        dialog.showDialog();
+                    } else if (cellData.getValue() instanceof List) {
+                        DisplayDataDialog dialog = new DisplayDataDialog(
+                                owner, cellData.getKey(), width, height, (List) cellData.getValue()
+                        );
+                        dialog.showDialog();
                     }
-                } else {
-                    if (!columnNames.contains(key))
-                        columnNames.add(key);
-
-                    modelObjects.add("Link button for " + key);
                 }
             }
+        });
+    }
 
-            modelData[i] = modelObjects.toArray();
-        }
+    public void setTableData(List<T> data) {
+        if (data == null || data.size() == 0)
+            return;
 
-        table.setModel(new DefaultTableModel(modelData, columnNames.toArray()));
+        List<Integer> complexColumns = new ArrayList<>();
+        table.setModel(new CustomTableModel<>(data, complexColumns));
+
+        for (Integer column : complexColumns)
+            table.getColumnModel().getColumn(column).setCellRenderer(new ButtonCellRenderer("View"));
     }
 
     {
@@ -86,7 +93,13 @@ public class DisplayDataDialog extends OptionDialog<Object> {
         contentPane.add(scrollPane1, BorderLayout.CENTER);
         table = new JTable();
         table.setAutoResizeMode(4);
+        table.setIntercellSpacing(new Dimension(1, 1));
+        table.setRowHeight(25);
+        table.setRowMargin(1);
         scrollPane1.setViewportView(table);
+        pnlButtons = new JPanel();
+        pnlButtons.setLayout(new GridBagLayout());
+        contentPane.add(pnlButtons, BorderLayout.SOUTH);
     }
 
     /**

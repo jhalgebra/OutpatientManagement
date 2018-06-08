@@ -1,6 +1,7 @@
 package com.horvat.dl.entities;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -51,12 +52,19 @@ public class ContactOfNextOfKin implements IDisplayable {
     @Override
     public Map<String, Map<String, Object>> getDisplayDataGroups() {
         return new HashMap<String, Map<String, Object>>() {{
-            put(NON_GROUPED_NAME, new HashMap<String, Object>() {{
+            HashMap<String, Object> map = new HashMap<String, Object>() {{
                 put("Name", name);
                 put("Contact address", contactAddress);
-            }});
+            }};
 
-            put("Contact", contact.getDisplayDataGroups().get(NON_GROUPED_NAME));
+            map.putAll(contact.getDisplayDataGroups().get(NON_GROUPED_NAME));
+
+            put(NON_GROUPED_NAME, map);
         }};
+    }
+
+    @Override
+    public Map<String, List<? extends IDisplayable>> getInnerData() {
+        return null;
     }
 }

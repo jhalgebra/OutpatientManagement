@@ -1,13 +1,12 @@
 package com.horvat.dl.entities;
 
+import com.horvat.dl.helpers.ToStringUtils;
+
 import javax.swing.text.NumberFormatter;
 import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.text.NumberFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Bill implements IDisplayable {
     private Integer id;
@@ -54,12 +53,10 @@ public class Bill implements IDisplayable {
 
     @Override
     public String toString() {
-        NumberFormat formatter = NumberFormat.getCurrencyInstance();
-
         return MessageFormat.format(
                 "Bill issued on {0}, {1} payed by {2}",
                 dateIssued,
-                formatter.format(amount.doubleValue()),
+                ToStringUtils.moneyFormat(amount),
                 paymentType
         );
     }
@@ -73,5 +70,10 @@ public class Bill implements IDisplayable {
                 put("Amount", amount);
             }});
         }};
+    }
+
+    @Override
+    public Map<String, List<? extends IDisplayable>> getInnerData() {
+        return null;
     }
 }

@@ -35,10 +35,12 @@ public class OrderTestViewModel extends BaseViewModel {
                 testDate
         );
 
-        if(successCallback != null)
+        boolean changesSaved = test != null;
+
+        if(successCallback != null && changesSaved)
             successCallback.run();
 
-        return test != null;
+        return changesSaved;
     }
 
     public Patient getPatient() {

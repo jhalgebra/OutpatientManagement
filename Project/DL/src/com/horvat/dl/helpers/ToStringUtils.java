@@ -2,6 +2,8 @@ package com.horvat.dl.helpers;
 
 import javafx.util.Pair;
 
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.List;
 
 public class ToStringUtils {
@@ -37,6 +39,12 @@ public class ToStringUtils {
                 .append(System.lineSeparator());
 
         return builder;
+    }
+
+    public static String moneyFormat(BigDecimal value){
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+
+        return formatter.format(value);
     }
 
     public static String construct(char lineChar, Pair<String, List<Object>>... dataWithLabel){

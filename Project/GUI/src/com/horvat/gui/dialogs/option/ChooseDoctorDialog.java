@@ -1,7 +1,7 @@
-package com.horvat.gui.dialogs.optionDialogs;
+package com.horvat.gui.dialogs.option;
 
 import com.horvat.dl.entities.Doctor;
-import com.horvat.gui.dialogs.optionDialogs.base.OptionDialog;
+import com.horvat.gui.dialogs.option.base.OptionDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,8 +12,8 @@ public class ChooseDoctorDialog extends OptionDialog<Doctor> {
     private JButton buttonOK;
     private JButton buttonCancel;
     private JComboBox<Doctor> ddlDoctors;
-    private JPanel pnlMain;
     private JPanel pnlButtons;
+    private JPanel pnlMain;
 
     public ChooseDoctorDialog(Window owner, String title, java.util.List<Doctor> doctors) {
         super(owner, title, 500, 200);
@@ -75,16 +75,20 @@ public class ChooseDoctorDialog extends OptionDialog<Doctor> {
      */
     private void $$$setupUI$$$() {
         contentPane = new JPanel();
-        contentPane.setLayout(new GridBagLayout());
+        contentPane.setLayout(new BorderLayout(0, 0));
         pnlMain = new JPanel();
         pnlMain.setLayout(new GridBagLayout());
+        contentPane.add(pnlMain, BorderLayout.CENTER);
+        ddlDoctors = new JComboBox();
+        ddlDoctors.setToolTipText("Choose a doctor");
         GridBagConstraints gbc;
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.weightx = 1.0;
-        gbc.fill = GridBagConstraints.BOTH;
-        contentPane.add(pnlMain, gbc);
+        gbc.gridy = 0;
+        pnlMain.add(ddlDoctors, gbc);
+        pnlButtons = new JPanel();
+        pnlButtons.setLayout(new GridBagLayout());
+        contentPane.add(pnlButtons, BorderLayout.SOUTH);
         final JPanel panel1 = new JPanel();
         panel1.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1, true, false));
         gbc = new GridBagConstraints();
@@ -92,30 +96,13 @@ public class ChooseDoctorDialog extends OptionDialog<Doctor> {
         gbc.gridy = 0;
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
-        pnlMain.add(panel1, gbc);
+        pnlButtons.add(panel1, gbc);
         buttonOK = new JButton();
         buttonOK.setText("Login");
         panel1.add(buttonOK, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         buttonCancel = new JButton();
         buttonCancel.setText("Cancel");
         panel1.add(buttonCancel, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        pnlButtons = new JPanel();
-        pnlButtons.setLayout(new GridBagLayout());
-        gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1.0;
-        gbc.weighty = 1.0;
-        gbc.fill = GridBagConstraints.BOTH;
-        contentPane.add(pnlButtons, gbc);
-        ddlDoctors = new JComboBox();
-        ddlDoctors.setToolTipText("Choose a doctor");
-        gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1.0;
-        gbc.weighty = 1.0;
-        pnlButtons.add(ddlDoctors, gbc);
     }
 
     /**

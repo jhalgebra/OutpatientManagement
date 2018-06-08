@@ -1,14 +1,18 @@
 package com.horvat.gui.dialogs.doctor;
 
 import com.horvat.bll.viewmodels.doctor.DoctorMenuViewModel;
+import com.horvat.bll.viewmodels.doctor.OrderTestViewModel;
+import com.horvat.bll.viewmodels.doctor.PrescribeMedicineViewModel;
+import com.horvat.dl.entities.Patient;
 import com.horvat.gui.dialogs.DisplayDataDialog;
-import com.horvat.gui.dialogs.base.BaseDialog;
+import com.horvat.gui.dialogs.base.VMDialog;
+import com.horvat.gui.dialogs.option.ChoosePatientDialog;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class DoctorMenuDialog extends BaseDialog<Object, DoctorMenuViewModel> {
+public class DoctorMenuDialog extends VMDialog<DoctorMenuViewModel> {
     private JPanel contentPane;
     private JButton btnViewPatientsData;
     private JButton btnOrderTest;
@@ -39,25 +43,48 @@ public class DoctorMenuDialog extends BaseDialog<Object, DoctorMenuViewModel> {
         );
 
         btnViewPatientsData.addActionListener(e -> {
-            DisplayDataDialog displayDataDialog = new DisplayDataDialog(this, "Patient data", 1024, 768, viewModel.getPatients());
+            DisplayDataDialog displayDataDialog = new DisplayDataDialog(
+                    this, "Patient data", 1024, 768, viewModel.getPatients()
+            );
             displayDataDialog.showDialog();
         });
-//
-//        btnOrderTest.addActionListener(e -> {
-//
-//        });
-//
-//        btnPrescribeMedicine.addActionListener(e -> {
-//
-//        });
-//
-//        btnAlterData.addActionListener(e -> {
-//
-//        });
+        btnOrderTest.addActionListener(e -> {
+            Patient patient = pickPatient();
+
+            if (patient != null) {
+                OrderTestDialog orderTestDialog = new OrderTestDialog(
+                        this, "Order test", 400, 400,
+                        new OrderTestViewModel(patient, viewModel.getDoctor())
+                );
+                orderTestDialog.showDialog();
+            }
+        });
+        btnPrescribeMedicine.addActionListener(e -> {
+            Patient patient = pickPatient();
+
+            if (patient != null) {
+                PrescribeMedicineDialog prescribeMedicineDialog = new PrescribeMedicineDialog(
+                        this, "Prescribe medicine", 400, 400,
+                        new PrescribeMedicineViewModel(patient, viewModel.getDoctor())
+                );
+                prescribeMedicineDialog.showDialog();
+            }
+        });
+        btnAlterData.addActionListener(e -> {
+            Patient patient = pickPatient();
+
+            if (patient != null) {
+
+            }
+        });
     }
 
-    private void onOK() {
-        close();
+    private Patient pickPatient() {
+        ChoosePatientDialog choosePatientDialog = new ChoosePatientDialog(
+                this, "Choose patient", viewModel.getPatients()
+        );
+
+        return choosePatientDialog.showDialog();
     }
 
     private void onCancel() {

@@ -2,6 +2,7 @@ package com.horvat.dl.entities;
 
 import java.text.MessageFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -48,5 +49,10 @@ public class Doctor implements IDisplayable {
         return new HashMap<String, Map<String, Object>>() {{
             put(NON_GROUPED_NAME, basicDetails.getDisplayDataGroups().get(NON_GROUPED_NAME));
         }};
+    }
+
+    @Override
+    public Map<String, List<? extends IDisplayable>> getInnerData() {
+        return null;
     }
 }

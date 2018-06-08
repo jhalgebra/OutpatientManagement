@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.horvat.gui.dialogs.optionDialogs.ChooseDoctorDialog">
-  <grid id="cbd77" binding="contentPane" layout-manager="GridBagLayout">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.horvat.gui.dialogs.option.ChooseDoctorDialog">
+  <grid id="cbd77" binding="contentPane" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
       <xy x="48" y="54" width="436" height="297"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="94766" binding="pnlMain" layout-manager="GridBagLayout">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="1.0" weighty="0.0"/>
-        </constraints>
+      <grid id="e3588" binding="pnlMain" layout-manager="GridBagLayout">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="5423c" class="javax.swing.JComboBox" binding="ddlDoctors">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <toolTipText value="Choose a doctor"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="94766" binding="pnlButtons" layout-manager="GridBagLayout">
+        <constraints border-constraint="South"/>
         <properties/>
         <border type="none"/>
         <children>
@@ -42,25 +55,6 @@
               </component>
             </children>
           </grid>
-        </children>
-      </grid>
-      <grid id="e3588" binding="pnlButtons" layout-manager="GridBagLayout">
-        <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="1.0" weighty="1.0"/>
-        </constraints>
-        <properties/>
-        <border type="none"/>
-        <children>
-          <component id="5423c" class="javax.swing.JComboBox" binding="ddlDoctors">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="1.0" weighty="1.0"/>
-            </constraints>
-            <properties>
-              <toolTipText value="Choose a doctor"/>
-            </properties>
-          </component>
         </children>
       </grid>
     </children>

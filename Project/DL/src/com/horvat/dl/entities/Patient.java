@@ -5,6 +5,7 @@ import javafx.util.Pair;
 
 import java.text.MessageFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Patient implements IDisplayable {
     private Integer id;
@@ -156,6 +157,17 @@ public class Patient implements IDisplayable {
     @Override
     public String toString() {
         return MessageFormat.format(
+                "{0} ({1}, born {2}): registered on {3} (Basic: {4})",
+                basicDetails.getName(),
+                basicDetails.getSex(),
+                basicDetails.getDateOfBirth(),
+                registrationDate,
+                basicRegistration ? "Yes" : "No"
+        );
+    }
+
+    public String getBasicInfo(){
+        return MessageFormat.format(
                 "{0} ({1}, born {2}): registered on {3} (Basic: {4}){5}" +
                         "Contact: home - {6}, work - {7}, name of next of kin - {8}{9}" +
                         "Statement of complaint: {10}",
@@ -163,7 +175,7 @@ public class Patient implements IDisplayable {
                 basicDetails.getSex(),
                 basicDetails.getDateOfBirth(),
                 registrationDate,
-                basicRegistration,
+                basicRegistration ? "Yes" : "No",
                 System.lineSeparator(),
                 contactDetails.getContact().getTelephoneHome(),
                 contactDetails.getContact().getTelephoneWork(),
@@ -199,5 +211,19 @@ public class Patient implements IDisplayable {
             put("Basic complaints", basicComplaints.getDisplayDataGroups().get(NON_GROUPED_NAME));
             put("Medical complaints", medicalComplaints.getDisplayDataGroups().get(NON_GROUPED_NAME));
         }};
+    }
+
+    @Override
+    public Map<String, List<? extends IDisplayable>> getInnerData() {
+        Map<String, List<? extends IDisplayable>> map = new HashMap<>();
+
+        map.putAll(new HashMap<String, List<? extends IDisplayable>>() {{
+            put("Bills", bills);
+            put("Tests", tests);
+            put("Appointments", appointments);
+            put("Prescribed medicine", prescribedMedicine);
+        }});
+
+        return map;
     }
 }

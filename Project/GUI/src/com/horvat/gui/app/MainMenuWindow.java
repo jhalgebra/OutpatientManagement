@@ -5,12 +5,10 @@ import com.horvat.bll.viewmodels.doctor.DoctorMenuViewModel;
 import com.horvat.dl.entities.Doctor;
 import com.horvat.gui.dialogs.DisplayDataDialog;
 import com.horvat.gui.dialogs.doctor.DoctorMenuDialog;
-import com.horvat.gui.dialogs.optionDialogs.ChooseDoctorDialog;
+import com.horvat.gui.dialogs.option.ChooseDoctorDialog;
 
 import javax.swing.*;
 import java.awt.*;
-import java.lang.reflect.Method;
-import java.util.Arrays;
 
 public class MainMenuWindow extends JFrame {
     private JButton btnDoctorLogin;

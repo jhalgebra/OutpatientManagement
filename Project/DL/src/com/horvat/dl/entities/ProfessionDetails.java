@@ -1,7 +1,10 @@
 package com.horvat.dl.entities;
 
+import com.horvat.dl.helpers.ToStringUtils;
+
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -34,7 +37,7 @@ public class ProfessionDetails implements IDisplayable {
     public String toString() {
         return "ProfessionDetails{" +
                 "occupation='" + occupation + '\'' +
-                ", grossAnnualIncome=" + grossAnnualIncome +
+                ", grossAnnualIncome=" + ToStringUtils.moneyFormat(grossAnnualIncome) +
                 '}';
     }
 
@@ -46,5 +49,10 @@ public class ProfessionDetails implements IDisplayable {
                 put("Gross annual income", grossAnnualIncome);
             }});
         }};
+    }
+
+    @Override
+    public Map<String, List<? extends IDisplayable>> getInnerData() {
+        return null;
     }
 }

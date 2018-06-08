@@ -52,7 +52,7 @@ public class FillAppointmentViewModel extends BaseViewModel {
             success = appointment != null;
         }
 
-        if(successCallback != null)
+        if(successCallback != null && success)
             successCallback.run();
 
         return success;
