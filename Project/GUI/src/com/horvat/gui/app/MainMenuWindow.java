@@ -2,10 +2,12 @@ package com.horvat.gui.app;
 
 import com.horvat.bll.viewmodels.MainMenuViewModel;
 import com.horvat.bll.viewmodels.doctor.DoctorMenuViewModel;
+import com.horvat.bll.viewmodels.receptionist.ReceptionistMenuViewModel;
 import com.horvat.dl.entities.Doctor;
 import com.horvat.gui.dialogs.DisplayDataDialog;
 import com.horvat.gui.dialogs.doctor.DoctorMenuDialog;
 import com.horvat.gui.dialogs.option.ChooseDoctorDialog;
+import com.horvat.gui.dialogs.receptionist.ReceptionistMenuDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -44,7 +46,14 @@ public class MainMenuWindow extends JFrame {
     }
 
     private void onReceptionistLogin() {
+        ReceptionistMenuDialog receptionistMenuDialog = new ReceptionistMenuDialog(
+                this, "Receptionist menu", 400, 600,
+                new ReceptionistMenuViewModel()
+        );
 
+        setVisible(false);
+        receptionistMenuDialog.showDialog();
+        setVisible(true);
     }
 
     private void onDoctorLogin() {

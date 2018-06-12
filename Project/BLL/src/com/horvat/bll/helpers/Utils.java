@@ -7,6 +7,9 @@ import com.lib.xml.XmlTag;
 import java.util.*;
 
 public class Utils {
+    public static final String DATE_FORMAT = "dd.MM.yyyy.";
+    public static final String DATE_WITH_TIME_FORMAT = "dd.MM.yyyy. HH:mm:ss";
+
     private static final String xmlFilePath = FileManager.getFilePath("OMM_Settings.xml");
     private static final XmlTag settingTag = new XmlTag("Settings");
     private static XmlReader reader;

@@ -1,9 +1,12 @@
 package com.horvat.gui.dialogs.doctor;
 
+import com.horvat.bll.viewmodels.doctor.AlterDataViewModel;
 import com.horvat.bll.viewmodels.doctor.DoctorMenuViewModel;
 import com.horvat.bll.viewmodels.doctor.OrderTestViewModel;
 import com.horvat.bll.viewmodels.doctor.PrescribeMedicineViewModel;
 import com.horvat.dl.entities.Patient;
+import com.horvat.dl.entities.PrescribedMedicine;
+import com.horvat.dl.entities.Test;
 import com.horvat.gui.dialogs.DisplayDataDialog;
 import com.horvat.gui.dialogs.base.VMDialog;
 import com.horvat.gui.dialogs.option.ChoosePatientDialog;
@@ -48,15 +51,21 @@ public class DoctorMenuDialog extends VMDialog<DoctorMenuViewModel> {
             );
             displayDataDialog.showDialog();
         });
+
         btnOrderTest.addActionListener(e -> {
             Patient patient = pickPatient();
 
             if (patient != null) {
                 OrderTestDialog orderTestDialog = new OrderTestDialog(
-                        this, "Order test", 400, 400,
+                        this, "Order test for " + patient.getBasicDetails().getName(),
+                        400, 400,
                         new OrderTestViewModel(patient, viewModel.getDoctor())
                 );
-                orderTestDialog.showDialog();
+
+                Test test = orderTestDialog.showDialog();
+
+                if (test != null)
+                    patient.getTests().add(test);
             }
         });
         btnPrescribeMedicine.addActionListener(e -> {
@@ -64,17 +73,26 @@ public class DoctorMenuDialog extends VMDialog<DoctorMenuViewModel> {
 
             if (patient != null) {
                 PrescribeMedicineDialog prescribeMedicineDialog = new PrescribeMedicineDialog(
-                        this, "Prescribe medicine", 400, 400,
+                        this, "Prescribe medicine for " + patient.getBasicDetails().getName(),
+                        250, 200,
                         new PrescribeMedicineViewModel(patient, viewModel.getDoctor())
                 );
-                prescribeMedicineDialog.showDialog();
+
+                PrescribedMedicine medicine = prescribeMedicineDialog.showDialog();
+
+                patient.getPrescribedMedicine().add(medicine);
             }
         });
         btnAlterData.addActionListener(e -> {
             Patient patient = pickPatient();
 
             if (patient != null) {
-
+                AlterDataDialog alterDataDialog = new AlterDataDialog(
+                        this, "Alter " + patient.getBasicDetails().getName() + "'s data",
+                        1024, 768,
+                        new AlterDataViewModel(patient, viewModel.getDoctor())
+                );
+                alterDataDialog.showDialog();
             }
         });
     }
@@ -118,7 +136,7 @@ public class DoctorMenuDialog extends VMDialog<DoctorMenuViewModel> {
         btnPrescribeMedicine.setText("Prescribe medicine to patient");
         contentPane.add(btnPrescribeMedicine, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         btnAlterData = new JButton();
-        btnAlterData.setText("Alter future tests / appointments");
+        btnAlterData.setText("Alter future appointments");
         contentPane.add(btnAlterData, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 

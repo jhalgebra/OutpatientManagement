@@ -4,11 +4,10 @@ import com.horvat.dl.entities.IDisplayable;
 import com.horvat.gui.dialogs.option.base.OptionDialog;
 import com.horvat.gui.dialogs.report.DisplaySimpleDataDialog;
 import com.horvat.gui.entities.ButtonCellRenderer;
-import com.horvat.gui.entities.CustomTableModel;
+import com.horvat.gui.entities.ViewDataTableModel;
 import javafx.util.Pair;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -35,10 +34,10 @@ public class DisplayDataDialog<T extends IDisplayable> extends OptionDialog<Obje
             public void mouseClicked(MouseEvent e) {
                 TableModel model = table.getModel();
 
-                if (!(model instanceof CustomTableModel))
+                if (!(model instanceof ViewDataTableModel))
                     return;
 
-                Pair<String, Object> cellData = ((CustomTableModel<T>) model).getCellContent(
+                Pair<String, Object> cellData = ((ViewDataTableModel<T>) model).getCellContent(
                         table.getSelectedRow(),
                         table.getSelectedColumn()
                 );
@@ -50,7 +49,7 @@ public class DisplayDataDialog<T extends IDisplayable> extends OptionDialog<Obje
                         );
                         dialog.showDialog();
                     } else if (cellData.getValue() instanceof List) {
-                        DisplayDataDialog dialog = new DisplayDataDialog(
+                        DisplayDataDialog dialog = new DisplayDataDialog<T>(
                                 owner, cellData.getKey(), width, height, (List) cellData.getValue()
                         );
                         dialog.showDialog();
@@ -65,7 +64,7 @@ public class DisplayDataDialog<T extends IDisplayable> extends OptionDialog<Obje
             return;
 
         List<Integer> complexColumns = new ArrayList<>();
-        table.setModel(new CustomTableModel<>(data, complexColumns));
+        table.setModel(new ViewDataTableModel<>(data, complexColumns));
 
         for (Integer column : complexColumns)
             table.getColumnModel().getColumn(column).setCellRenderer(new ButtonCellRenderer("View"));

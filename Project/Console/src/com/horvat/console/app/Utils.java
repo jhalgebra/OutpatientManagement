@@ -10,9 +10,7 @@ import java.util.function.Function;
 public class Utils {
     //region Readonly fields
 
-    private static final String DATE_FORMAT = "dd.MM.yyyy.";
-    private static final String DATE_WITH_TIME_FORMAT = "dd.MM.yyyy. HH:mm:ss";
-    private static final SimpleDateFormat dateFormatter = new SimpleDateFormat(DATE_FORMAT);
+    private static final SimpleDateFormat dateFormatter = new SimpleDateFormat(com.horvat.bll.helpers.Utils.DATE_FORMAT);
 
     public static final Scanner scanner = new Scanner(System.in);
 
@@ -60,8 +58,8 @@ public class Utils {
                 MessageFormat.format("{0} (format: {1})",
                         message,
                         includeTime
-                                ? DATE_WITH_TIME_FORMAT
-                                : DATE_FORMAT
+                                ? com.horvat.bll.helpers.Utils.DATE_WITH_TIME_FORMAT
+                                : com.horvat.bll.helpers.Utils.DATE_FORMAT
                 )
         );
     }

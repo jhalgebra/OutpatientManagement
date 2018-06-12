@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.util.*;
 
-public class CustomTableModel<T extends IDisplayable> extends AbstractTableModel {
+public class ViewDataTableModel<T extends IDisplayable> extends AbstractTableModel {
     //Columns that either display data in cell or one set of information in a popup
     private List<T> data;
     //Columns that display a list of items on click
@@ -17,7 +17,7 @@ public class CustomTableModel<T extends IDisplayable> extends AbstractTableModel
     private List<String> columnNames;
     private List<Class> columnTypes;
 
-    public CustomTableModel(List<T> data, List<Integer> complexColumns) {
+    public ViewDataTableModel(List<T> data, List<Integer> complexColumns) {
         this.data = data;
         boolean dataNotEmpty = data != null && data.size() > 0;
         //Just the first collection of columns (for the first row)

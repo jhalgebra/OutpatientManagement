@@ -97,5 +97,8 @@ public class FillAppointmentViewModel extends BaseViewModel {
 
     public void setSecondOpinion(Boolean secondOpinion) {
         this.secondOpinion = secondOpinion;
+
+        if(appointment != null)
+            appointment.setSecondOpinion(secondOpinion);
     }
 }

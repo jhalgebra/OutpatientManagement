@@ -9,13 +9,6 @@ public class ButtonCellRenderer extends JButton implements TableCellRenderer {
         super(text);
     }
 
-    public ButtonCellRenderer(String text, Runnable onClick){
-        super(text);
-
-        if(onClick != null)
-            addActionListener(e -> onClick.run());
-    }
-
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         return this;

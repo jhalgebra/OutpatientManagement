@@ -53,7 +53,7 @@ public class DoctorMenuDialog extends Dialog<DoctorMenuViewModel> {
                 ));
             }));
 
-            add(new DialogOption("Alter Future Tests / Appointments", () ->{
+            add(new DialogOption("Alter Future Appointments", () ->{
                 Patient patient = choosePatient();
 
                 dialogNavigator.goToNewDialog(new AlterDataDialog(
