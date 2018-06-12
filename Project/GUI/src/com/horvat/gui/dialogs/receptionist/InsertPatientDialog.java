@@ -18,6 +18,7 @@ public class InsertPatientDialog extends BaseDialog<Patient, InsertPatientViewMo
     private final String basicCard = "Card1";
     private final String fullCard = "Card2";
 
+    //region Controls
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
@@ -68,6 +69,32 @@ public class InsertPatientDialog extends BaseDialog<Patient, InsertPatientViewMo
     private JTextField txtBloodTypeRH;
     private JTextField txtOccupation;
     private JFormattedTextField txtGrossAnnualIncome;
+    private JFormattedTextField txtCoffeeConsumption;
+    private JFormattedTextField txtSoftDrinkConsumption;
+    private JComboBox<String> ddlPredominantEatingOption;
+    private JCheckBox cbRegularMeals;
+    private JCheckBox cbVegetarian;
+    private JCheckBox cbSmoker;
+    private JCheckBox cbConsumesAlcohol;
+    private JCheckBox cbUsesStimulants;
+    private JTextField txtStimulantsUsed;
+    private JFormattedTextField txtTeaConsumption;
+    private JTextArea txtStatementOfComplaint;
+    private JTextArea txtPreviousTreatment;
+    private JTextArea txtPhysicianOrHospitalTreated;
+    private JTextArea txtKnownAllergies;
+    private JTextArea txtKnownAdverseReactions;
+    private JTextArea txtMajorSurgeries;
+    private JCheckBox cbDiabetic;
+    private JCheckBox cbHypertensive;
+    private JTabbedPane pnlConditions;
+    private JTextArea txtRespiratoryCondition;
+    private JTextArea txtDigestiveCondition;
+    private JTextArea txtNeurologicalCondition;
+    private JTextArea txtMuscularCondition;
+    private JTextArea txtOrthopedicCondition;
+    private JTextArea txtCardiacCondition;
+    //endregion
 
     public InsertPatientDialog(Window owner, String title, int width, int height, InsertPatientViewModel viewModel) {
         super(owner, title, width, height, viewModel);
@@ -75,28 +102,26 @@ public class InsertPatientDialog extends BaseDialog<Patient, InsertPatientViewMo
         setContentPane(contentPane);
 
         CardLayout layout = (CardLayout) panelHolder.getLayout();
-
         layout.show(panelHolder, viewModel.isBasic() ? basicCard : fullCard);
+
+        pnlConditions.setBorder(BorderFactory.createTitledBorder("Conditions"));
 
         String[] data = viewModel.getSexes().stream().map(Pair::getValue).toArray(String[]::new);
         ddlSexSimple.setModel(new DefaultComboBoxModel<>(data));
         ddlSex.setModel(new DefaultComboBoxModel<>(data));
 
+        String[] peoData = viewModel.getPredominantEatingOptions().stream().map(Pair::getValue).toArray(String[]::new);
+        ddlPredominantEatingOption.setModel(new DefaultComboBoxModel<>(peoData));
+
         initListeners();
     }
 
     private void initListeners() {
-        buttonOK.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
+        buttonOK.addActionListener(e -> onOK());
 
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
+        buttonCancel.addActionListener(e -> onCancel());
+
+        cbUsesStimulants.addItemListener(itemEvent -> txtStimulantsUsed.setEnabled(cbUsesStimulants.isSelected()));
 
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -204,7 +229,42 @@ public class InsertPatientDialog extends BaseDialog<Patient, InsertPatientViewMo
 
         viewModel.setProfessionDetails(new ProfessionDetails(
                 txtOccupation.getText(),
-                BigDecimal.valueOf((double) txtGrossAnnualIncome.getValue())));
+                BigDecimal.valueOf((double) txtGrossAnnualIncome.getValue())
+        ));
+
+        Boolean usesStimulants = cbUsesStimulants.isSelected();
+        viewModel.setLifestyle(new Lifestyle(
+                cbVegetarian.isSelected(),
+                cbSmoker.isSelected(),
+                cbConsumesAlcohol.isSelected(),
+                usesStimulants,
+                usesStimulants ? txtStimulantsUsed.getText() : "",
+                (Double) txtCoffeeConsumption.getValue(),
+                (Double) txtTeaConsumption.getValue(),
+                (Double) txtSoftDrinkConsumption.getValue(),
+                cbRegularMeals.isSelected(),
+                ddlPredominantEatingOption.getSelectedItem().toString()
+        ));
+
+        viewModel.setBasicComplaints(new BasicComplaints(
+                txtStatementOfComplaint.getText(),
+                txtPreviousTreatment.getText(),
+                txtPhysicianOrHospitalTreated.getText()
+        ));
+
+        viewModel.setMedicalComplaints(new MedicalComplaints(
+                cbDiabetic.isSelected(),
+                cbHypertensive.isSelected(),
+                txtCardiacCondition.getText(),
+                txtRespiratoryCondition.getText(),
+                txtDigestiveCondition.getText(),
+                txtOrthopedicCondition.getText(),
+                txtMuscularCondition.getText(),
+                txtNeurologicalCondition.getText(),
+                txtKnownAllergies.getText(),
+                txtKnownAdverseReactions.getText(),
+                txtMajorSurgeries.getText()
+        ));
     }
 
     private void onCancel() {
@@ -220,6 +280,9 @@ public class InsertPatientDialog extends BaseDialog<Patient, InsertPatientViewMo
         txtHeight = new JFormattedTextField(doubleFormat);
         txtWeight = new JFormattedTextField(doubleFormat);
         txtGrossAnnualIncome = new JFormattedTextField(doubleFormat);
+        txtCoffeeConsumption = new JFormattedTextField(doubleFormat);
+        txtSoftDrinkConsumption = new JFormattedTextField(doubleFormat);
+        txtTeaConsumption = new JFormattedTextField(doubleFormat);
     }
 
     /**
@@ -442,14 +505,120 @@ public class InsertPatientDialog extends BaseDialog<Patient, InsertPatientViewMo
         pnlProfessionDetails.add(label34, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_EAST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         pnlProfessionDetails.add(txtGrossAnnualIncome, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         pnlLifestyle = new JPanel();
-        pnlLifestyle.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
+        pnlLifestyle.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(5, 4, new Insets(0, 0, 0, 0), -1, -1));
         tabbedPane1.addTab("Lifestyle", pnlLifestyle);
+        final JLabel label35 = new JLabel();
+        label35.setText("Coffees consumed per day:");
+        pnlLifestyle.add(label35, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_EAST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        pnlLifestyle.add(txtCoffeeConsumption, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        final JLabel label36 = new JLabel();
+        label36.setText("Soft drinks consumed per day:");
+        pnlLifestyle.add(label36, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_EAST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        pnlLifestyle.add(txtSoftDrinkConsumption, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        cbVegetarian = new JCheckBox();
+        cbVegetarian.setText("Vegetarian");
+        pnlLifestyle.add(cbVegetarian, new com.intellij.uiDesigner.core.GridConstraints(0, 3, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        cbSmoker = new JCheckBox();
+        cbSmoker.setText("Smoker");
+        pnlLifestyle.add(cbSmoker, new com.intellij.uiDesigner.core.GridConstraints(1, 3, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        cbConsumesAlcohol = new JCheckBox();
+        cbConsumesAlcohol.setText("Consumes alcoholic beverage");
+        pnlLifestyle.add(cbConsumesAlcohol, new com.intellij.uiDesigner.core.GridConstraints(2, 3, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        cbUsesStimulants = new JCheckBox();
+        cbUsesStimulants.setText("Uses stimulants");
+        pnlLifestyle.add(cbUsesStimulants, new com.intellij.uiDesigner.core.GridConstraints(3, 3, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        txtStimulantsUsed = new JTextField();
+        txtStimulantsUsed.setEnabled(false);
+        pnlLifestyle.add(txtStimulantsUsed, new com.intellij.uiDesigner.core.GridConstraints(4, 3, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        final JLabel label37 = new JLabel();
+        label37.setText("Stimulants used:");
+        pnlLifestyle.add(label37, new com.intellij.uiDesigner.core.GridConstraints(4, 2, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_EAST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        cbRegularMeals = new JCheckBox();
+        cbRegularMeals.setText("Regular meals (Breakfast, lunch and dinner)");
+        pnlLifestyle.add(cbRegularMeals, new com.intellij.uiDesigner.core.GridConstraints(4, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        ddlPredominantEatingOption = new JComboBox();
+        pnlLifestyle.add(ddlPredominantEatingOption, new com.intellij.uiDesigner.core.GridConstraints(3, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        final JLabel label38 = new JLabel();
+        label38.setText("Predominant eating option:");
+        pnlLifestyle.add(label38, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_EAST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        final JLabel label39 = new JLabel();
+        label39.setText("Tea consumed per day:");
+        pnlLifestyle.add(label39, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_EAST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        pnlLifestyle.add(txtTeaConsumption, new com.intellij.uiDesigner.core.GridConstraints(2, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         pnlBasicComplaints = new JPanel();
-        pnlBasicComplaints.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
+        pnlBasicComplaints.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(3, 2, new Insets(0, 0, 0, 0), -1, -1));
         tabbedPane1.addTab("Basic complaints", pnlBasicComplaints);
+        final JLabel label40 = new JLabel();
+        label40.setText("Statement of complaint:");
+        pnlBasicComplaints.add(label40, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_EAST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        txtStatementOfComplaint = new JTextArea();
+        pnlBasicComplaints.add(txtStatementOfComplaint, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+        final JLabel label41 = new JLabel();
+        label41.setText("History of previous treatment:");
+        pnlBasicComplaints.add(label41, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_EAST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        txtPreviousTreatment = new JTextArea();
+        pnlBasicComplaints.add(txtPreviousTreatment, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+        txtPhysicianOrHospitalTreated = new JTextArea();
+        pnlBasicComplaints.add(txtPhysicianOrHospitalTreated, new com.intellij.uiDesigner.core.GridConstraints(2, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+        final JLabel label42 = new JLabel();
+        label42.setText("Physician or hospital that treated the patient:");
+        pnlBasicComplaints.add(label42, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_EAST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         pnlMedicalComplaints = new JPanel();
-        pnlMedicalComplaints.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
+        pnlMedicalComplaints.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(8, 2, new Insets(0, 0, 0, 0), -1, -1));
         tabbedPane1.addTab("Medical complaints", pnlMedicalComplaints);
+        final JLabel label43 = new JLabel();
+        label43.setText("Known allergies");
+        pnlMedicalComplaints.add(label43, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        txtKnownAllergies = new JTextArea();
+        pnlMedicalComplaints.add(txtKnownAllergies, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+        final JLabel label44 = new JLabel();
+        label44.setText("Known adverse reaction to specific drugs");
+        pnlMedicalComplaints.add(label44, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        txtKnownAdverseReactions = new JTextArea();
+        pnlMedicalComplaints.add(txtKnownAdverseReactions, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+        final JLabel label45 = new JLabel();
+        label45.setText("Major surgeries");
+        pnlMedicalComplaints.add(label45, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        txtMajorSurgeries = new JTextArea();
+        pnlMedicalComplaints.add(txtMajorSurgeries, new com.intellij.uiDesigner.core.GridConstraints(5, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+        cbDiabetic = new JCheckBox();
+        cbDiabetic.setText("Diabetic");
+        pnlMedicalComplaints.add(cbDiabetic, new com.intellij.uiDesigner.core.GridConstraints(6, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        cbHypertensive = new JCheckBox();
+        cbHypertensive.setText("Hypertensive");
+        pnlMedicalComplaints.add(cbHypertensive, new com.intellij.uiDesigner.core.GridConstraints(7, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        pnlConditions = new JTabbedPane();
+        pnlMedicalComplaints.add(pnlConditions, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 8, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(500, 200), null, 0, false));
+        final JPanel panel3 = new JPanel();
+        panel3.setLayout(new BorderLayout(0, 0));
+        pnlConditions.addTab("Neurological", panel3);
+        txtNeurologicalCondition = new JTextArea();
+        panel3.add(txtNeurologicalCondition, BorderLayout.CENTER);
+        final JPanel panel4 = new JPanel();
+        panel4.setLayout(new BorderLayout(0, 0));
+        pnlConditions.addTab("Muscular", panel4);
+        txtMuscularCondition = new JTextArea();
+        panel4.add(txtMuscularCondition, BorderLayout.CENTER);
+        final JPanel panel5 = new JPanel();
+        panel5.setLayout(new BorderLayout(0, 0));
+        pnlConditions.addTab("Orthopedic", panel5);
+        txtOrthopedicCondition = new JTextArea();
+        panel5.add(txtOrthopedicCondition, BorderLayout.CENTER);
+        final JPanel panel6 = new JPanel();
+        panel6.setLayout(new BorderLayout(0, 0));
+        pnlConditions.addTab("Cardiac", panel6);
+        txtCardiacCondition = new JTextArea();
+        panel6.add(txtCardiacCondition, BorderLayout.CENTER);
+        final JPanel panel7 = new JPanel();
+        panel7.setLayout(new BorderLayout(0, 0));
+        pnlConditions.addTab("Respiratory", panel7);
+        txtRespiratoryCondition = new JTextArea();
+        panel7.add(txtRespiratoryCondition, BorderLayout.CENTER);
+        final JPanel panel8 = new JPanel();
+        panel8.setLayout(new BorderLayout(0, 0));
+        pnlConditions.addTab("Digestive", panel8);
+        txtDigestiveCondition = new JTextArea();
+        panel8.add(txtDigestiveCondition, BorderLayout.CENTER);
     }
 
     /**

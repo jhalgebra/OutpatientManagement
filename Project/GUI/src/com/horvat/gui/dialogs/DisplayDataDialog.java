@@ -2,7 +2,6 @@ package com.horvat.gui.dialogs;
 
 import com.horvat.dl.entities.IDisplayable;
 import com.horvat.gui.dialogs.option.base.OptionDialog;
-import com.horvat.gui.dialogs.report.DisplaySimpleDataDialog;
 import com.horvat.gui.entities.ButtonCellRenderer;
 import com.horvat.gui.entities.ViewDataTableModel;
 import javafx.util.Pair;

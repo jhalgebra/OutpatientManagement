@@ -3,7 +3,7 @@
   <grid id="cbd77" binding="contentPane" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
-      <xy x="48" y="54" width="852" height="335"/>
+      <xy x="48" y="54" width="879" height="441"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -677,32 +677,356 @@
                       </component>
                     </children>
                   </grid>
-                  <grid id="5551f" binding="pnlLifestyle" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="5551f" binding="pnlLifestyle" layout-manager="GridLayoutManager" row-count="5" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <tabbedpane title="Lifestyle"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
-                    <children/>
+                    <children>
+                      <component id="facae" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Coffees consumed per day:"/>
+                        </properties>
+                      </component>
+                      <component id="2af0a" class="javax.swing.JFormattedTextField" binding="txtCoffeeConsumption" custom-create="true">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="8c7a0" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Soft drinks consumed per day:"/>
+                        </properties>
+                      </component>
+                      <component id="9784f" class="javax.swing.JFormattedTextField" binding="txtSoftDrinkConsumption" custom-create="true">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="d31be" class="javax.swing.JCheckBox" binding="cbVegetarian">
+                        <constraints>
+                          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Vegetarian"/>
+                        </properties>
+                      </component>
+                      <component id="181ff" class="javax.swing.JCheckBox" binding="cbSmoker">
+                        <constraints>
+                          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Smoker"/>
+                        </properties>
+                      </component>
+                      <component id="79915" class="javax.swing.JCheckBox" binding="cbConsumesAlcohol">
+                        <constraints>
+                          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Consumes alcoholic beverage"/>
+                        </properties>
+                      </component>
+                      <component id="62bf6" class="javax.swing.JCheckBox" binding="cbUsesStimulants">
+                        <constraints>
+                          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Uses stimulants"/>
+                        </properties>
+                      </component>
+                      <component id="1ef96" class="javax.swing.JTextField" binding="txtStimulantsUsed">
+                        <constraints>
+                          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <enabled value="false"/>
+                        </properties>
+                      </component>
+                      <component id="54a6d" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Stimulants used:"/>
+                        </properties>
+                      </component>
+                      <component id="2c605" class="javax.swing.JCheckBox" binding="cbRegularMeals">
+                        <constraints>
+                          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Regular meals (Breakfast, lunch and dinner)"/>
+                        </properties>
+                      </component>
+                      <component id="1198f" class="javax.swing.JComboBox" binding="ddlPredominantEatingOption">
+                        <constraints>
+                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="a7a96" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Predominant eating option:"/>
+                        </properties>
+                      </component>
+                      <component id="d2055" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Tea consumed per day:"/>
+                        </properties>
+                      </component>
+                      <component id="51fd8" class="javax.swing.JFormattedTextField" binding="txtTeaConsumption" custom-create="true">
+                        <constraints>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                    </children>
                   </grid>
-                  <grid id="a8b9f" binding="pnlBasicComplaints" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="a8b9f" binding="pnlBasicComplaints" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <tabbedpane title="Basic complaints"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
-                    <children/>
+                    <children>
+                      <component id="d457a" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Statement of complaint:"/>
+                        </properties>
+                      </component>
+                      <component id="2a211" class="javax.swing.JTextArea" binding="txtStatementOfComplaint">
+                        <constraints>
+                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="50"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="6cc7b" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="History of previous treatment:"/>
+                        </properties>
+                      </component>
+                      <component id="4f3c2" class="javax.swing.JTextArea" binding="txtPreviousTreatment">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="50"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="df7c5" class="javax.swing.JTextArea" binding="txtPhysicianOrHospitalTreated">
+                        <constraints>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="50"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="1d0" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Physician or hospital that treated the patient:"/>
+                        </properties>
+                      </component>
+                    </children>
                   </grid>
-                  <grid id="adc1" binding="pnlMedicalComplaints" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="adc1" binding="pnlMedicalComplaints" layout-manager="GridLayoutManager" row-count="8" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <tabbedpane title="Medical complaints"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
-                    <children/>
+                    <children>
+                      <component id="2babf" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Known allergies"/>
+                        </properties>
+                      </component>
+                      <component id="74490" class="javax.swing.JTextArea" binding="txtKnownAllergies">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="50"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="ac490" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Known adverse reaction to specific drugs"/>
+                        </properties>
+                      </component>
+                      <component id="12afb" class="javax.swing.JTextArea" binding="txtKnownAdverseReactions">
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="50"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="7f316" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Major surgeries"/>
+                        </properties>
+                      </component>
+                      <component id="269db" class="javax.swing.JTextArea" binding="txtMajorSurgeries">
+                        <constraints>
+                          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="50"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                      </component>
+                      <component id="5e70b" class="javax.swing.JCheckBox" binding="cbDiabetic">
+                        <constraints>
+                          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Diabetic"/>
+                        </properties>
+                      </component>
+                      <component id="89aa8" class="javax.swing.JCheckBox" binding="cbHypertensive">
+                        <constraints>
+                          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Hypertensive"/>
+                        </properties>
+                      </component>
+                      <tabbedpane id="dc77c" binding="pnlConditions">
+                        <constraints>
+                          <grid row="0" column="1" row-span="8" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="500" height="200"/>
+                          </grid>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <grid id="eb603" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints>
+                              <tabbedpane title="Neurological"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="5f479" class="javax.swing.JTextArea" binding="txtNeurologicalCondition">
+                                <constraints border-constraint="Center"/>
+                                <properties/>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="d2b7" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints>
+                              <tabbedpane title="Muscular"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="a0df8" class="javax.swing.JTextArea" binding="txtMuscularCondition">
+                                <constraints border-constraint="Center"/>
+                                <properties/>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="ef6c0" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints>
+                              <tabbedpane title="Orthopedic"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="ef27" class="javax.swing.JTextArea" binding="txtOrthopedicCondition">
+                                <constraints border-constraint="Center"/>
+                                <properties/>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="78f14" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints>
+                              <tabbedpane title="Cardiac"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="55a67" class="javax.swing.JTextArea" binding="txtCardiacCondition">
+                                <constraints border-constraint="Center"/>
+                                <properties/>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="78a2f" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints>
+                              <tabbedpane title="Respiratory"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="17a1d" class="javax.swing.JTextArea" binding="txtRespiratoryCondition">
+                                <constraints border-constraint="Center"/>
+                                <properties/>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="90fed" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints>
+                              <tabbedpane title="Digestive"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="30693" class="javax.swing.JTextArea" binding="txtDigestiveCondition">
+                                <constraints border-constraint="Center"/>
+                                <properties/>
+                              </component>
+                            </children>
+                          </grid>
+                        </children>
+                      </tabbedpane>
+                    </children>
                   </grid>
                 </children>
               </tabbedpane>

@@ -1,4 +1,4 @@
-package com.horvat.gui.dialogs.report;
+package com.horvat.gui.dialogs;
 
 import com.horvat.dl.helpers.ToStringUtils;
 import com.horvat.gui.dialogs.option.base.OptionDialog;

@@ -4,10 +4,10 @@ import com.horvat.bll.viewmodels.MainMenuViewModel;
 import com.horvat.bll.viewmodels.doctor.DoctorMenuViewModel;
 import com.horvat.bll.viewmodels.receptionist.ReceptionistMenuViewModel;
 import com.horvat.dl.entities.Doctor;
-import com.horvat.gui.dialogs.DisplayDataDialog;
 import com.horvat.gui.dialogs.doctor.DoctorMenuDialog;
 import com.horvat.gui.dialogs.option.ChooseDoctorDialog;
 import com.horvat.gui.dialogs.receptionist.ReceptionistMenuDialog;
+import com.horvat.gui.dialogs.report.ReportMenuDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,12 +37,13 @@ public class MainMenuWindow extends JFrame {
     }
 
     private void onReportRequest() {
-        java.util.List<Doctor> doctors = viewModel.getDoctors();
+        ReportMenuDialog reportDialog = new ReportMenuDialog(
+                this, "Report menu", 400, 600
+        );
 
-        if (doctors.size() == 0) return;
-
-        DisplayDataDialog displayDataDialog = new DisplayDataDialog(this, "Display Data Test", 500, 500, doctors);
-        displayDataDialog.showDialog();
+        setVisible(false);
+        reportDialog.showDialog();
+        setVisible(true);
     }
 
     private void onReceptionistLogin() {
