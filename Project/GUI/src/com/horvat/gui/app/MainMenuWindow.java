@@ -3,7 +3,9 @@ package com.horvat.gui.app;
 import com.horvat.bll.viewmodels.MainMenuViewModel;
 import com.horvat.bll.viewmodels.doctor.DoctorMenuViewModel;
 import com.horvat.bll.viewmodels.receptionist.ReceptionistMenuViewModel;
+import com.horvat.bll.viewmodels.report.ReportMenuViewModel;
 import com.horvat.dl.entities.Doctor;
+import com.horvat.gui.dialogs.DisplayDataDialog;
 import com.horvat.gui.dialogs.doctor.DoctorMenuDialog;
 import com.horvat.gui.dialogs.option.ChooseDoctorDialog;
 import com.horvat.gui.dialogs.receptionist.ReceptionistMenuDialog;
@@ -11,6 +13,8 @@ import com.horvat.gui.dialogs.report.ReportMenuDialog;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainMenuWindow extends JFrame {
     private JButton btnDoctorLogin;
@@ -38,7 +42,8 @@ public class MainMenuWindow extends JFrame {
 
     private void onReportRequest() {
         ReportMenuDialog reportDialog = new ReportMenuDialog(
-                this, "Report menu", 400, 600
+                this, "Report menu", 400, 600,
+                new ReportMenuViewModel()
         );
 
         setVisible(false);

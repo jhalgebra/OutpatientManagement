@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.Format;
 import java.util.Date;
 
@@ -140,15 +141,17 @@ public class InsertPatientDialog extends BaseDialog<Patient, InsertPatientViewMo
     }
 
     private void onOK() {
-        if (viewModel.isBasic())
-            insertBasic();
-        else
-            insertFull();
+        try {
+            if (viewModel.isBasic())
+                insertBasic();
+            else
+                insertFull();
 
-        Utils.saveDataAndShowStatus(this, viewModel, () -> {
-            setResult(viewModel.getPatient());
-            close();
-        });
+            Utils.saveDataAndShowStatus(this, viewModel, "Please fill in all of the necessary fields", () -> setResultAndClose(viewModel.getPatient()));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Utils.printError(this, ex);
+        }
     }
 
     private void insertBasic() {
@@ -222,14 +225,14 @@ public class InsertPatientDialog extends BaseDialog<Patient, InsertPatientViewMo
         viewModel.setPersonalDetails(new PersonalDetails(
                 cbMarried.isSelected(),
                 (Integer) txtNumberOfDependents.getValue(),
-                (Double) txtHeight.getValue(),
-                (Double) txtWeight.getValue(),
+                Double.valueOf(txtHeight.getText()),
+                Double.valueOf(txtWeight.getText()),
                 txtBloodTypeRH.getText()
         ));
 
         viewModel.setProfessionDetails(new ProfessionDetails(
                 txtOccupation.getText(),
-                BigDecimal.valueOf((double) txtGrossAnnualIncome.getValue())
+                BigDecimal.valueOf(Double.valueOf(txtGrossAnnualIncome.getText()))
         ));
 
         Boolean usesStimulants = cbUsesStimulants.isSelected();
@@ -239,9 +242,9 @@ public class InsertPatientDialog extends BaseDialog<Patient, InsertPatientViewMo
                 cbConsumesAlcohol.isSelected(),
                 usesStimulants,
                 usesStimulants ? txtStimulantsUsed.getText() : "",
-                (Double) txtCoffeeConsumption.getValue(),
-                (Double) txtTeaConsumption.getValue(),
-                (Double) txtSoftDrinkConsumption.getValue(),
+                Double.valueOf(txtCoffeeConsumption.getText()),
+                Double.valueOf(txtTeaConsumption.getText()),
+                Double.valueOf(txtSoftDrinkConsumption.getText()),
                 cbRegularMeals.isSelected(),
                 ddlPredominantEatingOption.getSelectedItem().toString()
         ));
@@ -273,7 +276,7 @@ public class InsertPatientDialog extends BaseDialog<Patient, InsertPatientViewMo
 
     private void createUIComponents() {
         Format dateFormat = Utils.format;
-        Format doubleFormat = new DecimalFormat();
+        Format doubleFormat = new DecimalFormat("#.#", DecimalFormatSymbols.getInstance());
 
         txtDateOfBirthSimple = new JFormattedTextField(dateFormat);
         txtDateOfBirth = new JFormattedTextField(dateFormat);

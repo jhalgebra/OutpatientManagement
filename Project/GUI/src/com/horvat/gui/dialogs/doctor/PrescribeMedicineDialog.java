@@ -61,10 +61,9 @@ public class PrescribeMedicineDialog extends BaseDialog<PrescribedMedicine, Pres
         viewModel.setQuantity((Double) txtQuantity.getValue());
         viewModel.setMedicineName((String) ddlMedicine.getSelectedItem());
 
-        Utils.saveDataAndShowStatus(this, viewModel, () -> {
-            setResult(viewModel.getMedicine());
-            close();
-        });
+        Utils.saveDataAndShowStatus(this, viewModel, "Please fill in all of the necessary fields",
+                () -> setResultAndClose(viewModel.getMedicine())
+        );
     }
 
     private void onCancel() {

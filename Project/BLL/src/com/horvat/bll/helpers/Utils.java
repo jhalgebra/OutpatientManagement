@@ -1,10 +1,12 @@
 package com.horvat.bll.helpers;
 
 import com.horvat.dal.FileManager;
+import com.horvat.dl.entities.Doctor;
 import com.lib.xml.XmlReader;
 import com.lib.xml.XmlTag;
 
 import java.util.*;
+import java.util.function.Function;
 
 public class Utils {
     public static final String DATE_FORMAT = "dd.MM.yyyy.";
@@ -16,15 +18,14 @@ public class Utils {
 
     public static String getXmlSetting(String key) {
         try {
-            if(reader == null)
+            if (reader == null)
                 reader = new XmlReader(xmlFilePath);
 
             Map<String, List<String>> xmlData = reader.getXMLData(settingTag, new XmlTag(key));
 
             List<String> data = xmlData.get(key);
             return data.get(0);
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             return null;
         }
@@ -58,5 +59,37 @@ public class Utils {
         min.add(Calendar.MILLISECOND, -1);
 
         return date.after(min.getTime()) && date.before(max.getTime());
+    }
+
+    public static <K, V> Object[][] convertToObjectArray(Map<K, V> map) {
+        return convertToObjectArray(map, K::toString, V::toString);
+    }
+
+    public static <K, V> Object[][] convertToObjectArray(
+            Map<K, V> map,
+            Function<K, Object> keyToObjectConverter,
+            Function<V, Object> valueToObjectConverter
+    ) {
+        if (map == null || map.size() == 0)
+            return null;
+
+        Object[][] objectArray = new Object[map.size()][];
+        for (int i = 0; i < objectArray.length; i++) {
+            objectArray[i] = new Object[2];
+
+            int counter = 0;
+            for (K key : map.keySet()) {
+                if (counter++ == i) {
+                    V value = map.get(key);
+
+                    objectArray[i][0] = keyToObjectConverter.apply(key);
+                    objectArray[i][1] = valueToObjectConverter.apply(value);
+
+                    break;
+                }
+            }
+        }
+
+        return objectArray;
     }
 }

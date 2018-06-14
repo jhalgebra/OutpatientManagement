@@ -53,8 +53,7 @@ public class ChoosePatientDialog extends OptionDialog<Patient> {
     }
 
     private void onOK() {
-        setResult((Patient) ddlPatients.getSelectedItem());
-        close();
+        setResultAndClose((Patient) ddlPatients.getSelectedItem());
     }
 
     private void onCancel() {

@@ -60,13 +60,15 @@ public class IssueBillDialog extends BaseDialog<Bill, IssueBillViewModel> {
     }
 
     private void onOK() {
-        viewModel.setPaymentType(ddlPaymentType.getSelectedItem().toString());
-        viewModel.setAmount(BigDecimal.valueOf((double) txtAmount.getValue()));
+        try {
+            viewModel.setPaymentType(ddlPaymentType.getSelectedItem().toString());
+            viewModel.setAmount(BigDecimal.valueOf((double) txtAmount.getValue()));
 
-        Utils.saveDataAndShowStatus(this, viewModel, () -> {
-            setResult(viewModel.getBill());
-            close();
-        });
+            Utils.saveDataAndShowStatus(this, viewModel, "Please fill in all of the necessary fields", () -> setResultAndClose(viewModel.getBill()));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Utils.printError(this, ex);
+        }
     }
 
     private void onCancel() {

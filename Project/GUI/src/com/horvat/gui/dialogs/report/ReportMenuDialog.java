@@ -1,21 +1,23 @@
 package com.horvat.gui.dialogs.report;
 
 import com.horvat.bll.viewmodels.report.DailyReportViewModel;
+import com.horvat.bll.viewmodels.report.ReportMenuViewModel;
 import com.horvat.bll.viewmodels.report.WeeklyOrMonthlyReportViewModel;
 import com.horvat.gui.dialogs.base.CustomDialog;
+import com.horvat.gui.dialogs.base.VMDialog;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class ReportMenuDialog extends CustomDialog {
+public class ReportMenuDialog extends VMDialog<ReportMenuViewModel> {
     private JPanel contentPane;
     private JButton btnDailyReport;
     private JButton btnWeeklyReport;
     private JButton btnMonthlyReport;
 
-    public ReportMenuDialog(Window owner, String title, int width, int height) {
-        super(owner, title, width, height);
+    public ReportMenuDialog(Window owner, String title, int width, int height, ReportMenuViewModel viewModel) {
+        super(owner, title, width, height, viewModel);
         setContentPane(contentPane);
 
         initListeners();

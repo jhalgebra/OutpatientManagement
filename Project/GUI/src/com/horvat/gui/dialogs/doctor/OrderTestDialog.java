@@ -54,10 +54,9 @@ public class OrderTestDialog extends BaseDialog<Test, OrderTestViewModel> {
         viewModel.setName(txtName.getText());
         viewModel.setDetails(txtDetails.getText());
 
-        Utils.saveDataAndShowStatus(this, viewModel, () -> {
-            setResult(viewModel.getTest());
-            close();
-        });
+        Utils.saveDataAndShowStatus(this, viewModel, "Please fill in all of the necessary fields",
+                () -> setResultAndClose(viewModel.getTest())
+        );
     }
 
     private void onCancel() {

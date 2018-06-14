@@ -3,13 +3,13 @@ package com.horvat.console.dialogs;
 import com.horvat.bll.viewmodels.doctor.DoctorMenuViewModel;
 import com.horvat.bll.viewmodels.MainMenuViewModel;
 import com.horvat.bll.viewmodels.receptionist.ReceptionistMenuViewModel;
-import com.horvat.bll.viewmodels.report.ReportViewModel;
+import com.horvat.bll.viewmodels.report.ReportMenuViewModel;
 import com.horvat.console.app.Utils;
 import com.horvat.console.dialogs.base.Dialog;
 import com.horvat.console.dialogs.base.DialogOption;
 import com.horvat.console.dialogs.doctor.DoctorMenuDialog;
 import com.horvat.console.dialogs.receptionist.ReceptionistMenuDialog;
-import com.horvat.console.dialogs.report.ReportDialog;
+import com.horvat.console.dialogs.report.ReportMenuDialog;
 import com.horvat.dl.entities.Doctor;
 
 import java.util.ArrayList;
@@ -49,10 +49,10 @@ public class MainMenuDialog extends Dialog<MainMenuViewModel> {
             )));
 
             add(new DialogOption("View Reports", () -> dialogNavigator.goToNewDialog(
-                    new ReportDialog(
+                    new ReportMenuDialog(
                             "Reports",
                             '=',
-                            new ReportViewModel()
+                            new ReportMenuViewModel()
                     )
             )));
 

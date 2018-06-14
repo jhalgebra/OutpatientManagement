@@ -51,8 +51,7 @@ public class ChooseDoctorDialog extends OptionDialog<Doctor> {
     }
 
     private void onOK() {
-        setResult((Doctor) ddlDoctors.getSelectedItem());
-        close();
+        setResultAndClose((Doctor) ddlDoctors.getSelectedItem());
     }
 
     private void onCancel() {

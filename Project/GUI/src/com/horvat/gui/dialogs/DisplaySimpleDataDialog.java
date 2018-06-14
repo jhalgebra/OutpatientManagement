@@ -13,9 +13,12 @@ public class DisplaySimpleDataDialog extends OptionDialog<Object> {
     private JPanel contentPane;
     private JButton btnOK;
     private JPanel pnlContent;
+    private Map<String, Object> data;
 
     public DisplaySimpleDataDialog(Window owner, String title, int width, int height, Map<String, Object> data) {
         super(owner, title, width, height);
+        this.data = data;
+
         setContentPane(contentPane);
         getRootPane().setDefaultButton(btnOK);
 
@@ -37,6 +40,17 @@ public class DisplaySimpleDataDialog extends OptionDialog<Object> {
         );
 
         initControls(data);
+    }
+
+    @Override
+    public Object showDialog() {
+        if (data == null || data.size() == 0) {
+            JOptionPane.showMessageDialog(this, "There are no items here", "List is empty", JOptionPane.INFORMATION_MESSAGE);
+            close();
+            return null;
+        }
+
+        return super.showDialog();
     }
 
     private void initControls(Map<String, Object> data) {

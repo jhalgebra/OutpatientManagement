@@ -7,27 +7,28 @@ import com.horvat.gui.entities.ViewDataTableModel;
 import javafx.util.Pair;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.print.PrinterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class DisplayDataDialog<T extends IDisplayable> extends OptionDialog<Object> {
+    private List<T> data;
     private JPanel contentPane;
     private JTable table;
-    private JPanel pnlButtons;
-
-    public DisplayDataDialog(Window owner, String title, int width, int height) {
-        super(owner, title, width, height);
-        setContentPane(contentPane);
-    }
 
     public DisplayDataDialog(Window owner, String title, int width, int height, List<T> data) {
-        this(owner, title, width, height);
+        super(owner, title, width, height);
+        this.data = data;
+
+        setContentPane(contentPane);
         setTableData(data);
+
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -56,6 +57,17 @@ public class DisplayDataDialog<T extends IDisplayable> extends OptionDialog<Obje
                 }
             }
         });
+    }
+
+    @Override
+    public Object showDialog() {
+        if (data == null || data.size() == 0) {
+            JOptionPane.showMessageDialog(this, "There are no items here", "List is empty", JOptionPane.INFORMATION_MESSAGE);
+            close();
+            return null;
+        }
+
+        return super.showDialog();
     }
 
     public void setTableData(List<T> data) {
@@ -95,9 +107,6 @@ public class DisplayDataDialog<T extends IDisplayable> extends OptionDialog<Obje
         table.setRowHeight(25);
         table.setRowMargin(1);
         scrollPane1.setViewportView(table);
-        pnlButtons = new JPanel();
-        pnlButtons.setLayout(new GridBagLayout());
-        contentPane.add(pnlButtons, BorderLayout.SOUTH);
     }
 
     /**

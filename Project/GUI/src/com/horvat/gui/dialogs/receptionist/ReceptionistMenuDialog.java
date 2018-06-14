@@ -53,7 +53,7 @@ public class ReceptionistMenuDialog extends VMDialog<ReceptionistMenuViewModel> 
 
             InsertPatientDialog insertPatientDialog = new InsertPatientDialog(
                     this, (basic ? "Basic" : "Full") + " registration",
-                    1280, basic ? 300 : 768, new InsertPatientViewModel(basic)
+                    900, 500, new InsertPatientViewModel(basic)
             );
 
             Patient patient = insertPatientDialog.showDialog();

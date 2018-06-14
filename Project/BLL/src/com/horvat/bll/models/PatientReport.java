@@ -23,9 +23,11 @@ public class PatientReport {
 
     public long getNumNewOrSecondOpinionPatients() {
         return repository.getPatients().stream()
-                .filter(patient ->
-                        patient.getAppointments().stream().anyMatch(Appointment::getSecondOpinion) ||
-                                Utils.dateWithin(reportRange, patient.getRegistrationDate())
+                .filter(patient -> patient.getAppointments().stream().anyMatch(
+                        appointment -> appointment.getSecondOpinion() &&
+                                Utils.dateWithin(reportRange, appointment.getDate())) ||
+
+                        Utils.dateWithin(reportRange, patient.getRegistrationDate())
                 )
                 .count();
     }
@@ -70,9 +72,12 @@ public class PatientReport {
             i++;
         }
 
-        if(reportRange == DateWithin.THIS_WEEK || reportRange == DateWithin.THIS_MONTH)
-            for(i = 0; i < doctors.size(); i++)
-                numPatientsPerDoctor.put(doctors.get(i), countPerDoctor[i] / sum);
+        if (reportRange == DateWithin.THIS_WEEK || reportRange == DateWithin.THIS_MONTH)
+            for (i = 0; i < doctors.size(); i++) {
+                Double average = countPerDoctor[i] / sum;
+
+                numPatientsPerDoctor.put(doctors.get(i), average.isNaN() ? 0.0 : average * 100);
+            }
 
         return numPatientsPerDoctor;
     }

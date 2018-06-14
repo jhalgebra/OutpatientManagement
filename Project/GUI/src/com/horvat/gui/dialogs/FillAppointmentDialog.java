@@ -65,10 +65,9 @@ public class FillAppointmentDialog extends BaseDialog<Appointment, FillAppointme
         viewModel.setDetails(txtDetails.getText());
         viewModel.setSecondOpinion(cbSecondOpinion.isSelected());
 
-        Utils.saveDataAndShowStatus(this, viewModel, () -> {
-            setResult(viewModel.getAppointment());
-            close();
-        });
+        Utils.saveDataAndShowStatus(this, viewModel, "Please fill in all of the necessary fields",
+                () -> setResultAndClose(viewModel.getAppointment())
+        );
     }
 
     private void onCancel() {

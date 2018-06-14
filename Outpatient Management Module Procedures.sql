@@ -4,6 +4,7 @@ IF(DB_ID('OutpatientManagementModule') IS NULL)
 USE OutpatientManagementModule
 GO
 
+DROP PROC RNG
 DROP PROC InsertPatientWithBasicDetails
 DROP PROC InsertPatientWithFullDetails
 DROP PROC RemovePatient
@@ -33,6 +34,15 @@ DROP PROC GetMedicines
 
 GO
 
+CREATE PROC RNG
+	@min INT,
+	@max INT,
+	@generatedValue INT OUTPUT
+AS
+SET @generatedValue = FLOOR(RAND() * (@max - @min + 1) + @min)
+
+GO
+
 -------------
 -- Patient --
 -------------
@@ -53,53 +63,65 @@ CREATE PROC InsertPatientWithBasicDetails
 	@InsertedID INT OUTPUT,
 	@InsertedRegistrationDate DATETIME OUTPUT
 AS --InsertPatientWithBasicDetails	
-	DECLARE @BasicDetailsID INT, @BasicComplaintsID INT,
-			@ContactDetailsID INT, @ContactOfNextOfKinID INT
+	BEGIN TRY
+		BEGIN TRAN
 
-	DECLARE @ContactID INT
+		DECLARE @BasicDetailsID INT, @BasicComplaintsID INT,
+				@ContactDetailsID INT, @ContactOfNextOfKinID INT
 
-	--Basic Details
-	INSERT INTO BasicDetails(Name, SexID, DateOfBirth)
-	VALUES(@Name, @SexID, @DateOfBirth)
+		DECLARE @ContactID INT
 
-	SET @BasicDetailsID = SCOPE_IDENTITY()
+		--Basic Details
+		INSERT INTO BasicDetails(Name, SexID, DateOfBirth)
+		VALUES(@Name, @SexID, @DateOfBirth)
 
-	--Basic Complaints
-	INSERT INTO BasicComplaints(StatementOfComplaint)
-	VALUES(@StatementOfComplaint)
+		SET @BasicDetailsID = SCOPE_IDENTITY()
 
-	SET @BasicComplaintsID = SCOPE_IDENTITY()
+		--Basic Complaints
+		INSERT INTO BasicComplaints(StatementOfComplaint)
+		VALUES(@StatementOfComplaint)
 
-	--Contact Details
-	INSERT INTO Contact(TelephoneHome, TelephoneWork)
-	VALUES(@TelephoneHome, @TelephoneWork)
+		SET @BasicComplaintsID = SCOPE_IDENTITY()
 
-	SET @ContactID = SCOPE_IDENTITY()
+		--Contact Details
+		INSERT INTO Contact(TelephoneHome, TelephoneWork)
+		VALUES(@TelephoneHome, @TelephoneWork)
 
-	INSERT INTO ContactDetails(ContactID)
-	VALUES(@ContactID)
+		SET @ContactID = SCOPE_IDENTITY()
 
-	SET @ContactDetailsID = SCOPE_IDENTITY()
+		INSERT INTO ContactDetails(ContactID)
+		VALUES(@ContactID)
 
-	--Contact of Next of Kin
-	INSERT INTO ContactOfNextOfKin(Name)
-	VALUES(@NameOfNextOfKin)
+		SET @ContactDetailsID = SCOPE_IDENTITY()
 
-	SET @ContactOfNextOfKinID = SCOPE_IDENTITY()
+		--Contact of Next of Kin
+		INSERT INTO ContactOfNextOfKin(Name)
+		VALUES(@NameOfNextOfKin)
 
-	DECLARE @insertedData TABLE
-	(
-		ID INT,
-		RegistrationDate DATETIME
-	)
+		SET @ContactOfNextOfKinID = SCOPE_IDENTITY()
 
-	--Patient
-	INSERT INTO Patient(BasicRegistration, BasicDetailsID, BasicComplaintsID, ContactDetailsID, ContactOfNextOfKinID)
-	OUTPUT inserted.ID, inserted.RegistrationDate INTO @insertedData(ID, RegistrationDate)
-	VALUES             (1,                @BasicDetailsID, @BasicComplaintsID, @ContactDetailsID, @ContactOfNextOfKinID)
+		DECLARE @insertedData TABLE
+		(
+			ID INT,
+			RegistrationDate DATETIME
+		)
 
-	SET @InsertedID = (SELECT ID FROM @insertedData)
-	SET @InsertedRegistrationDate = (SELECT RegistrationDate FROM @insertedData)
+		--Patient
+		INSERT INTO Patient(BasicRegistration, BasicDetailsID, BasicComplaintsID, ContactDetailsID, ContactOfNextOfKinID)
+		OUTPUT inserted.ID, inserted.RegistrationDate INTO @insertedData(ID, RegistrationDate)
+		VALUES             (1,                @BasicDetailsID, @BasicComplaintsID, @ContactDetailsID, @ContactOfNextOfKinID)
+
+		SET @InsertedID = (SELECT ID FROM @insertedData)
+		SET @InsertedRegistrationDate = (SELECT RegistrationDate FROM @insertedData)
+
+		COMMIT
+	END TRY
+	BEGIN CATCH
+		IF(@@TRANCOUNT > 0)
+			ROLLBACK;
+
+		THROW
+	END CATCH
 GO 
 --ENDOF: InsertPatientWithBasicDetails-------------------------------------------------------------
 
@@ -167,89 +189,101 @@ CREATE PROC InsertPatientWithFullDetails
 	@InsertedID INT OUTPUT,
 	@InsertedRegistrationDate DATETIME OUTPUT
 AS --InsertPatientWithFullDetails
-	DECLARE @BasicDetailsID INT, @ContactDetailsID INT, @ContactOfNextOfKinID INT, @PersonalDetailsID INT,
-			@ProfessionDetailsID INT, @LifestyleID INT, @BasicComplaintsID INT, @MedicalComplaintsID INT
+	BEGIN TRY
+		BEGIN TRAN
 
-	DECLARE @ContactID INT, @NextOfKinContactID INT
+		DECLARE @BasicDetailsID INT, @ContactDetailsID INT, @ContactOfNextOfKinID INT, @PersonalDetailsID INT,
+				@ProfessionDetailsID INT, @LifestyleID INT, @BasicComplaintsID INT, @MedicalComplaintsID INT
 
-	--Basic Details
-	INSERT INTO BasicDetails(OIB, Name, SexID, DateOfBirth)
-	VALUES (@OIB, @Name, @SexID, @DateOfBirth)
+		DECLARE @ContactID INT, @NextOfKinContactID INT
 
-	SET @BasicDetailsID = SCOPE_IDENTITY()
+		--Basic Details
+		INSERT INTO BasicDetails(OIB, Name, SexID, DateOfBirth)
+		VALUES (@OIB, @Name, @SexID, @DateOfBirth)
 
-	--Contact Details
-	INSERT INTO Contact(TelephoneWork, TelephoneHome, Mobile, Pager, Fax, Email)
-	VALUES(@TelephoneWork, @TelephoneHome, @Mobile, @Pager, @Fax, @Email)
+		SET @BasicDetailsID = SCOPE_IDENTITY()
 
-	SET @ContactID = SCOPE_IDENTITY()
+		--Contact Details
+		INSERT INTO Contact(TelephoneWork, TelephoneHome, Mobile, Pager, Fax, Email)
+		VALUES(@TelephoneWork, @TelephoneHome, @Mobile, @Pager, @Fax, @Email)
 
-	INSERT INTO ContactDetails(PresentAddress, PermanentAddress, ContactID)
-	VALUES(@PresentAddress, @PermanentAddress, @ContactID)
+		SET @ContactID = SCOPE_IDENTITY()
 
-	SET @ContactDetailsID = SCOPE_IDENTITY()
+		INSERT INTO ContactDetails(PresentAddress, PermanentAddress, ContactID)
+		VALUES(@PresentAddress, @PermanentAddress, @ContactID)
 
-	--Contact of Next of Kin
-	INSERT INTO Contact(TelephoneWork, TelephoneHome, Mobile, Pager, Fax, Email)
-	VALUES(@NextOfKinTelephoneWork, @NextOfKinTelephoneHome, @NextOfKinMobile,
-		   @NextOfKinPager, @NextOfKinFax, @NextOfKinEmail)
+		SET @ContactDetailsID = SCOPE_IDENTITY()
 
-	SET @NextOfKinContactID = SCOPE_IDENTITY()
+		--Contact of Next of Kin
+		INSERT INTO Contact(TelephoneWork, TelephoneHome, Mobile, Pager, Fax, Email)
+		VALUES(@NextOfKinTelephoneWork, @NextOfKinTelephoneHome, @NextOfKinMobile,
+			   @NextOfKinPager, @NextOfKinFax, @NextOfKinEmail)
 
-	INSERT INTO ContactOfNextOfKin(Name, ContactAddress, ContactID)
-	VALUES(@NextOfKinName, @NextOfKinContactAddress, @NextOfKinContactID)
+		SET @NextOfKinContactID = SCOPE_IDENTITY()
 
-	SET @ContactOfNextOfKinID = SCOPE_IDENTITY()
+		INSERT INTO ContactOfNextOfKin(Name, ContactAddress, ContactID)
+		VALUES(@NextOfKinName, @NextOfKinContactAddress, @NextOfKinContactID)
 
-	--Personal Details
-	INSERT INTO PersonalDetails(MaritalStatus, NumberOfDependents, Height, Weight, BloodTypeRH)
-	VALUES(@MaritalStatus, @NumberOfDependents, @Height, @Weight, @BloodTypeRH)
+		SET @ContactOfNextOfKinID = SCOPE_IDENTITY()
 
-	SET @PersonalDetailsID = SCOPE_IDENTITY()
+		--Personal Details
+		INSERT INTO PersonalDetails(MaritalStatus, NumberOfDependents, Height, Weight, BloodTypeRH)
+		VALUES(@MaritalStatus, @NumberOfDependents, @Height, @Weight, @BloodTypeRH)
 
-	--Profession Details
-	INSERT INTO ProfessionDetails(Occupation, GrossAnnualIncome)
-	VALUES(@Occupation, @GrossAnnualIncome)
+		SET @PersonalDetailsID = SCOPE_IDENTITY()
 
-	SET @ProfessionDetailsID = SCOPE_IDENTITY()
+		--Profession Details
+		INSERT INTO ProfessionDetails(Occupation, GrossAnnualIncome)
+		VALUES(@Occupation, @GrossAnnualIncome)
 
-	--Lifestyle
-	INSERT INTO Lifestyle(Vegetarian, Smoker, ConsumesAlcoholicBeverage, UsesStimulants, StimulantsUsed,
-	CoffeeConsumptionPerDay, TeaConsumptionPerDay, SoftDrinkConsumptionPerDay, RegularMeals, PredominantEatingOptionID)
-	VALUES(@Vegetarian, @Smoker, @ConsumesAlcoholicBeverage, @UsesStimulants, @StimulantsUsed, @CoffeeConsumptionPerDay,
-	@TeaConsumptionPerDay, @SoftDrinkConsumptionPerDay, @RegularMeals, @PredominantEatingOptionID)
+		SET @ProfessionDetailsID = SCOPE_IDENTITY()
 
-	SET @LifestyleID = SCOPE_IDENTITY()
+		--Lifestyle
+		INSERT INTO Lifestyle(Vegetarian, Smoker, ConsumesAlcoholicBeverage, UsesStimulants, StimulantsUsed,
+		CoffeeConsumptionPerDay, TeaConsumptionPerDay, SoftDrinkConsumptionPerDay, RegularMeals, PredominantEatingOptionID)
+		VALUES(@Vegetarian, @Smoker, @ConsumesAlcoholicBeverage, @UsesStimulants, @StimulantsUsed, @CoffeeConsumptionPerDay,
+		@TeaConsumptionPerDay, @SoftDrinkConsumptionPerDay, @RegularMeals, @PredominantEatingOptionID)
 
-	--Basic Complaints
-	INSERT INTO BasicComplaints(StatementOfComplaint, HistoryOfPreviousTreatment, PhysicianOrHospitalTreated)
-	VALUES(@StatementOfComplaint, @HistoryOfPreviousTreatment, @PhysicianOrHospitalTreated)
+		SET @LifestyleID = SCOPE_IDENTITY()
 
-	SET @BasicComplaintsID = SCOPE_IDENTITY()
+		--Basic Complaints
+		INSERT INTO BasicComplaints(StatementOfComplaint, HistoryOfPreviousTreatment, PhysicianOrHospitalTreated)
+		VALUES(@StatementOfComplaint, @HistoryOfPreviousTreatment, @PhysicianOrHospitalTreated)
 
-	--Medical Complaints
-	INSERT INTO MedicalComplaints(Diabetic, Hypertensive, CardiacCondition, RespiratoryCondition, DigestiveCondition,
-	OrthopedicCondition, MuscularCondition, NeurologicalCondition, KnownAllergies, KnownAdverseReactionToSpecificDrugs, MajorSurgeries)
-	VALUES(@Diabetic, @Hypertensive, @CardiacCondition, @RespiratoryCondition, @DigestiveCondition, @OrthopedicCondition,
-	@MuscularCondition, @NeurologicalCondition, @KnownAllergies, @KnownAdverseReactionToSpecificDrugs, @MajorSurgeries)
+		SET @BasicComplaintsID = SCOPE_IDENTITY()
 
-	SET @MedicalComplaintsID = SCOPE_IDENTITY()
+		--Medical Complaints
+		INSERT INTO MedicalComplaints(Diabetic, Hypertensive, CardiacCondition, RespiratoryCondition, DigestiveCondition,
+		OrthopedicCondition, MuscularCondition, NeurologicalCondition, KnownAllergies, KnownAdverseReactionToSpecificDrugs, MajorSurgeries)
+		VALUES(@Diabetic, @Hypertensive, @CardiacCondition, @RespiratoryCondition, @DigestiveCondition, @OrthopedicCondition,
+		@MuscularCondition, @NeurologicalCondition, @KnownAllergies, @KnownAdverseReactionToSpecificDrugs, @MajorSurgeries)
 
-	DECLARE @insertedData TABLE
-	(
-		ID INT,
-		RegistrationDate DATETIME
-	)
+		SET @MedicalComplaintsID = SCOPE_IDENTITY()
 
-	--Patient
-	INSERT INTO Patient(BasicRegistration, BasicDetailsID, ContactDetailsID, ContactOfNextOfKinID, PersonalDetailsID,
-	ProfessionDetailsID, LifestyleID, BasicComplaintsID, MedicalComplaintsID)
-	OUTPUT inserted.ID, inserted.RegistrationDate INTO @insertedData(ID, RegistrationDate)
-	VALUES(0, @BasicDetailsID, @ContactDetailsID, @ContactOfNextOfKinID, @PersonalDetailsID, @ProfessionDetailsID,
-	@LifestyleID, @BasicComplaintsID, @MedicalComplaintsID)
+		DECLARE @insertedData TABLE
+		(
+			ID INT,
+			RegistrationDate DATETIME
+		)
 
-	SET @InsertedID = (SELECT ID FROM @insertedData)
-	SET @InsertedRegistrationDate = (SELECT RegistrationDate FROM @insertedData)
+		--Patient
+		INSERT INTO Patient(BasicRegistration, BasicDetailsID, ContactDetailsID, ContactOfNextOfKinID, PersonalDetailsID,
+		ProfessionDetailsID, LifestyleID, BasicComplaintsID, MedicalComplaintsID)
+		OUTPUT inserted.ID, inserted.RegistrationDate INTO @insertedData(ID, RegistrationDate)
+		VALUES(0, @BasicDetailsID, @ContactDetailsID, @ContactOfNextOfKinID, @PersonalDetailsID, @ProfessionDetailsID,
+		@LifestyleID, @BasicComplaintsID, @MedicalComplaintsID)
+
+		SET @InsertedID = (SELECT ID FROM @insertedData)
+		SET @InsertedRegistrationDate = (SELECT RegistrationDate FROM @insertedData)
+
+		COMMIT
+	END TRY
+	BEGIN CATCH
+		IF(@@TRANCOUNT > 0)
+			ROLLBACK;
+
+		THROW
+	END CATCH
 GO
 --ENDOF: InsertPatientWithFullDetails--------------------------------------------------------------
 

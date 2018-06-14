@@ -28,6 +28,26 @@ EXEC InsertPatientWithFullDetails '65475492304', 'Anita', 2, '19780312', 'Ilica 
 EXEC InsertPatientWithBasicDetails 'Ana', 2, '19971212', 'Complaining', '3841293', '3840212', 'Leon', @insertedInt OUTPUT, @insertedDate OUTPUT
 EXEC InsertPatientWithBasicDetails 'Marta', 2, '19970925', 'Complaining', '3841293', '3840212', 'Leon', @insertedInt OUTPUT, @insertedDate OUTPUT
 EXEC InsertPatientWithBasicDetails 'Ivan', 1, '19970103', 'Complaining', '3841293', '3840212', 'Leon', @insertedInt OUTPUT, @insertedDate OUTPUT
+	
+IF(DB_ID('#Temp') IS NULL)
+	DROP TABLE #Temp
+
+SELECT * INTO #Temp FROM Patient
+
+DECLARE @ID INT, @Counter INT = 0
+
+WHILE EXISTS (SELECT * FROM #Temp)
+BEGIN
+	SELECT TOP 1 @ID = ID FROM #Temp
+	
+	UPDATE Patient SET
+		RegistrationDate = DATEADD(DAY, @Counter, RegistrationDate)
+	WHERE ID = @ID
+
+	SET @Counter = @Counter - 1
+
+	DELETE #Temp WHERE ID = @ID
+END
 
 -----------
 -- Bills --
@@ -49,15 +69,25 @@ EXEC InsertBill 1, 5, 815, @insertedInt OUTPUT, @insertedDate OUTPUT
 -- Appointments --
 ------------------
 
-EXEC InsertAppointment 2, 1, 'Doctor', '20181124', 'Exam', 1, @insertedInt OUTPUT
-EXEC InsertAppointment 3, 3, 'Doctor', '20190303', 'Exam', 0, @insertedInt OUTPUT
-EXEC InsertAppointment 4, 4, 'Doctor', '20180815', 'Exam', 0, @insertedInt OUTPUT
-EXEC InsertAppointment 2, 2, 'Doctor', '20190419', 'Exam', 1, @insertedInt OUTPUT
-EXEC InsertAppointment 1, 5, 'Doctor', '20190201', 'Exam', 0, @insertedInt OUTPUT
-EXEC InsertAppointment 6, 1, 'Doctor', '20181124', 'Exam', 1, @insertedInt OUTPUT
-EXEC InsertAppointment 5, 6, 'Doctor', '20180815', 'Exam', 0, @insertedInt OUTPUT
-EXEC InsertAppointment 4, 5, 'Doctor', '20181213', 'Exam', 1, @insertedInt OUTPUT
-EXEC InsertAppointment 1, 4, 'Doctor', '20190419', 'Exam', 1, @insertedInt OUTPUT
+DECLARE @i INT = 0
+DECLARE @patientID INT, @doctorID INT, @dateAdd INT, @date DATETIME, @secondOpinion BIT
+
+WHILE(@i < 100)
+BEGIN
+	EXEC RNG 1, 6, @patientID OUTPUT
+	EXEC RNG 1, 6, @doctorID OUTPUT
+	EXEC RNG -10, 10, @dateAdd OUTPUT
+	SET @date = DATEADD(DAY, @dateAdd, GETDATE())
+
+	IF(@i % 3 = 0)
+		SET @secondOpinion = 1
+	ELSE
+		SET @secondOpinion = 0
+
+	EXEC InsertAppointment @doctorID, @patientID, 'Doctor', @date, 'Exam', @secondOpinion, @insertedInt OUTPUT
+
+	SET @i = @i + 1
+END
 
 -----------
 -- Tests --
